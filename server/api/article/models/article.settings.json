@@ -3,7 +3,7 @@
   "connection": "default",
   "collectionName": "articles",
   "info": {
-    "name": "Article"
+    "name": "Articles"
   },
   "options": {
     "increments": true,
@@ -23,8 +23,8 @@
       "required": false
     },
     "tags": {
-      "collection": "tag",
-      "via": "articles"
+      "via": "articles",
+      "collection": "tag"
     },
     "author": {
       "model": "authors",

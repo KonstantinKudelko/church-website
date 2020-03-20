@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "server",
   "private": true,
   "version": "0.1.0",
   "description": "Admin panel for ke.platform",

@@ -3,7 +3,7 @@
   "connection": "default",
   "collectionName": "tags",
   "info": {
-    "name": "Tag"
+    "name": "Tags"
   },
   "options": {
     "increments": true,
@@ -14,8 +14,8 @@
       "type": "string"
     },
     "articles": {
-      "via": "tags",
       "collection": "article",
+      "via": "tags",
       "dominant": true
     }
   }
