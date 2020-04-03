@@ -4,8 +4,9 @@ Here user can create articles and other content
 
 # API
 
-| entity        | request_method | request_url      |
-| ------------- |:--------------:| ----------------:|
-| articles      | GET            | ${host}/articles |
-| authors       | GET            | ${host}/authors  |
-| tags          | GET            | ${host}/tags     |
+| action        | request_method | request_url          |
+| ------------- |:--------------:| --------------------:|
+| articles list | GET            | ${host}/articles     |
+| one article   | GET            | ${host}/articles/:id |
+| authors list  | GET            | ${host}/authors      |
+| tags list     | GET            | ${host}/tags         |
