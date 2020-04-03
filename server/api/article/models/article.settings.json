@@ -13,7 +13,7 @@
     "title": {
       "type": "string"
     },
-    "Body": {
+    "body": {
       "type": "richtext"
     },
     "cover": {
