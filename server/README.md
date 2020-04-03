@@ -11,7 +11,7 @@ Here user can create articles and other content
 | authors list  | GET            | ${host}/authors      |
 | tags list     | GET            | ${host}/tags         |
 
-## CLI Commands
+# CLI Commands
 
 ```bash
 # install dependencies
