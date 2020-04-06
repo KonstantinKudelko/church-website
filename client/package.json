@@ -8,8 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@types/node-fetch": "^2.5.5",
     "goober": "^1.7.1",
     "next": "^9.3.4",
+    "node-fetch": "^2.6.0",
     "preact": "^10.3.4",
     "preact-render-to-string": "^5.1.4",
     "react": "github:preact-compat/react#1.0.0",

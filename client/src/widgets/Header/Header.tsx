@@ -1,4 +1,3 @@
-import { h } from 'preact'
 import { styled } from 'goober'
 
 import { Link } from '~/blocks'
@@ -16,15 +15,17 @@ export const NavEl = styled('li')`
 
 export const Header = () => {
   return (
-    <nav>
-      <NavList>
-        <NavEl>
-          <Link href="/">Home</Link>
-        </NavEl>
-        <NavEl>
-          <Link href="articles">Articles</Link>
-        </NavEl>
-      </NavList>
-    </nav>
+    <header>
+      <nav>
+        <NavList>
+          <NavEl>
+            <Link href="/">Home</Link>
+          </NavEl>
+          <NavEl>
+            <Link href="/articles">Articles</Link>
+          </NavEl>
+        </NavList>
+      </nav>
+    </header>
   )
 }
