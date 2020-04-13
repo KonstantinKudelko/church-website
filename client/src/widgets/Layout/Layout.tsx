@@ -1,4 +1,4 @@
-import { styled } from 'goober'
+import styled from 'reshadow'
 
 import { Header } from '~/widgets'
 

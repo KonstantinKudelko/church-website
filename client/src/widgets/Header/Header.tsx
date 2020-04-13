@@ -1,31 +1,28 @@
-import { styled } from 'goober'
+import styled from 'reshadow'
 
 import { Link } from '~/blocks'
 
-export const NavList = styled('ul')`
-  display: flex;
-  flex-direction: row;
-`
-
-export const NavEl = styled('li')`
-  &:not(:last-child) {
-    margin-right: 2rem;
-  }
-`
-
 export const Header = () => {
-  return (
+  return styled()`
+    ul {
+      display: flex;
+      flex-direction: row;
+    }
+    li:not(:last-child) {
+      margin-right: 2rem;
+    }
+  `(
     <header>
       <nav>
-        <NavList>
-          <NavEl>
+        <ul>
+          <li>
             <Link href="/">Home</Link>
-          </NavEl>
-          <NavEl>
+          </li>
+          <li>
             <Link href="/articles">Articles</Link>
-          </NavEl>
-        </NavList>
+          </li>
+        </ul>
       </nav>
-    </header>
+    </header>,
   )
 }

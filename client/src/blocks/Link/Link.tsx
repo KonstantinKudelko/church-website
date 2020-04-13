@@ -1,9 +1,17 @@
-import { h } from 'preact'
-import NextLink from 'next/link'
-import { styled } from 'goober'
+import { h, FunctionalComponent } from 'preact'
+import NextLink, { LinkProps } from 'next/link'
+import styled from 'reshadow'
 
-// FIXME: here a bug with `NextLink` - application is stack in some infinity loop
-export const Link = styled<any>(props => <a {...props} />)`
-  border-bottom: 0.25rem solid black;
-  text-decoration: none;
-`
+export const Link: FunctionalComponent<
+  LinkProps & h.JSX.HTMLAttributes<HTMLAnchorElement>
+> = ({ href, as, replace, scroll, shallow, passHref, prefetch, ...props }) =>
+  styled()`
+    a {
+      border-bottom: 0.25rem solid black;
+      text-decoration: none;
+    }
+  `(
+    <NextLink {...{ href, as, replace, scroll, shallow, passHref, prefetch }}>
+      <a {...props} />
+    </NextLink>,
+  )
