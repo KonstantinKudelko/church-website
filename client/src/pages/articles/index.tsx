@@ -1,14 +1,14 @@
-import '~/utils/init'
 import { GetStaticProps } from 'next'
 import fetch from 'node-fetch'
 
-import { Link } from '~/blocks'
-import { Layout } from '~/widgets'
+import { ROUTES } from '~/utils/const'
+import { Layout, Link } from '~/blocks'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(
-    'https://1337-db41b783-1b57-468c-87bc-6a8e4493efab.ws-eu01.gitpod.io/articles',
-  )
+  const res = await fetch(`${ROUTES.api}/articles`)
+  if (res.status !== 200)
+    throw new Error(`Responce status ${res.status}:\n` + (await res.text()))
+
   const articles = await res.json()
 
   return {

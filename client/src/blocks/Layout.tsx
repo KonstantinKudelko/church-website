@@ -1,6 +1,6 @@
 import styled from 'reshadow'
 
-import { Header } from '~/widgets'
+import { Header } from '~/blocks'
 
 export const Layout = ({ children }: any) => {
   return (
