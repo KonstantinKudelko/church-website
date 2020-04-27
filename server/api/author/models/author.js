@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `authors` model.
+ * Lifecycle callbacks for the `author` model.
  */
 
 module.exports = {

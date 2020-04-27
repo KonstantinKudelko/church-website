@@ -4,12 +4,14 @@
     "default": {
       "connector": "bookshelf",
       "settings": {
-        "client": "sqlite",
-        "filename": ".tmp/data.db"
+        "client": "postgres",
+        "database": "strapidb",
+        "host": "127.0.0.1",
+        "port": "5432",
+        "username": "root",
+        "password": "root"
       },
-      "options": {
-        "useNullAsDefault": true
-      }
+      "options": {}
     }
   }
 }

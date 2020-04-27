@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
   "connection": "default",
-  "collectionName": "authors",
+  "collectionName": "author",
   "info": {
-    "name": "Authors"
+    "name": "Author"
   },
   "options": {
     "increments": true,
@@ -29,14 +29,14 @@
       "type": "richtext"
     },
     "avatar": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "plugin": "upload",
       "required": false
     },
     "articles": {
-      "via": "author",
-      "collection": "article"
+      "collection": "article",
+      "via": "author"
     }
   }
 }

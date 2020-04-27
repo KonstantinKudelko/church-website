@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
   "connection": "default",
-  "collectionName": "articles",
+  "collectionName": "article",
   "info": {
-    "name": "Articles"
+    "name": "Article"
   },
   "options": {
     "increments": true,
@@ -11,7 +11,8 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "body": {
       "type": "richtext"
@@ -27,8 +28,8 @@
       "collection": "tag"
     },
     "author": {
-      "model": "authors",
-      "via": "articles"
+      "via": "articles",
+      "model": "author"
     }
   }
 }

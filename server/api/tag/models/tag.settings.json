@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
   "connection": "default",
-  "collectionName": "tags",
+  "collectionName": "tag",
   "info": {
-    "name": "Tags"
+    "name": "Tag"
   },
   "options": {
     "increments": true,
