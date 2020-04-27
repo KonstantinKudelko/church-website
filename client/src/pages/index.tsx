@@ -1,8 +1,8 @@
-import '~/utils/init'
 import { h } from 'preact'
 import Head from 'next/head'
 
-import { Layout } from '~/widgets'
+import { Layout } from '~/blocks'
+import { Article } from '~/blocks/Article'
 
 const Home = () => (
   <div className="container">
@@ -12,7 +12,7 @@ const Home = () => (
     </Head>
 
     <Layout>
-      <h1>Home</h1>
+      <Article />
     </Layout>
   </div>
 )
