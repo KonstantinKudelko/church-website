@@ -61,17 +61,26 @@ module.exports = {
     })
 
     // fix `getLocalIdent` started from number
-    config.module.rules
-      .find((rule) => rule.oneOf)
-      .oneOf.filter(({ sideEffects }) => sideEffects === false)
-      .map(({ use }) => use.map((loader) => loader.options.modules))
-      .flat()
-      .filter(Boolean)
-      .forEach((module) => {
+    traversConfig(
+      config.module.rules,
+      (thing) => thing && typeof thing === 'object' && 'getLocalIdent' in thing,
+      (module) => {
         const getLocalIdentOriginal = module.getLocalIdent
         module.getLocalIdent = (...a) => `_${getLocalIdentOriginal(...a)}`
-      })
+      },
+    )
 
     return config
   },
+}
+
+function traversConfig(thing, test, cb) {
+  if (test(thing)) {
+    cb(thing)
+  } else if (
+    // Array.isArray(thing) ||
+    (typeof thing === 'object' && thing !== null)
+  ) {
+    Object.keys(thing).forEach((k) => traversConfig(thing[k], test, cb))
+  }
 }
