@@ -124,12 +124,33 @@ export const Italic: FC = (props) => {
 export const Paragraph: FC = (props) => {
   return styled()`
     p {
+      text-align: center;
     }
   `(<p {...props} />)
 }
 export const Note: FC = (props) => {
   return styled()`
     blockquote {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-weight: 500;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+
+    blockquote:before,
+    blockquote:after {
+      content: '';
+      width: 8rem;
+      height: 1px;
+      background: black;
+    }
+    blockquote:before {
+      margin-bottom: 3rem;
+    }
+    blockquote:after {
+      margin-top: 3rem;
     }
   `(<blockquote {...props} />)
 }
@@ -166,11 +187,17 @@ export const Content = ({ content }: { content: ContentBlock }) => {
 }
 
 export const Article = () => {
-  return styled()``(
-    <div>
+  return styled()`
+    container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  `(
+    <container as="div">
       {CONTENT.map((el) => (
         <Content content={el} />
       ))}
-    </div>,
+    </container>,
   )
 }
