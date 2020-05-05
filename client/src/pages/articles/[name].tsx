@@ -3,12 +3,13 @@ import fetch from 'node-fetch'
 
 import { useRouter } from 'next/router'
 
+import { FC, Article as TArticle } from '~/utils/types'
 import { ROUTES } from '~/utils/const'
 import { Layout } from '~/blocks'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch(`${ROUTES.api}/articles`)
-  const posts: unknown[] = await res.json()
+  const posts: TArticle[] = await res.json()
 
   const paths = posts.map((post) => `/articles/${post.id}`)
 
@@ -26,11 +27,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }
 }
 
-function useArticleName() {
-  return useRouter().query.name as string
-}
-
-const Article = ({ article }) => {
+const Article: FC<{ article: TArticle }> = ({ article }) => {
   return (
     <Layout>
       <h1>{article.title}</h1>

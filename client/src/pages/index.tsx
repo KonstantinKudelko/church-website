@@ -1,4 +1,3 @@
-import { h } from 'preact'
 import Head from 'next/head'
 
 import { Layout } from '~/blocks'

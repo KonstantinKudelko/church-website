@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next'
 import fetch from 'node-fetch'
 
+import { FC, Article } from '~/utils/types'
 import { ROUTES } from '~/utils/const'
 import { Layout, Link } from '~/blocks'
 
@@ -18,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const Articles = ({ articles }: any) => {
+const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
   return (
     <Layout>
       <h1>Articles</h1>

@@ -1,5 +1,7 @@
 import styled from 'reshadow'
-import { h, FunctionalComponent as FC } from 'preact'
+
+import { FC } from '~/utils/types'
+
 import { Link } from '.'
 
 type ContentType =
@@ -124,6 +126,7 @@ export const Italic: FC = (props) => {
 export const Paragraph: FC = (props) => {
   return styled()`
     p {
+      font-size: 1.25rem;
       text-align: center;
     }
   `(<p {...props} />)
@@ -161,7 +164,7 @@ export const Img: FC = (props) => {
   `(<img {...props} />)
 }
 
-export const COMPONENT_BY_TYPE: Record<ContentType, FC<any>> = {
+export const COMPONENT_BY_TYPE = {
   h1: Title1,
   h2: Title2,
   h3: Title3,
@@ -180,7 +183,7 @@ export const Content = ({ content }: { content: ContentBlock }) => {
   const Component = COMPONENT_BY_TYPE[type]
 
   return styled()``(
-    <Component {...meta}>
+    <Component {...(meta as any)}>
       {Array.isArray(body) ? body.map((el) => <Content content={el} />) : body}
     </Component>,
   )
@@ -188,16 +191,16 @@ export const Content = ({ content }: { content: ContentBlock }) => {
 
 export const Article = () => {
   return styled()`
-    container {
+    div {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
   `(
-    <container as="div">
+    <div>
       {CONTENT.map((el) => (
         <Content content={el} />
       ))}
-    </container>,
+    </div>,
   )
 }
