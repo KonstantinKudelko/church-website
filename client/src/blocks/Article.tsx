@@ -137,6 +137,7 @@ export const Note: FC = (props) => {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin: 4rem 0;
       font-weight: 500;
       font-size: 2rem;
       text-transform: uppercase;
@@ -191,16 +192,16 @@ export const Content = ({ content }: { content: ContentBlock }) => {
 
 export const Article = () => {
   return styled()`
-    div {
+    container {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
   `(
-    <div>
+    <container>
       {CONTENT.map((el) => (
         <Content content={el} />
       ))}
-    </div>,
+    </container>,
   )
 }

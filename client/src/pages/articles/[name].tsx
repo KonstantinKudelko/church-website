@@ -1,8 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import fetch from 'node-fetch'
 
-import { useRouter } from 'next/router'
-
 import { FC, Article as TArticle } from '~/utils/types'
 import { ROUTES } from '~/utils/const'
 import { Layout } from '~/blocks'
