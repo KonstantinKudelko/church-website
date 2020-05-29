@@ -1,0 +1,13 @@
+.editorjs {
+  padding: 30px;
+  border: 1px solid #e3e9f3;
+}
+
+/* EDITOR.JS STYLES */
+.ce-block__content {
+  max-width: calc(100% - 30px);
+}
+
+.ce-toolbar__content {
+  max-width: calc(100% - 20px);
+}

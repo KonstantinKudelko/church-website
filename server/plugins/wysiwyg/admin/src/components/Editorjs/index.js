@@ -4,17 +4,20 @@ import _EditorJS from "@editorjs/editorjs";
 import Header from "@editorjs/header";
 import List from "@editorjs/list";
 
+import "./index.css";
+
 const EditorJS = ({ onEditorChange, name, value }) => {
-  const holder = "rich-text-editor";
+  const holder = React.useRef();
+  holder.current = holder.current || `editorJS_${Math.random().toString(32)}`;
 
   React.useEffect(() => {
     new _EditorJS({
       data: JSON.parse(value),
       tools: {
-        header: Header,
         list: List,
+        header: Header,
       },
-      holder,
+      holder: holder.current,
       autofocus: true,
       onChange: async (api) => {
         const data = await api.saver.save();
@@ -24,7 +27,7 @@ const EditorJS = ({ onEditorChange, name, value }) => {
     });
   }, []);
 
-  return <div id={holder} />;
+  return <div id={holder.current} className="editorjs" />;
 };
 
 EditorJS.propTypes = {
