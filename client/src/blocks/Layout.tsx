@@ -1,13 +1,27 @@
 import styled from 'reshadow'
 
-import { Header } from '~/blocks'
+import { FC, Node } from '~/utils/types'
+import { HeaderProps, Header } from '~/blocks'
 
-export const Layout = ({ children }: any) => {
-  return (
-    <div>
-      <Header />
-      <main>{children}</main>
+export const Layout: FC<{
+  header: HeaderProps
+  main: Node
+}> = ({ header, main }) => {
+  return styled()`
+    container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+    }
+    main {
+      flex-grow: 1;
+    }
+  `(
+    <container>
+      <Header {...header} />
+      <main>{main}</main>
       <footer>footer</footer>
-    </div>
+    </container>,
   )
 }

@@ -15,7 +15,7 @@ export const Link: FC<LinkProps & JSX.IntrinsicElements['a']> = ({
 }) =>
   styled()`
     a {
-      border-bottom: 0.25rem solid black;
+      color: unset;
       text-decoration: none;
     }
   `(

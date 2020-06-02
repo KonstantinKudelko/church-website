@@ -2,108 +2,50 @@ import styled from 'reshadow'
 
 import { FC } from '~/utils/types'
 
-import { Link } from '.'
-
-type ContentType =
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'b'
-  | 'i'
-  | 'p'
-  | 'note'
-  | 'text'
-  | 'url'
-  | 'img'
+type ContentType = 'header' | 'paragraph' | 'quote' | 'img'
 type ContentBlock =
   | {
-      type: Exclude<ContentType, 'url' | 'img'>
-      body: string | Content
-      /** attributes */
-      meta?: Record<string, string>
-    }
-  | {
-      type: 'url'
-      body: string | Content
-      meta: {
-        href: string
+      type: 'paragraph'
+      data: {
+        text: string
       }
     }
   | {
-      type: 'img'
-      body: string | Content
-      meta: {
-        alt: string
-        src: string
+      type: 'header'
+      data: {
+        text: string
+        level: 1 | 2 | 3 | 4
       }
     }
 type Content = ContentBlock[]
 
-const CONTENT: Content = [
-  {
-    type: 'h1',
-    body: 'От Иоанна святое благовествование 16:33 SYNO',
-  },
-  {
-    type: 'p',
-    body: [
-      {
-        type: 'text',
-        body:
-          'Сие сказал Я вам, чтобы вы имели во Мне мир. В мире будете иметь скорбь; но мужайтесь: ',
-      },
-      {
-        type: 'b',
-        body: 'Я победил мир',
-      },
-      {
-        type: 'text',
-        body: '.',
-      },
-    ],
-  },
-  {
-    type: 'note',
-    body: [
-      {
-        type: 'url',
-        body: 'Читать всю главу',
-        meta: {
-          href: 'https://www.bible.com/ru/bible/400/JHN.16.SYNO',
-        },
-      },
-    ],
-  },
-]
-
-export const Title1: FC = (props) => {
+export const Title1: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h1 {
       font-size: 4rem;
     }
-  `(<h1 {...props} />)
+  `(<h1 ref={(r) => (r!.innerHTML = text)} />)
 }
-export const Title2: FC = (props) => {
+export const Title2: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h2 {
       font-size: 3rem;
     }
-  `(<h2 {...props} />)
+  `(<h2 ref={(r) => (r!.innerHTML = text)} />)
 }
-export const Title3: FC = (props) => {
+export const Title3: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h3 {
       font-size: 2rem;
     }
-  `(<h3 {...props} />)
+  `(<h3 ref={(r) => (r!.innerHTML = text)} />)
 }
-export const Title4: FC = (props) => {
+export const Title4: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h4 {
       font-size: 1rem;
     }
-  `(<h4 {...props} />)
+  `(<h4 ref={(r) => (r!.innerHTML = text)} />)
 }
 export const Text: FC = (props) => {
   return styled()`
@@ -123,13 +65,18 @@ export const Italic: FC = (props) => {
     }
   `(<i {...props} />)
 }
-export const Paragraph: FC = (props) => {
+export const Paragraph: FC<{ data: { text: string } }> = ({
+  data: { text },
+}) => {
   return styled()`
     p {
+      width: 40rem;
+      margin: 1rem 0;
+      line-height: 1.5rem;
       font-size: 1.25rem;
-      text-align: center;
+      font-weight: 100;
     }
-  `(<p {...props} />)
+  `(<p ref={(r) => (r!.innerHTML = text)} />)
 }
 export const Note: FC = (props) => {
   return styled()`
@@ -165,43 +112,37 @@ export const Img: FC = (props) => {
   `(<img {...props} />)
 }
 
-export const COMPONENT_BY_TYPE = {
-  h1: Title1,
-  h2: Title2,
-  h3: Title3,
-  h4: Title4,
-  b: Strong,
-  i: Italic,
-  p: Paragraph,
-  note: Note,
-  text: Text,
-  url: Link,
-  img: Img,
+export const getComponent = (block: ContentBlock): FC<{ data: any }> => {
+  if (block.type === 'paragraph') {
+    return Paragraph
+  }
+  if (block.type === 'header') {
+    return {
+      1: Title1,
+      2: Title2,
+      3: Title3,
+      4: Title4,
+    }[block.data.level]
+  }
+  return () => null
 }
 
-export const Content = ({ content }: { content: ContentBlock }) => {
-  const { type, body, meta } = content
-  const Component = COMPONENT_BY_TYPE[type]
-
-  return styled()``(
-    <Component {...(meta as any)}>
-      {Array.isArray(body) ? body.map((el) => <Content content={el} />) : body}
-    </Component>,
-  )
-}
-
-export const Article = () => {
+export type ArticleProps = { blocks: ContentBlock[] }
+export const Article: FC<ArticleProps> = ({ blocks }) => {
   return styled()`
     container {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      width: 40rem;
+      margin: 5rem auto;
     }
   `(
     <container>
-      {CONTENT.map((el) => (
-        <Content content={el} />
-      ))}
+      {blocks.map((block) => {
+        const Component = getComponent(block)
+
+        return <Component data={block.data} />
+      })}
     </container>,
   )
 }
