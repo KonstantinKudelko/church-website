@@ -39,7 +39,7 @@ export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
         padding: 5rem 0;
       }
       Card {
-        margin-bottom: 1rem;
+        margin-bottom: 4rem;
       }
     `(
       <>

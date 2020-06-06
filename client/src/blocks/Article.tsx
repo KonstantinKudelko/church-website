@@ -71,6 +71,7 @@ export const Paragraph: FC<{ data: { text: string } }> = ({
   return styled()`
     p {
       width: 40rem;
+      max-width: 90vw;
       margin: 1rem 0;
       line-height: 1.5rem;
       font-size: 1.25rem;
@@ -134,7 +135,14 @@ export const Article: FC<ArticleProps> = ({ blocks }) => {
       display: flex;
       flex-direction: column;
       width: 40rem;
+      max-width: 90vw;
       margin: 5rem auto;
+    }
+
+    @media (orientation: portrait) {
+      container {
+        margin: 2rem auto;
+      }
     }
   `(
     <container>
