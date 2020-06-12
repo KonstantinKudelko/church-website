@@ -13,6 +13,8 @@ export const Layout: FC<{
       flex-direction: column;
       justify-content: space-between;
       height: 100vh;
+      max-width: 90vw;
+      margin: auto;  
     }
     main {
       flex-grow: 1;

@@ -12,6 +12,7 @@ export default ({ Component, pageProps }: AppProps) => (
     <Head>
       <title>KE</title>
       <link rel="icon" href="/favicon.ico" />
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
       <style>{normalize}</style>
       <style>
         {`
