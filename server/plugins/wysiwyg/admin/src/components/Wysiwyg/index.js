@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
-import { Button } from "@buffetjs/core";
 import { Label, InputDescription, InputErrors } from "strapi-helper-plugin";
 
 import Editor from "../Editorjs";
-import MediaLib from "../MediaLib";
 
 const Wysiwyg = ({
   inputDescription,
@@ -48,12 +46,6 @@ const Wysiwyg = ({
     >
       <Label htmlFor={name} message={label} style={{ marginBottom: 10 }} />
 
-      {/* <div>
-        <Button color="primary" onClick={handleToggle}>
-          MediaLib
-        </Button>
-      </div> */}
-
       <Editor name={name} onEditorChange={onChange} value={value} />
 
       <InputDescription
@@ -67,12 +59,6 @@ const Wysiwyg = ({
       />
 
       {spacer}
-
-      <MediaLib
-        onToggle={handleToggle}
-        isOpen={isOpen}
-        onChange={handleChange}
-      />
     </div>
   );
 };
