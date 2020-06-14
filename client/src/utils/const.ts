@@ -1,4 +1,4 @@
-const api = `http://88.198.206.26`
+const api = process.env.API_URL || `http://admin.ke-platform.com`
 export const ROUTES = {
   api,
   main: `/`,
