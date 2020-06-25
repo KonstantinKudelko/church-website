@@ -1,0 +1,28 @@
+name: Build and Deploy
+
+on:
+  push:
+    paths:
+      - 'server/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@master
+
+      - name: "Setup node"
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: "Install packages"
+        uses: borales/actions-yarn@v2.0.0
+        with: 
+          cmd: install
+        
+      - name: "Build app"
+        uses: uses: borales/actions-yarn@v2.0.0
+        with:
+          cmd: build
