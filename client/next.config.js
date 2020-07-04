@@ -1,8 +1,6 @@
-const path = require('path')
-const reshadowUtils = require('@reshadow/utils')
-const findCacheDir = require('find-cache-dir')
+const withPrefresh = require('@prefresh/next')
 
-module.exports = {
+const config = {
   experimental: {
     modern: true,
     polyfillsOptimization: true,
@@ -14,7 +12,6 @@ module.exports = {
   webpack(config, { dev, isServer }) {
     config.resolve.alias['~'] = require('path').resolve(__dirname, 'src')
 
-    /* preact */
     const splitChunks = config.optimization && config.optimization.splitChunks
     if (splitChunks) {
       const cacheGroups = splitChunks.cacheGroups
@@ -33,6 +30,10 @@ module.exports = {
       }
     }
 
+    // Install webpack aliases:
+    const aliases = config.resolve.alias || (config.resolve.alias = {})
+    aliases.react = aliases['react-dom'] = 'preact/compat'
+
     // inject Preact DevTools
     if (dev && !isServer) {
       const entry = config.entry
@@ -43,44 +44,8 @@ module.exports = {
         })
     }
 
-    /* reshadow */
-    const cacheDirectory = findCacheDir({ name: 'reshadow' }) || os.tmpdir()
-    let index = 0
-    config.module.rules.push({
-      enforce: 'post',
-      test: /\.tsx?$/,
-      loader: 'reshadow/webpack/loader',
-      options: {
-        getFilepath: (filepath) => {
-          const hash = `${reshadowUtils.getFileHash(filepath)}_${++index}`
-          const filename = `${hash}.module.css`
-
-          return path.resolve(cacheDirectory, filename)
-        },
-      },
-    })
-
-    // fix `getLocalIdent` started from number
-    traversConfig(
-      config.module.rules,
-      (thing) => thing && typeof thing === 'object' && 'getLocalIdent' in thing,
-      (module) => {
-        const getLocalIdentOriginal = module.getLocalIdent
-        module.getLocalIdent = (...a) => `_${getLocalIdentOriginal(...a)}`
-      },
-    )
-
     return config
   },
 }
 
-function traversConfig(thing, test, cb) {
-  if (test(thing)) {
-    cb(thing)
-  } else if (
-    // Array.isArray(thing) ||
-    (typeof thing === 'object' && thing !== null)
-  ) {
-    Object.keys(thing).forEach((k) => traversConfig(thing[k], test, cb))
-  }
-}
+module.exports = withPrefresh(config)

@@ -24,28 +24,28 @@ export const Title1: FC<{ data: { text: string } }> = ({ data: { text } }) => {
     h1 {
       font-size: 4rem;
     }
-  `(<h1 ref={(r) => (r!.innerHTML = text)} />)
+  `(<h1 ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
 export const Title2: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h2 {
       font-size: 3rem;
     }
-  `(<h2 ref={(r) => (r!.innerHTML = text)} />)
+  `(<h2 ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
 export const Title3: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h3 {
       font-size: 2rem;
     }
-  `(<h3 ref={(r) => (r!.innerHTML = text)} />)
+  `(<h3 ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
 export const Title4: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h4 {
       font-size: 1rem;
     }
-  `(<h4 ref={(r) => (r!.innerHTML = text)} />)
+  `(<h4 ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
 export const Text: FC = (props) => {
   return styled()`
@@ -77,7 +77,7 @@ export const Paragraph: FC<{ data: { text: string } }> = ({
       font-size: 1.25rem;
       font-weight: 100;
     }
-  `(<p ref={(r) => (r!.innerHTML = text)} />)
+  `(<p ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
 export const Note: FC = (props) => {
   return styled()`

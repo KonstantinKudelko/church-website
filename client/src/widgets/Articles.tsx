@@ -21,13 +21,13 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
-  const translation = useTranslation({
-    en: () => import(`./Articles/translations/en`),
-    ru: () => import(`./Articles/translations/ru`),
-  })
+  // const translation = useTranslation({
+  //   en: () => import(`./Articles/translations/en`),
+  //   ru: () => import(`./Articles/translations/ru`),
+  // })
 
   return (
-    translation &&
+    // translation &&
     styled()`
       list {
         display: flex;
@@ -36,7 +36,10 @@ export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
         justify-content: space-around;
         max-width: 40rem;
         margin: auto;
-        padding: 5rem 0;
+        padding: 2rem 0;
+      }
+      h1 {
+        text-align: center;
       }
       Card {
         margin-bottom: 4rem;

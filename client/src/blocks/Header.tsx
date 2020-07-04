@@ -35,8 +35,8 @@ export const Header: FC<HeaderProps> = ({ title, nav }) => {
     }
   `(
     <header>
-      <h1>{title}</h1>
-      <nav>
+      <Link href="/"><h1>{title}</h1></Link>
+      {/* <nav>
         <ul>
           {nav.map(({ title, href }) => (
             <li>
@@ -44,7 +44,7 @@ export const Header: FC<HeaderProps> = ({ title, nav }) => {
             </li>
           ))}
         </ul>
-      </nav>
+      </nav> */}
     </header>,
   )
 }

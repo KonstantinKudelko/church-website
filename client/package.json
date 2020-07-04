@@ -4,28 +4,31 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
-    "build:static": "next export"
+    "publish": "vercel --prod"
   },
   "dependencies": {
-    "@types/node-fetch": "^2.5.7",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
     "axios": "^0.19.2",
-    "next": "^9.3.5",
-    "node-fetch": "^2.6.0",
+    "next": "^9.4.4",
     "normalize.css": "^8.0.1",
-    "preact": "^10.4.1",
-    "preact-render-to-string": "^5.1.6",
+    "preact": "^10.4.4",
+    "preact-render-to-string": "^5.1.9",
     "react": "github:preact-compat/react#1.0.0",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
-    "reshadow": "0.0.1-alpha.75"
+    "reshadow": "0.0.1-alpha.78"
   },
   "devDependencies": {
-    "@types/node": "^13.13.2",
-    "@types/react": "^16.9.34",
+    "@prefresh/next": "^0.3.1",
+    "@types/node": "^14.0.14",
+    "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
     "raw-loader": "^4.0.1",
-    "typescript": "^3.8.3"
+    "react-refresh": "^0.8.3",
+    "typescript": "^3.9.5",
+    "typescript-styled-plugin": "^0.15.0"
   }
 }

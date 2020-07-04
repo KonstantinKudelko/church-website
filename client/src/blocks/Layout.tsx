@@ -23,7 +23,7 @@ export const Layout: FC<{
     <container>
       <Header {...header} />
       <main>{main}</main>
-      <footer>footer</footer>
+      <footer></footer>
     </container>,
   )
 }

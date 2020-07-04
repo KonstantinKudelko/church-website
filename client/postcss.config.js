@@ -1,3 +1,7 @@
 module.exports = {
-  plugins: ['reshadow/postcss'],
+  plugins: {
+    'postcss-preset-env': {
+      stage: 1,
+    },
+  },
 }
