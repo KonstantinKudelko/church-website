@@ -1,4 +1,4 @@
-## Structure
+# Structure
 
 > **workflow** - is a common term for user story / business workflow
 
