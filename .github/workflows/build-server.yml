@@ -20,11 +20,13 @@ jobs:
           node-version: 12.x
 
       - name: "Install packages"
+        working-directory: ./server
         uses: borales/actions-yarn@v2.0.0
         with: 
           cmd: cd /server && install
         
       - name: "Build app"
+        working-directory: ./server
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: cd /server && build
