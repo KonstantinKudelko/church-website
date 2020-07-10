@@ -3,4 +3,4 @@ import { ReactNode, FC as FunctionalComponent } from 'react'
 
 export type Node = ReactNode
 
-export type FC<T = {}> = FunctionalComponent<T>
+export type FC<T = {}> = FunctionalComponent<T & { className?: string }>

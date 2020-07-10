@@ -4,7 +4,7 @@ import axios from 'axios'
 import { FC } from '~/utils/types'
 import { ROUTES } from '~/utils/const'
 import { NotFound, Article as ArticleBlock } from '~/blocks'
-import { Article as TArticle } from '~/widgets/types'
+import { Article as TArticle } from '~/features/types'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data: posts } = await axios.get<TArticle[]>(`${ROUTES.api}/articles`)

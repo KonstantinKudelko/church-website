@@ -8,16 +8,16 @@
   > testing by unit tests
   
   > _tip: use storybook_
-- **widgets** - main features that serving a workflow by combining utils or / and blocks
+- **features** - main features that serving a workflow by combining utils or / and blocks
   > testing by integrational
   
-  > _tip: separate a workflow of a UI widget to **model.ext**_
-- **pages** - widgets bindings (entry points and main layouts) to web view
+  > _tip: separate a workflow of a UI feature to **model.ext**_
+- **pages** - features bindings (entry points and main layouts) to web view
   > testing by e2e
   
   > _tip: without `next.js` may be part of widgets_
 
-**Utils**, **blocks** and **widgets** follows a file-structure pattern:
+**Utils**, **blocks** and **features** follows a file-structure pattern:
 
 - **index.ext** - reexports
 - **entityN.ext** - main entity code
