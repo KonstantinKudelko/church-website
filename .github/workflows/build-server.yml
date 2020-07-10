@@ -1,7 +1,9 @@
-name: Build and Deploy
+name: Build server
 
 on:
   push:
+    branches:
+      - master
     paths:
       - 'server/*'
 
