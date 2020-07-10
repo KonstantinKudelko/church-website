@@ -19,20 +19,10 @@ jobs:
         with:
           node-version: 12.x
 
-      - name: "Install packages"
-        uses: borales/actions-yarn@v2.0.0
-        with: 
-          cmd: --cwd server install
-        
-      - name: "Build app"
-        uses: borales/actions-yarn@v2.0.0
-        with:
-          cmd: --cwd server build
-
       - name: "Deploy to server"
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.SERVER_SSH_KEY }}
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
-          script: cd platform && git pull
+          script: cd platform && git pull && cd server && yarn && yarn build && pm2 restart ecosystem.config.js --only strapi
