@@ -8,7 +8,7 @@ on:
       - 'server/*'
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
@@ -22,6 +22,6 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.1
         env:
             SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-            SOURCE: "/server/build/"
+            SOURCE: "server/build/"
             REMOTE_HOST: ${{ secrets.SERVER_HOST }}
             REMOTE_USER: ${{ secrets.SERVER_USER }}

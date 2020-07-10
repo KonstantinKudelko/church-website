@@ -25,5 +25,3 @@ npm run start
 # list of the strapi CLI commands
 npm run strapi
 ```
-
-Just try to deploy

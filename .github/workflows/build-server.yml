@@ -22,9 +22,9 @@ jobs:
       - name: "Install packages"
         uses: borales/actions-yarn@v2.0.0
         with: 
-          cmd: install
+          cmd: cd /server && install
         
       - name: "Build app"
         uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: build
+          cmd: cd /server && build
