@@ -35,7 +35,7 @@ export const Header: FC<HeaderProps> = ({ title, nav }) => {
     }
   `(
     <header>
-      <Link href="/"><h1>{title} title</h1></Link>
+      <Link href="/"><h1>{title}</h1></Link>
       {/* <nav>
         <ul>
           {nav.map(({ title, href }) => (
