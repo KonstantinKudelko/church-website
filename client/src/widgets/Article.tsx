@@ -11,7 +11,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = posts.map((post) => `/articles/${post.id}`)
 
-  return { paths, fallback: true }
+  return { paths, fallback: false }
 }
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
@@ -29,7 +29,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 export const Article: FC<{ article?: TArticle }> = ({ article }) => {
   if (!article) return <NotFound />
 
-  const {blocks} = JSON.parse(article.body)
+  const { title, cover } = article
+  const { blocks } = JSON.parse(article.body)
 
-  return <ArticleBlock blocks={blocks} />
+  return (
+    <ArticleBlock
+      title={title}
+      cover={cover && `${ROUTES.api}${cover.url}`}
+      blocks={blocks}
+    />
+  )
 }

@@ -10,6 +10,3 @@ declare namespace JSX {
   }
 }
 /* RESHADOW end */
-
-// fix required React import
-declare var React: any

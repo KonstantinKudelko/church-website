@@ -65,7 +65,7 @@ export const Card: FC<CardProps> = ({
       <Link href={href}>
         <h3>{title}</h3>
       </Link>
-      <p>{description}</p>
+      <p ref={(r) => ((r || { innerHTML: '' }).innerHTML = description)} />
     </container>,
   )
 }
