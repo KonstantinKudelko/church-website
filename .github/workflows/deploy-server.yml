@@ -28,10 +28,11 @@ jobs:
         uses: borales/actions-yarn@v2.0.0
         with:
           cmd: --cwd server build
+
       - name: "Deploy to server"
-        uses: easingthemes/ssh-deploy@v2.1.1
-        env:
-            SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-            SOURCE: "server/build/"
-            REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-            REMOTE_USER: ${{ secrets.SERVER_USER }}
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          script: cd platform && git pull
