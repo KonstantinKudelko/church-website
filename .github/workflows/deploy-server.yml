@@ -25,4 +25,4 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
-          script: cd platform && git pull && cd server && yarn && yarn build && pm2 restart ecosystem.config.js --only strapi
+          script: cd platform && git pull && cd server && yarn && yarn build && cd ~ && pm2 restart ecosystem.config.js --only strapi
