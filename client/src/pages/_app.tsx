@@ -5,14 +5,18 @@ import normalize from '!!raw-loader!normalize.css'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import { Layout, TranslationContext } from '~/widgets'
+import { Layout, TranslationContext } from '~/features'
+import Main from './main'
 
 export default ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
       <title>KE</title>
       <link rel="icon" href="/favicon.ico" />
-      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+      ></meta>
       <style>{normalize}</style>
       <style>
         {`
@@ -27,9 +31,13 @@ export default ({ Component, pageProps }: AppProps) => (
       ></link>
     </Head>
     <TranslationContext>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      {Component === Main ? (
+        <Main />
+      ) : (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )}
     </TranslationContext>
   </>
 )
