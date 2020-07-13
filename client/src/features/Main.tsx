@@ -3,9 +3,8 @@ import styled from 'reshadow'
 import { FC } from '~/utils/types'
 import { Link } from '~/blocks'
 
-export const Main: FC<> = ({ className }) => {
+export const Main: FC = ({ className }) => {
   return styled`
-
     column, main {
         display: flex;
         flex-direction: column;
