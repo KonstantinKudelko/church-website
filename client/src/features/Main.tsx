@@ -22,14 +22,27 @@ export const Main: FC = ({ className }) => {
     header b {
         margin: 0 36px;
         font-size: 24px;
+        font-family: 'Mont Bold';
         text-transform: uppercase;
     }
     header Link {
-        margin: 0 16px;
+        height: 100%;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          background-color: white;
+        }
     }
     header social {
+        display: flex;
         margin-left: auto;
         margin-right: 36px;
+    }
+    header social a {
+      display: flex;
     }
     header social a + a {
         margin-left: 36px;
@@ -56,7 +69,6 @@ export const Main: FC = ({ className }) => {
     last-article background {
         width: 400px;
         height: 400px;
-        /* background-image: url(""); */
         background-color: white;
     }
     top-chart {
@@ -87,23 +99,42 @@ export const Main: FC = ({ className }) => {
     >
       <header>
         <b>как есть</b>
+
         <Link href="/">Курсы</Link>
         <Link href="/">Журнал</Link>
+
         <social>
-          <a>инст</a>
-          <a>тлг</a>
-          <a>ю</a>
+          <a href="https://www.instagram.com/ke.resource" target="_blank">
+            <img alt="instagram_icon" src="/images/instagram-black-icon.svg" />
+          </a>
+
+          <a href="https://t.me/keresource" target="_blank">
+            <img alt="instagram_icon" src="/images/telegram-black-icon.svg" />
+          </a>
+
+          <a
+            href="https://www.youtube.com/channel/UCL5sPUI-Vf0QYmyhBOM2O0A"
+            target="_blank"
+          >
+            <img alt="instagram_icon" src="/images/youtube-black-icon.svg" />
+          </a>
         </social>
       </header>
+
       <last-article as="article">
         <column>
           <small>Последняя статья:</small>
+
           <h2>Когда боишься потерять контроль</h2>
+
           <p>Мы гораздо больше...</p>
+
           <Link href="/articles/-1">Читать</Link>
         </column>
+
         <background></background>
       </last-article>
+
       <top-chart as="article">
         <column>
           <h2>Самое интересное:</h2>

@@ -1,0 +1,34 @@
+* {
+  font-size: 16px;
+  font-family: 'Mont';
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/fonts/Mont/Mont-Regular.eot');
+  src: url('/fonts/Mont/Mont-Regular.woff2') format('woff2'),
+    url('/fonts/Mont/Mont-Regular.woff') format('woff'),
+    url('/fonts/Mont/Mont-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mont Bold';
+  src: url('/fonts/Mont/Mont-Bold.eot');
+  src: url('/fonts/Mont/Mont-Bold.woff2') format('woff2'),
+    url('/fonts/Mont/Mont-Bold.woff') format('woff'),
+    url('/fonts/Mont/Mont-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat Alternates';
+  src: url('/fonts/MontserratAlternates/MontserratAlternates-Regular.otf');
+  src: url('/fonts/MontserratAlternates/MontserratAlternates-Regular.ttf')
+    format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat Alternates Bold';
+  src: url('/fonts/MontserratAlternates/MontserratAlternates-Bold.otf');
+  src: url('/fonts/MontserratAlternates/MontserratAlternates-Bold.ttf')
+    format('truetype');
+}

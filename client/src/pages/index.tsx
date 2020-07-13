@@ -1,5 +1,6 @@
-import { getStaticProps, Articles } from '~/features/Articles'
+import { Main } from '~/features/Main'
+import { getStaticProps } from '~/features/Articles'
 
 export { getStaticProps }
 
-export default Articles
+export default Main
