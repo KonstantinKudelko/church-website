@@ -50,31 +50,49 @@ export const Main: FC = ({ className }) => {
     last-article {
         display: flex;
         max-width: var(--max-width);
-        height: 400px;
         margin: 100px auto;
         border: 2px solid black;
     }
     last-article column {
         justify-content: center;
+        max-width: 650px;
         padding: 48px;
     }
+    last-article small {
+      margin-bottom: 25px;
+
+      font-family: 'Montserrat Alternates';
+    }
     last-article h2 {
-        font-size: 48px;
+        font-size: 55px;
+        font-family: 'Mont Bold';
+        line-height: 49px;
+        letter-spacing: 0.005em;
+
+        margin-bottom: 16px;
+    }
+    last-article p {
+      font-size: 15px;
+      line-height: 16px;
+
+      margin-bottom: 27px;
     }
     last-article Link {
         padding: 16px 48px;
         border: 2px solid black;
         width: fit-content;
+
+        font-family: 'Mont SemiBold';
     }
     last-article background {
-        width: 400px;
-        height: 400px;
+        width: 420px;
         background-color: white;
     }
     top-chart {
         display: flex;
         justify-content: center;
         width: 100%;
+        height: 500px;
         padding: 0 calc((100vw - var(--max-width)) / 2);
         background-color: white;
     }
@@ -82,12 +100,20 @@ export const Main: FC = ({ className }) => {
         justify-content: center;
     }
     top-chart h2 {
-        font-size: 48px;
+        font-size: 55px;
+        font-family: 'Montserrat Alternates Bold';
+        line-height: 47px;
+
+        margin-bottom: 35px;
     }
-    top-chart arrow {
-        color: var(--main);
-        font-size: 148px;
-        text-align: end;
+    top-chart p {
+        font-family: 'Mont SemiBold';
+        font-size: 15px;
+        line-height: 15px;
+    }
+    top-chart img {
+      max-width: 100%;
+      margin-left: 150px;
     }
     top-chart ul {
         width: 50%;
@@ -127,7 +153,11 @@ export const Main: FC = ({ className }) => {
 
           <h2>Когда боишься потерять контроль</h2>
 
-          <p>Мы гораздо больше...</p>
+          <p>
+            Мы гораздо больше похожи на Вавилон, чем хотелось бы думать. Может
+            мы и не плавим золото и серебро, чтобы создать себе статуи богов, но
+            мы стараемся управлять своими деньгами ради стабильности и власти.
+          </p>
 
           <Link href="/articles/-1">Читать</Link>
         </column>
@@ -137,9 +167,16 @@ export const Main: FC = ({ className }) => {
 
       <top-chart as="article">
         <column>
-          <h2>Самое интересное:</h2>
-          <p>Читайте подборку самых интересных статей</p>
-          <arrow>➡</arrow>
+          <h2>
+            Самое <br /> интересное:
+          </h2>
+          <p>
+            Читайте подборку самых <br /> интересных статей
+          </p>
+          <img
+            src="/images/index-page-arrow-icon.svg"
+            alt="most-interesting-articles"
+          />
         </column>
         <ul></ul>
       </top-chart>

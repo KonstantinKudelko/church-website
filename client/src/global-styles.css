@@ -1,6 +1,21 @@
 * {
   font-size: 16px;
   font-family: 'Mont';
+
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
 }
 
 @font-face {
@@ -9,6 +24,14 @@
   src: url('/fonts/Mont/Mont-Regular.woff2') format('woff2'),
     url('/fonts/Mont/Mont-Regular.woff') format('woff'),
     url('/fonts/Mont/Mont-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mont SemiBold';
+  src: url('/fonts/Mont/Mont-SemiBold.eot');
+  src: url('/fonts/Mont/Mont-SemiBold.woff2') format('woff2'),
+    url('/fonts/Mont/Mont-SemiBold.woff') format('woff'),
+    url('/fonts/Mont/Mont-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
