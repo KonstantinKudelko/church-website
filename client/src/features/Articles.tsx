@@ -17,6 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       articles,
     },
+    unstable_revalidate: 1,
   }
 }
 
@@ -48,36 +49,39 @@ export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
       <>
         {/* <h1>{translation.title()}</h1> */}
         <list>
-          {articles.slice(0).sort((a, b) => a.id > b.id ? -1 : 1).map((article) => {
-            const { id, title, body, cover, tags } = article
+          {articles
+            .slice(0)
+            .sort((a, b) => (a.id > b.id ? -1 : 1))
+            .map((article) => {
+              const { id, title, body, cover, tags } = article
 
-            return (
-              <Card
-                key={id}
-                title={title}
-                description={
-                  // FIXME: type safe
-                  JSON.parse(body).blocks[0].data.text.slice(0, 50) + '...'
-                }
-                image={
-                  cover
-                    ? {
-                        src: `${ROUTES.api}${cover.url}`,
-                        alt: title,
-                      }
-                    : {
-                        src: ROUTES.fallbackImage,
-                        alt: 'not found',
-                      }
-                }
-                tags={tags.map(({ title, id }) => ({
-                  title,
-                  href: `${ROUTES.api}/tags/${id}`,
-                }))}
-                href={`articles/${id}`}
-              />
-            )
-          })}
+              return (
+                <Card
+                  key={id}
+                  title={title}
+                  description={
+                    // FIXME: type safe
+                    JSON.parse(body).blocks[0].data.text.slice(0, 50) + '...'
+                  }
+                  image={
+                    cover
+                      ? {
+                          src: `${ROUTES.api}${cover.url}`,
+                          alt: title,
+                        }
+                      : {
+                          src: ROUTES.fallbackImage,
+                          alt: 'not found',
+                        }
+                  }
+                  tags={tags.map(({ title, id }) => ({
+                    title,
+                    href: `${ROUTES.api}/tags/${id}`,
+                  }))}
+                  href={`articles/${id}`}
+                />
+              )
+            })}
         </list>
       </>,
     )
