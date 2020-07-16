@@ -139,9 +139,75 @@ export const Main: FC = ({ className }) => {
     top-chart img {
       max-width: 100%;
       margin-left: 150px;
+
+      animation: bounce .8s infinite alternate;
+    }
+    @keyframes bounce {
+      from {
+        transform: translateX(0px);
+      }
+      to {
+        transform: translateX(-15px);
+      }
     }
     top-chart ul {
         width: 50%;
+    }
+
+    course {
+      width: 100%;
+      height: 100vh;
+      padding-top: 15%;
+      padding-left: 10%;
+      padding-bottom: 15%;
+
+      position: relative;
+
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.5)
+        ),
+      url(/images/finance-course-bg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    course small {
+      color: white;
+      font-size: 20px;
+      font-family: 'Montserrat Alternates';
+      line-height: 24px;
+
+      display: inline-block;
+      margin-bottom: 80px;
+    }
+
+    course h2 {
+      color: white;
+      font-family: 'Montserrat Alternates Bold';
+      font-size: 65px;
+      line-height: 79px;
+
+      margin-bottom: 20px;
+    }
+
+    course p {
+      color: white;
+      font-size: 20px;
+      line-height: 21px;
+
+      width: 30%;
+      margin-bottom: 120px;
+    }
+
+    course Link {
+      color: white;
+      font-size: 20px;
+      line-height: 21px;
+
+      padding: 22px 65px;
+
+      border: 1px solid white;
     }
 
     footer {
@@ -261,6 +327,16 @@ export const Main: FC = ({ className }) => {
         </column>
         <ul></ul>
       </top-chart>
+
+      <course>
+        <small>Онлайн курс</small>
+
+        <h2>Личные финансы</h2>
+
+        <p>Вы получитие пакет систиматических знаний на тему финансов и их управления.</p>
+
+        <Link href="#">Подробнее&nbsp;&nbsp;{'>'}</Link>
+      </course>
 
       <footer>
         <b>как есть</b>
