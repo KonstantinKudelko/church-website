@@ -4,6 +4,10 @@ import { FC } from '~/utils/types'
 import { Link } from '~/blocks'
 
 export const Main: FC = ({ className }) => {
+  const handlePageWheel = (e: WheelEvent) => {
+    console.log(e)
+  }
+
   return styled`
     column, main {
         display: flex;
@@ -44,7 +48,7 @@ export const Main: FC = ({ className }) => {
     header social a {
       display: flex;
     }
-    header social a + a {
+    social a + a {
         margin-left: 36px;
     }
     last-article {
@@ -52,6 +56,27 @@ export const Main: FC = ({ className }) => {
         max-width: var(--max-width);
         margin: 100px auto;
         border: 2px solid black;
+        cursor: pointer;
+
+        position: relative;
+        z-index: 10;
+    }
+    last-article white-block {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      z-index: -1;
+
+      height: 100%;
+      width: 0;
+      margin-left: 100%;
+
+      transition: all .6s ease-in-out;
+      background-color: white;
+    }
+    last-article:hover white-block {
+      margin-left: 0;
+      width: 100%;
     }
     last-article column {
         justify-content: center;
@@ -118,10 +143,64 @@ export const Main: FC = ({ className }) => {
     top-chart ul {
         width: 50%;
     }
+
+    footer {
+      width: 100%;
+      padding: 75px 0px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      position: relative;
+
+      background-color: #212121;
+    }
+
+    footer b {
+      color: white;
+      font-size: 24px;
+      font-family: 'Mont Bold';
+      text-transform: uppercase;
+
+      margin-bottom: 60px;
+
+      &:after {
+        content: '';
+
+        width: 600px;
+        height: 1px;
+
+        position: absolute;
+        top: 130px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        background-color: #C4C4C4;
+      }
+    }
+
+    footer social {
+      display: flex;
+    }
+
+    footer social a {
+      color: #C4C4C4;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 12px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    footer social a img {
+      margin-right: 10px;
+    }
   `(
     <main
-      className={className}
       style={{ '--main': '#f8b314', '--max-width': '1200px' } as any}
+      className={className}
+      onWheel={handlePageWheel}
     >
       <header>
         <b>как есть</b>
@@ -160,6 +239,8 @@ export const Main: FC = ({ className }) => {
           </p>
 
           <Link href="/articles/-1">Читать</Link>
+
+          <white-block />
         </column>
 
         <background></background>
@@ -180,6 +261,33 @@ export const Main: FC = ({ className }) => {
         </column>
         <ul></ul>
       </top-chart>
+
+      <footer>
+        <b>как есть</b>
+
+        <social>
+          <a href="https://www.instagram.com/ke.resource" target="_blank">
+            <img alt="instagram_icon" src="/images/instagram-gray-icon.svg" />
+
+            Instagram
+          </a>
+
+          <a href="https://t.me/keresource" target="_blank">
+            <img alt="instagram_icon" src="/images/telegram-gray-icon.svg" />
+
+            Telegram
+          </a>
+
+          <a
+            href="https://www.youtube.com/channel/UCL5sPUI-Vf0QYmyhBOM2O0A"
+            target="_blank"
+          >
+            <img alt="instagram_icon" src="/images/youtube-gray-icon.svg" />
+
+            Youtube
+          </a>
+        </social>
+      </footer>
     </main>,
   )
 }
