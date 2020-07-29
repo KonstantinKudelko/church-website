@@ -23,6 +23,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       article,
     },
+    unstable_revalidate: 1,
   }
 }
 
