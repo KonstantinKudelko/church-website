@@ -8,22 +8,29 @@ export const Layout: FC<{
   main: Node
 }> = ({ header, main }) => {
   return styled()`
+    wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
     container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 100vh;
-      max-width: 90vw;
-      margin: auto;  
+      margin: 0 36px;
     }
+
     main {
       flex-grow: 1;
     }
   `(
-    <container>
+    <wrapper>
       <Header {...header} />
-      <main>{main}</main>
-      <footer></footer>
-    </container>,
+      <container>
+        <main>{main}</main>
+      </container>
+      ,<footer></footer>
+    </wrapper>,
   )
 }

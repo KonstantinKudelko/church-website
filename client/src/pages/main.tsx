@@ -1,3 +1,3 @@
-import { Main } from '~/features/Main'
+import { Main } from '~/features/Main/Main'
 
 export default Main

@@ -10,6 +10,9 @@ export type Article = {
   cover?: File
   tags: { id: string; title: string }[]
   author: unknown
+  created_at: string
+  hero_cover: File
+  hero_description: string
 }
 
 /** import authorModel from '../../../server/api/author/models/author.settings.json' */
