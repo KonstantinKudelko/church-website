@@ -13,7 +13,7 @@ export const Finance: FC = () => {
     }
   `(
     <container>
-      <span>Finance course</span>
+      <span>Finance course in development</span>
     </container>,
   )
 }
