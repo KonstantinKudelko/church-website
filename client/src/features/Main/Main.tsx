@@ -20,9 +20,11 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
-  const lastArticle = articles.reduce((accumulator, article) =>
-    accumulator.created_at > article.created_at ? accumulator : article,
-  )
+  const lastArticle =
+    articles &&
+    articles.reduce((accumulator, article) =>
+      accumulator.created_at > article.created_at ? accumulator : article,
+    )
 
   return styled`
     column, main {
@@ -351,7 +353,7 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
         <column>
           <small>Последняя статья:</small>
 
-          <h2>{lastArticle.title}</h2>
+          {lastArticle && <h2>{lastArticle.title}</h2>}
 
           <p>
             Мы гораздо больше похожи на Вавилон, чем хотелось бы думать. Может
@@ -359,7 +361,9 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
             мы стараемся управлять своими деньгами ради стабильности и власти.
           </p>
 
-          <Link href={`/articles/${lastArticle.id}`}>Читать</Link>
+          {lastArticle && (
+            <Link href={`/articles/${lastArticle.id}`}>Читать</Link>
+          )}
 
           <white-block />
         </column>
@@ -382,13 +386,14 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
         </column>
 
         <ul>
-          {articles.map((x, i) => (
-            <li key={i}>
-              <Link href={`/articles/${x.id}`}>
-                <img src={`${ROUTES.api}${x.cover?.url}`} alt="article_img" />
-              </Link>
-            </li>
-          ))}
+          {articles &&
+            articles.map((x, i) => (
+              <li key={i}>
+                <Link href={`/articles/${x.id}`}>
+                  <img src={`${ROUTES.api}${x.cover?.url}`} alt="article_img" />
+                </Link>
+              </li>
+            ))}
         </ul>
       </top-chart>
 
