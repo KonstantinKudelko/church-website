@@ -15,17 +15,14 @@ export default ({ Component, pageProps }: AppProps) => (
     <Head>
       <title>KE</title>
       <link rel="icon" href="/favicon.ico" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-      ></meta>
+      <meta name="viewport" content="width=1200, initial-scale=1"></meta>
       <link href="/fonts/index.css"></link>
       <style>{normalize}</style>
     </Head>
 
     <TranslationContext>
       {Component === Main ? (
-        <Main />
+        <Main {...pageProps} />
       ) : (
         <Layout>
           <Component {...pageProps} />

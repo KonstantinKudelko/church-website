@@ -1,12 +1,28 @@
+import axios from 'axios'
 import styled from 'reshadow'
+import { GetStaticProps } from 'next'
 
 import { FC } from '~/utils/types'
 import { Link } from '~/blocks'
+import { ROUTES } from '~/utils/const'
+import { Article } from '../types'
 
-export const Main: FC = ({ className }) => {
-  const handlePageWheel = (e: WheelEvent) => {
-    console.log(e)
+export const getStaticProps: GetStaticProps = async () => {
+  const { data: articles } = await axios.get<Article[]>(
+    `${ROUTES.api}/articles`,
+  )
+
+  return {
+    props: {
+      articles,
+    },
   }
+}
+
+export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
+  const lastArticle = articles.reduce((accumulator, article) =>
+    accumulator.created_at > article.created_at ? accumulator : article,
+  )
 
   return styled`
     column, main {
@@ -53,8 +69,9 @@ export const Main: FC = ({ className }) => {
     }
     last-article {
         display: flex;
-        max-width: var(--max-width);
+        max-width: 900px;
         margin: 100px auto;
+
         border: 2px solid black;
         cursor: pointer;
 
@@ -71,7 +88,7 @@ export const Main: FC = ({ className }) => {
       width: 0;
       margin-left: 100%;
 
-      transition: all .6s ease-in-out;
+      transition: all .4s ease-in-out;
       background-color: white;
     }
     last-article:hover white-block {
@@ -80,7 +97,6 @@ export const Main: FC = ({ className }) => {
     }
     last-article column {
         justify-content: center;
-        max-width: 650px;
         padding: 48px;
     }
     last-article small {
@@ -109,10 +125,10 @@ export const Main: FC = ({ className }) => {
 
         font-family: 'Mont SemiBold';
     }
-    last-article background {
+    /*last-article background {
         width: 420px;
         background-color: white;
-    }
+    }*/
     top-chart {
         display: flex;
         justify-content: center;
@@ -122,6 +138,7 @@ export const Main: FC = ({ className }) => {
         background-color: white;
     }
     top-chart column {
+        margin-right: 125px;
         justify-content: center;
     }
     top-chart h2 {
@@ -136,7 +153,7 @@ export const Main: FC = ({ className }) => {
         font-size: 15px;
         line-height: 15px;
     }
-    top-chart img {
+    top-chart column img {
       max-width: 100%;
       margin-left: 150px;
 
@@ -151,7 +168,46 @@ export const Main: FC = ({ className }) => {
       }
     }
     top-chart ul {
-        width: 50%;
+        height: 500px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: 250px 250px;
+        grid-gap: 20px;
+
+        position: relative;
+        top: 50px;
+
+        overflow: scroll;
+
+        list-style: none;
+
+        &::-webkit-scrollbar {
+          width: 0px;
+          background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+    }
+
+    top-chart ul li {
+      width: 250px;
+      height: 250px;
+
+      cursor: pointer;
+
+      transition: all .2s ease;
+
+      &:hover {
+        opacity: .7;
+        transform: translateY(-5px);
+      }
+    }
+
+    top-chart ul li img {
+      object-fit: cover;
+      max-width: 100%;
     }
 
     course {
@@ -266,13 +322,12 @@ export const Main: FC = ({ className }) => {
     <main
       style={{ '--main': '#f8b314', '--max-width': '1200px' } as any}
       className={className}
-      onWheel={handlePageWheel}
     >
       <header>
         <b>как есть</b>
 
-        <Link href="/">Курсы</Link>
-        <Link href="/">Журнал</Link>
+        <Link href="/courses/finance">Курсы</Link>
+        <Link href="/articles">Журнал</Link>
 
         <social>
           <a href="https://www.instagram.com/ke.resource" target="_blank">
@@ -296,7 +351,7 @@ export const Main: FC = ({ className }) => {
         <column>
           <small>Последняя статья:</small>
 
-          <h2>Когда боишься потерять контроль</h2>
+          <h2>{lastArticle.title}</h2>
 
           <p>
             Мы гораздо больше похожи на Вавилон, чем хотелось бы думать. Может
@@ -304,7 +359,7 @@ export const Main: FC = ({ className }) => {
             мы стараемся управлять своими деньгами ради стабильности и власти.
           </p>
 
-          <Link href="/articles/-1">Читать</Link>
+          <Link href={`/articles/${lastArticle.id}`}>Читать</Link>
 
           <white-block />
         </column>
@@ -325,7 +380,16 @@ export const Main: FC = ({ className }) => {
             alt="most-interesting-articles"
           />
         </column>
-        <ul></ul>
+
+        <ul>
+          {articles.map((x, i) => (
+            <li key={i}>
+              <Link href={`/articles/${x.id}`}>
+                <img src={`${ROUTES.api}${x.cover?.url}`} alt="article_img" />
+              </Link>
+            </li>
+          ))}
+        </ul>
       </top-chart>
 
       <course>
@@ -333,9 +397,12 @@ export const Main: FC = ({ className }) => {
 
         <h2>Личные финансы</h2>
 
-        <p>Вы получитие пакет систиматических знаний на тему финансов и их управления.</p>
+        <p>
+          Вы получитие пакет систиматических знаний на тему финансов и их
+          управления.
+        </p>
 
-        <Link href="#">Подробнее&nbsp;&nbsp;{'>'}</Link>
+        <Link href="/courses/finance">Подробнее&nbsp;&nbsp;{'>'}</Link>
       </course>
 
       <footer>
@@ -344,13 +411,11 @@ export const Main: FC = ({ className }) => {
         <social>
           <a href="https://www.instagram.com/ke.resource" target="_blank">
             <img alt="instagram_icon" src="/images/instagram-gray-icon.svg" />
-
             Instagram
           </a>
 
           <a href="https://t.me/keresource" target="_blank">
             <img alt="instagram_icon" src="/images/telegram-gray-icon.svg" />
-
             Telegram
           </a>
 
@@ -359,7 +424,6 @@ export const Main: FC = ({ className }) => {
             target="_blank"
           >
             <img alt="instagram_icon" src="/images/youtube-gray-icon.svg" />
-
             Youtube
           </a>
         </social>

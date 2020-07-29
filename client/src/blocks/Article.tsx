@@ -217,13 +217,6 @@ export const Article: FC<ArticleProps> = ({ title, cover, blocks }) => {
     }
   `(
     <container>
-      {cover && (
-        <img
-          src={cover}
-          alt={title}
-          style={{ maxWidth: '80%', maxHeight: '30rem', margin: 'auto' }}
-        />
-      )}
       <Title1 data={{ text: title }} />
       {blocks.map((block) => {
         const Component = getComponent(block)
