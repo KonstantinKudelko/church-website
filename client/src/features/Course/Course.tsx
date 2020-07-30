@@ -1,13 +1,14 @@
 import styled from 'reshadow'
 
 import { FC } from '~/utils/types'
+import { CurriculumItem } from './CurriculumItem'
 
 export const Course: FC = () => {
   return styled`
     wrapper {
       display: flex;
       flex-direction: column;
-      max-width: 900px;
+      max-width: 950px;
       margin: 0 auto;
     }
 
@@ -231,6 +232,267 @@ export const Course: FC = () => {
       font-family: 'Mont';
       line-height: 16px;
     }
+
+    course-curriculum {
+      padding: 60px 90px;
+      padding-bottom: 100px;
+      margin-bottom: 140px;
+
+      border: 2px solid black;
+
+      position: relative;
+    }
+
+    course-curriculum h2 {
+      font-size: 45px;
+      font-family: 'Montserrat Alternates Bold';
+      line-height: 55px;
+
+      margin-bottom: 36px;
+    }
+
+    course-curriculum lessons-qty {
+      font-size: 20px;
+      font-family: 'Montserrat Alternates SemiBold';
+      line-height: 24px;
+
+      display: inline-block;
+      padding: 8px 29px;
+      margin-bottom: 58px;
+
+      background-color: #FCB314;
+    }
+
+    registration-warning {
+      min-width: 650px;
+      padding: 20px 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border: 2px solid black;
+      background-color: white;
+
+      transform: translateX(-50%);
+      position: absolute;
+      left: 50%;
+      bottom: -45px;
+    }
+
+    registration-warning a {
+      color: black;
+      font-size: 15px;
+      font-family: 'Mont SemiBold';
+      text-decoration: none;
+
+      padding: 13px 38px;
+
+      border: 2px solid transparent;
+      background-color: #f8b314;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        border: 2px solid black;
+        background-color: transparent;
+      }
+    }
+
+    course-flow {
+      margin-bottom: 150px;
+    }
+
+    course-flow h2 {
+      font-size: 45px;
+      font-family: 'Montserrat Alternates Bold';
+      line-height: 55px;
+
+      margin-bottom: 64px;
+    }
+
+    course-flow ul {
+      list-style: none;
+
+      display: flex;
+      justify-content: space-between;
+
+      position: relative;
+
+      &:before {
+        content: '';
+
+        width: 106px;
+        height: 80%;
+
+        position: absolute;
+        top: -22px;
+        left: 59%;
+        z-index: -1;
+
+        background-size: contain;
+        background-image: url('/images/index-page-arrow-icon.svg');
+        background-repeat: no-repeat;
+      }
+
+      &:after {
+        content: '';
+
+        width: 190px;
+        height: 140%;
+
+        position: absolute;
+        top: 20px;
+        left: 20%;
+        z-index: -1;
+
+        background-size: contain;
+        background-image: url('/images/index-page-arrow-icon.svg');
+        background-repeat: no-repeat;
+      }
+    }
+
+    course-flow ul li {
+      flex: 0 0 280px;
+    }
+
+    course-flow ul li span {
+      font-size: 25px;
+      font-family: 'Montserrat Alternates Bold';
+      line-height: 30px;
+
+      display: inline-block;
+      margin-bottom: 12px
+    }
+
+    course-flow ul li p {
+      font-size: 15px;
+      font-family: 'Mont';
+      line-height: 19px;
+    }
+
+    course-registration {
+      display: flex;
+      margin-bottom: 100px;
+
+      border: 2px solid black;
+    }
+
+    course-cost-info {
+      flex: 0 0 50%;
+      padding: 50px 75px;
+      padding-left: 50px;
+
+      background-color: #f8b314;
+    }
+
+    course-cost-info h2 {
+      font-size: 45px;
+      font-family: 'Montserrat Alternates Bold';
+      line-height: 47px;
+
+      margin-bottom: 43px;
+    }
+
+    course-cost-info cost {
+      font-family: 'Mont Bold';
+      font-size: 65px;
+      line-height: 68px;
+
+      display: inline-block;
+      margin-bottom: 45px;
+    }
+
+    sale span {
+      font-size: 12px;
+      font-family: 'Mont SemiBold';
+      line-height: 13px;
+
+      display: inline-block;
+      margin-bottom: 7px;
+    }
+
+    cost-without-sale {
+      font-size: 20px;
+      font-family: 'Mont SemiBold';
+      line-height: 21px;
+
+      position: relative;
+
+      display: block;
+
+      &:after {
+        content: '';
+
+        transform: translateY(-50%);
+        position: absolute;
+        top: 50%;
+        left: -11px;
+
+        width: 80px;
+        height: 1px;
+
+        background-color: black;
+      }
+    }
+
+    course-form {
+      flex: 0 0 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 35px 80px;
+    }
+
+    course-form fields-wrapper {
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    fields-wrapper input-field {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    input-field label {
+      font-family: 'Montserrat Alternates SemiBold';
+      font-size: 15px;
+      line-height: 16px;
+
+      margin-bottom: 7px;
+    }
+
+    input-field input {
+      height: 30px;
+      padding-left: 15px;
+
+      border: 1px solid #C4C4C4;
+    }
+
+    course-form button-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    course-form button {
+      color: black;
+      font-size: 15px;
+      font-family: 'Mont SemiBold';
+      text-decoration: none;
+
+      padding: 8px 38px;
+
+      cursor: pointer;
+      border: 2px solid transparent;
+      background-color: #f8b314;
+      transition: all .2s ease-in-out;
+
+      &:hover {
+        border: 2px solid black;
+        background-color: transparent;
+      }
+    }
   `(
     <wrapper>
       <hero-section>
@@ -334,6 +596,105 @@ export const Course: FC = () => {
           </li>
         </ul>
       </course-achievement-section>
+
+      <course-curriculum>
+        <h2>Программа курса</h2>
+
+        <lessons-qty as="span">12 уроков</lessons-qty>
+
+        <ul style={{ listStyle: 'none' }}>
+          <CurriculumItem title="Первый урок">
+            <p>bla bla bla</p>
+          </CurriculumItem>
+
+          <CurriculumItem title="Второй урок">
+            <p>bla bla bla</p>
+          </CurriculumItem>
+
+          <CurriculumItem title="Третий урок">
+            <p>bla bla bla</p>
+          </CurriculumItem>
+
+          <CurriculumItem title="Четвертый урок">
+            <p>bla bla bla</p>
+          </CurriculumItem>
+        </ul>
+
+        <registration-warning>
+          <span>Начни обучение прямо сейчас!</span>
+
+          <a href="#">Записаться!</a>
+        </registration-warning>
+      </course-curriculum>
+
+      <course-flow>
+        <h2>Как проходит обучение</h2>
+
+        <ul>
+          <li>
+            <span>Теория в классе</span>
+
+            <p>
+              Светские академические знания, Библейская экспозиция финансовой
+              темы
+            </p>
+          </li>
+
+          <li>
+            <span>Домашние задания</span>
+
+            <p>
+              Практика лекционного материала, Задания для закрепления материала
+            </p>
+          </li>
+
+          <li>
+            <span>Личное общение</span>
+
+            <p>Ответы на вопросы, Помощь в конкретных ситуациях</p>
+          </li>
+        </ul>
+      </course-flow>
+
+      <course-registration>
+        <course-cost-info>
+          <h2>Стоимость курса</h2>
+
+          <cost>19,99$</cost>
+
+          <sale>
+            <span>Стоимость без скидки</span>
+
+            <cost-without-sale>39,99$</cost-without-sale>
+          </sale>
+        </course-cost-info>
+
+        <course-form as="form">
+          <fields-wrapper>
+            <input-field>
+              <label htmlFor="name">Имя</label>
+
+              <input id="name" name="name" type="text" />
+            </input-field>
+
+            <input-field>
+              <label htmlFor="phone">Телефон</label>
+
+              <input id="phone" name="phone" type="text" />
+            </input-field>
+
+            <input-field>
+              <label htmlFor="email">Электронная почта</label>
+
+              <input id="email" name="email" type="text" />
+            </input-field>
+          </fields-wrapper>
+
+          <button-wrapper>
+            <button type="submit">Записаться</button>
+          </button-wrapper>
+        </course-form>
+      </course-registration>
     </wrapper>,
   )
 }
