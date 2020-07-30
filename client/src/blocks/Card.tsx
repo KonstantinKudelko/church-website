@@ -6,7 +6,6 @@ import { FC } from '~/utils/types'
 export type CardProps = {
   className?: string
   title: string
-  description: string
   image: { src: string; alt: string }
   tags: { title: string; href: string }[]
   href: string
@@ -15,7 +14,6 @@ export type CardProps = {
 export const Card: FC<CardProps> = ({
   className = '',
   title,
-  description,
   image,
   tags,
   href,
@@ -23,10 +21,20 @@ export const Card: FC<CardProps> = ({
   return styled()`
     container {
       width: 15rem;
+
+      transition: all 0.2s ease;
+
+      &:hover {
+        opacity: 0.7;
+        transform: translateY(-5px);
+      }
     }
 
     h3 {
-      text-transform: uppercase;
+      font-size: 18px;
+      font-family: 'Mont Bold';
+
+      margin-top: 10px;
     }
 
     img {
@@ -62,10 +70,10 @@ export const Card: FC<CardProps> = ({
           ))}
         </tags>
       )}
+
       <Link href={href}>
         <h3>{title}</h3>
       </Link>
-      <p ref={(r) => ((r || { innerHTML: '' }).innerHTML = description)} />
     </container>,
   )
 }

@@ -33,14 +33,12 @@ export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
       margin-top: 50px;
 
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
       grid-gap: 2vw;
+      grid-auto-rows: 200px;
+      grid-template-columns: 1fr 1fr 1fr;
     }
     h1 {
       text-align: center;
-    }
-    Card {
-      margin-bottom: 4rem;
     }
   `(
     <>

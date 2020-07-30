@@ -10,16 +10,14 @@ export const Layout: FC<{
 }> = ({ header, main }) => {
   return styled()`
     wrapper {
+      height: 100%;
       display: flex;
       flex-direction: column;
     }
 
     container {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       flex: 1;
-      height: 100vh;
       margin: 0 36px;
     }
 

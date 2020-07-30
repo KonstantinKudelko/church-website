@@ -41,6 +41,9 @@ export const Title1: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h1 {
       font-size: 3rem;
+      font-family: 'Mont Bold';
+
+      margin-bottom: 3rem;
     }
   `(<h1 ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
@@ -48,6 +51,9 @@ export const Title2: FC<{ data: { text: string } }> = ({ data: { text } }) => {
   return styled()`
     h2 {
       font-size: 2rem;
+      font-family: 'Mont SemiBold';
+
+      margin: 0.8rem 0;
     }
   `(<h2 ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
@@ -105,6 +111,7 @@ export const Paragraph: FC<{ data: { text: string } }> = ({
       line-height: 1.5rem;
       font-size: 1.25rem;
       font-weight: 100;
+      font-family: 'Mont';
     }
   `(<p ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)} />)
 }
@@ -208,6 +215,7 @@ export const Article: FC<ArticleProps> = ({ title, cover, blocks }) => {
       width: 40rem;
       max-width: 90vw;
       margin: 2rem auto;
+      margin-top: 5rem;
     }
 
     @media (orientation: portrait) {
