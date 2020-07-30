@@ -1,5 +1,6 @@
 import styled from 'reshadow'
 
+import { Footer } from './Footer'
 import { FC, Node } from '~/utils/types'
 import { HeaderProps, Header } from '~/blocks'
 
@@ -17,6 +18,7 @@ export const Layout: FC<{
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      flex: 1;
       height: 100vh;
       margin: 0 36px;
     }
@@ -27,10 +29,10 @@ export const Layout: FC<{
   `(
     <wrapper>
       <Header {...header} />
-      <container>
-        <main>{main}</main>
-      </container>
-      ,<footer></footer>
+
+      <container>{main}</container>
+
+      <Footer />
     </wrapper>,
   )
 }

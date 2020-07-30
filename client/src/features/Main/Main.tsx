@@ -5,6 +5,7 @@ import { GetStaticProps } from 'next'
 import { FC } from '~/utils/types'
 import { Link } from '~/blocks'
 import { ROUTES } from '~/utils/const'
+import { Footer } from '~/blocks/Footer'
 import { Article } from '../types'
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -27,11 +28,17 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
     )
 
   return styled`
+    wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
     column, main {
         display: flex;
         flex-direction: column;
     }
     main {
+        flex: 1;
         align-items: center;
         background-color: var(--main);
     }
@@ -40,6 +47,7 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
         align-items: center;
         width: 100vw;
         height: 80px;
+        background-color: #f8b314;
     }
     header b {
         margin: 0 36px;
@@ -214,7 +222,6 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
 
     course {
       width: 100%;
-      height: 100vh;
       padding-top: 15%;
       padding-left: 10%;
       padding-bottom: 15%;
@@ -267,64 +274,8 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
 
       border: 1px solid white;
     }
-
-    footer {
-      width: 100%;
-      padding: 75px 0px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      position: relative;
-
-      background-color: #212121;
-    }
-
-    footer b {
-      color: white;
-      font-size: 24px;
-      font-family: 'Mont Bold';
-      text-transform: uppercase;
-
-      margin-bottom: 60px;
-
-      &:after {
-        content: '';
-
-        width: 600px;
-        height: 1px;
-
-        position: absolute;
-        top: 130px;
-        left: 50%;
-        transform: translateX(-50%);
-
-        background-color: #C4C4C4;
-      }
-    }
-
-    footer social {
-      display: flex;
-    }
-
-    footer social a {
-      color: #C4C4C4;
-      text-transform: uppercase;
-      text-decoration: none;
-      font-size: 12px;
-
-      display: flex;
-      align-items: center;
-    }
-
-    footer social a img {
-      margin-right: 10px;
-    }
   `(
-    <main
-      style={{ '--main': '#f8b314', '--max-width': '1200px' } as any}
-      className={className}
-    >
+    <wrapper>
       <header>
         <b>как есть</b>
 
@@ -348,91 +299,76 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
           </a>
         </social>
       </header>
+      <main
+        style={{ '--main': '#f8b314', '--max-width': '1200px' } as any}
+        className={className}
+      >
+        <last-article as="article">
+          <column>
+            <small>Последняя статья:</small>
 
-      <last-article as="article">
-        <column>
-          <small>Последняя статья:</small>
+            {lastArticle && <h2>{lastArticle.title}</h2>}
 
-          {lastArticle && <h2>{lastArticle.title}</h2>}
+            <p>
+              Мы гораздо больше похожи на Вавилон, чем хотелось бы думать. Может
+              мы и не плавим золото и серебро, чтобы создать себе статуи богов,
+              но мы стараемся управлять своими деньгами ради стабильности и
+              власти.
+            </p>
+
+            {lastArticle && (
+              <Link href={`/articles/${lastArticle.id}`}>Читать</Link>
+            )}
+
+            <white-block />
+          </column>
+
+          <background></background>
+        </last-article>
+
+        <top-chart as="article">
+          <column>
+            <h2>
+              Самое <br /> интересное:
+            </h2>
+            <p>
+              Читайте подборку самых <br /> интересных статей
+            </p>
+            <img
+              src="/images/index-page-arrow-icon.svg"
+              alt="most-interesting-articles"
+            />
+          </column>
+
+          <ul>
+            {articles &&
+              articles.map((x, i) => (
+                <li key={i}>
+                  <Link href={`/articles/${x.id}`}>
+                    <img
+                      src={`${ROUTES.api}${x.cover?.url}`}
+                      alt="article_img"
+                    />
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </top-chart>
+
+        <course>
+          <small>Онлайн курс</small>
+
+          <h2>Личные финансы</h2>
 
           <p>
-            Мы гораздо больше похожи на Вавилон, чем хотелось бы думать. Может
-            мы и не плавим золото и серебро, чтобы создать себе статуи богов, но
-            мы стараемся управлять своими деньгами ради стабильности и власти.
+            Вы получитие пакет систиматических знаний на тему финансов и их
+            управления.
           </p>
 
-          {lastArticle && (
-            <Link href={`/articles/${lastArticle.id}`}>Читать</Link>
-          )}
-
-          <white-block />
-        </column>
-
-        <background></background>
-      </last-article>
-
-      <top-chart as="article">
-        <column>
-          <h2>
-            Самое <br /> интересное:
-          </h2>
-          <p>
-            Читайте подборку самых <br /> интересных статей
-          </p>
-          <img
-            src="/images/index-page-arrow-icon.svg"
-            alt="most-interesting-articles"
-          />
-        </column>
-
-        <ul>
-          {articles &&
-            articles.map((x, i) => (
-              <li key={i}>
-                <Link href={`/articles/${x.id}`}>
-                  <img src={`${ROUTES.api}${x.cover?.url}`} alt="article_img" />
-                </Link>
-              </li>
-            ))}
-        </ul>
-      </top-chart>
-
-      <course>
-        <small>Онлайн курс</small>
-
-        <h2>Личные финансы</h2>
-
-        <p>
-          Вы получитие пакет систиматических знаний на тему финансов и их
-          управления.
-        </p>
-
-        <Link href="/courses/finance">Подробнее&nbsp;&nbsp;{'>'}</Link>
-      </course>
-
-      <footer>
-        <b>как есть</b>
-
-        <social>
-          <a href="https://www.instagram.com/ke.resource" target="_blank">
-            <img alt="instagram_icon" src="/images/instagram-gray-icon.svg" />
-            Instagram
-          </a>
-
-          <a href="https://t.me/keresource" target="_blank">
-            <img alt="instagram_icon" src="/images/telegram-gray-icon.svg" />
-            Telegram
-          </a>
-
-          <a
-            href="https://www.youtube.com/channel/UCL5sPUI-Vf0QYmyhBOM2O0A"
-            target="_blank"
-          >
-            <img alt="instagram_icon" src="/images/youtube-gray-icon.svg" />
-            Youtube
-          </a>
-        </social>
-      </footer>
-    </main>,
+          <Link href="/courses/finance">Подробнее&nbsp;&nbsp;{'>'}</Link>
+        </course>
+      </main>
+      <Footer />
+    </wrapper>,
   )
 }

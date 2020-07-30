@@ -1,11 +1,11 @@
 import { Layout as LayoutBlock } from '~/blocks'
 import { FC } from '~/utils/types'
-import { useTranslation } from './TranslationContext'
+import { useTranslation } from '../TranslationContext'
 
 export const Layout: FC = ({ children }) => {
   const translation = useTranslation({
-    en: () => import(`./Layout/translations/en`),
-    ru: () => import(`./Layout/translations/ru`),
+    en: () => import(`./translations/en`),
+    ru: () => import(`./translations/ru`),
   })
 
   return (

@@ -5,7 +5,7 @@ import axios from 'axios'
 import { FC } from '~/utils/types'
 import { Card } from '~/blocks'
 import { ROUTES } from '~/utils/const'
-import { Article } from './types'
+import { Article } from '../types'
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data: articles } = await axios.get<Article[]>(

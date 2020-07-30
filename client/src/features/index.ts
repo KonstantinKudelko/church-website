@@ -1,2 +1,2 @@
-export { Layout } from './Layout'
+export { Layout } from './Layout/Layout'
 export { TranslationContext, useTranslation } from './TranslationContext'

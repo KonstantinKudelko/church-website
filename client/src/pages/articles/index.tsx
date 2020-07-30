@@ -1,4 +1,4 @@
-import { getStaticProps, Articles } from '~/features/Articles'
+import { getStaticProps, Articles } from '~/features/Articles/Articles'
 
 export { getStaticProps }
 
