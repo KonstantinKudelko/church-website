@@ -2,6 +2,7 @@ import styled from 'reshadow'
 
 import { FC } from '~/utils/types'
 import { CurriculumItem } from './CurriculumItem'
+import { CourseLeadForm } from './CourseLeadForm'
 
 export const Course: FC = () => {
   return styled`
@@ -433,66 +434,6 @@ export const Course: FC = () => {
         background-color: black;
       }
     }
-
-    course-form {
-      flex: 0 0 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      padding: 35px 80px;
-    }
-
-    course-form fields-wrapper {
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    fields-wrapper input-field {
-      margin-bottom: 10px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    input-field label {
-      font-family: 'Montserrat Alternates SemiBold';
-      font-size: 15px;
-      line-height: 16px;
-
-      margin-bottom: 7px;
-    }
-
-    input-field input {
-      height: 30px;
-      padding-left: 15px;
-
-      border: 1px solid #C4C4C4;
-    }
-
-    course-form button-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-
-    course-form button {
-      color: black;
-      font-size: 15px;
-      font-family: 'Mont SemiBold';
-      text-decoration: none;
-
-      padding: 8px 38px;
-
-      cursor: pointer;
-      border: 2px solid transparent;
-      background-color: #f8b314;
-      transition: all .2s ease-in-out;
-
-      &:hover {
-        border: 2px solid black;
-        background-color: transparent;
-      }
-    }
   `(
     <wrapper>
       <hero-section>
@@ -508,7 +449,7 @@ export const Course: FC = () => {
             управления.
           </p>
 
-          <a href="#">Записаться</a>
+          <a href="#course-registration">Записаться</a>
         </course-info>
 
         <course-image>
@@ -623,7 +564,7 @@ export const Course: FC = () => {
         <registration-warning>
           <span>Начни обучение прямо сейчас!</span>
 
-          <a href="#">Записаться!</a>
+          <a href="#course-registration">Записаться!</a>
         </registration-warning>
       </course-curriculum>
 
@@ -656,7 +597,7 @@ export const Course: FC = () => {
         </ul>
       </course-flow>
 
-      <course-registration>
+      <course-registration id="course-registration">
         <course-cost-info>
           <h2>Стоимость курса</h2>
 
@@ -669,31 +610,7 @@ export const Course: FC = () => {
           </sale>
         </course-cost-info>
 
-        <course-form as="form">
-          <fields-wrapper>
-            <input-field>
-              <label htmlFor="name">Имя</label>
-
-              <input id="name" name="name" type="text" />
-            </input-field>
-
-            <input-field>
-              <label htmlFor="phone">Телефон</label>
-
-              <input id="phone" name="phone" type="text" />
-            </input-field>
-
-            <input-field>
-              <label htmlFor="email">Электронная почта</label>
-
-              <input id="email" name="email" type="text" />
-            </input-field>
-          </fields-wrapper>
-
-          <button-wrapper>
-            <button type="submit">Записаться</button>
-          </button-wrapper>
-        </course-form>
+        <CourseLeadForm />
       </course-registration>
     </wrapper>,
   )

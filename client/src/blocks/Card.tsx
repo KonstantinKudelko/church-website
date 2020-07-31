@@ -16,11 +16,11 @@ export const Card: FC<CardProps> = ({
   title,
   image,
   tags,
-  href
+  href,
 }) => {
   return styled()`
     container {
-      width: 15rem;
+      width: 100%;
 
       transition: all 0.2s ease;
 
@@ -28,6 +28,10 @@ export const Card: FC<CardProps> = ({
         opacity: 0.7;
         transform: translateY(-5px);
       }
+    }
+
+    container Link {
+      display: block;
     }
 
     h3 {
@@ -38,8 +42,7 @@ export const Card: FC<CardProps> = ({
     }
 
     img {
-      width: 15rem;
-      height: 15rem;
+      width: 100%;
     }
 
     tags {

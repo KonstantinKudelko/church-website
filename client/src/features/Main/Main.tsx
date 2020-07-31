@@ -135,10 +135,6 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
 
         font-family: 'Mont SemiBold';
     }
-    /*last-article background {
-        width: 420px;
-        background-color: white;
-    }*/
     top-chart {
         display: flex;
         justify-content: center;
