@@ -53,10 +53,6 @@ export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
               <Card
                 key={id}
                 title={title}
-                description={
-                  // FIXME: type safe
-                  JSON.parse(body).blocks[0].data.text.slice(0, 50) + '...'
-                }
                 image={
                   cover
                     ? {

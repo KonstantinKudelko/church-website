@@ -16,7 +16,7 @@ export const Card: FC<CardProps> = ({
   title,
   image,
   tags,
-  href,
+  href
 }) => {
   return styled()`
     container {
