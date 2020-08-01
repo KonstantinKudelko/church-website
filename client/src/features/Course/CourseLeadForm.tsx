@@ -24,6 +24,7 @@ const CourseLeadLayout: FC<FormikProps<LeadFormFields>> = ({
     wrapper {
       width: 100%;
       display: flex;
+      flex: 0 0 50%;
       flex-direction: column;
       justify-content: center;
     }
@@ -35,7 +36,6 @@ const CourseLeadLayout: FC<FormikProps<LeadFormFields>> = ({
     }
 
     course-form {
-      flex: 0 0 50%;
       display: flex;
       flex-direction: column;
       justify-content: center;
