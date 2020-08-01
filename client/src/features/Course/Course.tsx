@@ -5,6 +5,57 @@ import { CurriculumItem } from './CurriculumItem'
 import { CourseLeadForm } from './CourseLeadForm'
 
 export const Course: FC = () => {
+  const courseCurriculum = [
+    {
+      title: 'Актуальность финансовой темы',
+      body: 'Почему этот курс может быть мне интересным?',
+    },
+    {
+      title: 'Финансовое богословие',
+      body: 'Что Ветхий Завет говорит о финансах? ',
+    },
+    {
+      title: 'Важность финансовой темы',
+      body: 'Как отношение к финансам показывает духовное состояние?',
+    },
+    {
+      title: 'Учение Христа о материальном',
+      body: 'Насколько я богат?',
+    },
+    {
+      title: 'Учение Христа об инвестициях и имуществе',
+      body: 'Противоречат ли инвестиции Библии?',
+    },
+    {
+      title: 'Поклонение Богу в материальной сфере',
+      body: 'Как занимаясь финансами не попасть под их влияние?',
+    },
+    {
+      title: 'Забота о материальном',
+      body: 'Как заботиться о финансах и не противоречить словам Христа? ',
+    },
+    {
+      title: 'Основы личных финансов',
+      body: 'Как практически управлять личными финансами?',
+    },
+    {
+      title: 'Финансы и пожертвования',
+      body: 'Как жертвовать и быть удовлетворенным?',
+    },
+    {
+      title: 'Финансы и кредит',
+      body: 'Как работать с долгами?',
+    },
+    {
+      title: 'Потребление и кризис',
+      body: 'Как подготовиться к пенсии и кризису?',
+    },
+    {
+      title: 'Ипотека и пенсия',
+      body: 'Как потребление влияет на финансовое состояние?',
+    },
+  ]
+
   return styled`
     wrapper {
       display: flex;
@@ -544,21 +595,11 @@ export const Course: FC = () => {
         <lessons-qty as="span">12 уроков</lessons-qty>
 
         <ul style={{ listStyle: 'none' }}>
-          <CurriculumItem title="Первый урок">
-            <p>bla bla bla</p>
-          </CurriculumItem>
-
-          <CurriculumItem title="Второй урок">
-            <p>bla bla bla</p>
-          </CurriculumItem>
-
-          <CurriculumItem title="Третий урок">
-            <p>bla bla bla</p>
-          </CurriculumItem>
-
-          <CurriculumItem title="Четвертый урок">
-            <p>bla bla bla</p>
-          </CurriculumItem>
+          {courseCurriculum.map((x, i) => (
+            <CurriculumItem title={`${i + 1}. ${x.title}`}>
+              <p>{x.body}</p>
+            </CurriculumItem>
+          ))}
         </ul>
 
         <registration-warning>

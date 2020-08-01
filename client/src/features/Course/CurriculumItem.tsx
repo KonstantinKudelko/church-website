@@ -12,8 +12,6 @@ export const CurriculumItem: FC<{
   return styled`
     curriculum-item {
       &:last-child accordion-title {
-        border-bottom: 0px;
-
         margin-bottom: 0px;
       }
     }
@@ -25,7 +23,7 @@ export const CurriculumItem: FC<{
       align-items: center;
       justify-content: space-between;
 
-      border-bottom: 2px solid #C4C4C4;
+      border-bottom: ${isOpen ? 'none' : '2px solid #C4C4C4'};
     }
 
     accordion-title span {
@@ -51,6 +49,9 @@ export const CurriculumItem: FC<{
 
     accordion-body {
       margin: 20px 0px;
+      padding-bottom: 20px;
+
+      border-bottom: 2px solid #C4C4C4;
     }
   `(
     <curriculum-item as="li">

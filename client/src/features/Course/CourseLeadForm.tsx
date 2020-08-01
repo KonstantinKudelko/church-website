@@ -41,7 +41,7 @@ const CourseLeadLayout: FC<FormikProps<LeadFormFields>> = ({
       flex-direction: column;
       justify-content: center;
 
-      padding: 35px 80px;
+      padding: 0px 80px;
     }
 
     course-form fields-wrapper {
@@ -101,12 +101,37 @@ const CourseLeadLayout: FC<FormikProps<LeadFormFields>> = ({
         background-color: transparent;
       }
     }
+
+    course-start-info {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    course-start-info span {
+      font-size: 12px;
+    }
+
+    course-start-info b {
+      font-size: 12px;
+      font-family: 'Mont SemiBold';
+    }
   `(
     <wrapper>
       {status && status.isLeadCreated ? (
         <success-message>Ваша заявка принята!</success-message>
       ) : (
         <course-form as="form" onSubmit={handleSubmit}>
+          <course-start-info>
+            <span>
+              Старт курса: <b>21 сентября</b>
+            </span>
+
+            <span>
+              Осталось: <b>10 мест</b>
+            </span>
+          </course-start-info>
+
           <fields-wrapper>
             <input-field>
               <label htmlFor="name">Имя</label>

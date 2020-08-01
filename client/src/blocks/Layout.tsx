@@ -10,7 +10,6 @@ export const Layout: FC<{
 }> = ({ header, main }) => {
   return styled()`
     wrapper {
-      height: 100%;
       display: flex;
       flex-direction: column;
     }

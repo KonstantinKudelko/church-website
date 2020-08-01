@@ -29,7 +29,6 @@ export const Main: FC<{ articles: Article[] }> = ({ articles, className }) => {
 
   return styled`
     wrapper {
-      height: 100%;
       display: flex;
       flex-direction: column;
     }
