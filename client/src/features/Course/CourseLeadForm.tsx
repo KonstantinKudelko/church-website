@@ -23,7 +23,6 @@ const CourseLeadLayout: FC<FormikProps<LeadFormFields>> = ({
   return styled`
     wrapper {
       width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
