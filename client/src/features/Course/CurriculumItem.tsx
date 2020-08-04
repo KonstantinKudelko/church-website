@@ -49,7 +49,7 @@ export const CurriculumItem: FC<{
 
     accordion-body {
       margin: 20px 0px;
-      padding-bottom: 20px;
+      padding-bottom: 30px;
 
       border-bottom: 2px solid #C4C4C4;
     }
