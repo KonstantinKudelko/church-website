@@ -127,7 +127,7 @@ const CourseLeadLayout: FC<FormikProps<LeadFormFields>> = ({
             </span>
 
             <span>
-              Осталось: <b>10 мест</b>
+              Осталось: <b>8 мест</b>
             </span>
           </course-start-info>
 
