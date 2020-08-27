@@ -9,29 +9,29 @@
     "publish": "vercel --prod"
   },
   "dependencies": {
-    "@types/react": "^16.9.41",
+    "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "formik": "^2.1.5",
-    "next": "^9.4.4",
+    "next": "^9.5.2",
     "normalize.css": "^8.0.1",
-    "preact": "^10.4.4",
-    "preact-render-to-string": "^5.1.9",
+    "preact": "^10.4.8",
+    "preact-render-to-string": "^5.1.10",
     "react": "github:preact-compat/react#1.0.0",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
     "reshadow": "0.0.1-alpha.78",
-    "yup": "^0.29.2"
+    "yup": "^0.29.3"
   },
   "devDependencies": {
-    "@prefresh/next": "^0.3.1",
-    "@types/node": "^14.0.14",
-    "@types/yup": "^0.29.3",
+    "@prefresh/next": "^1.0.0",
+    "@types/node": "^14.6.1",
+    "@types/yup": "^0.29.6",
     "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.0.5",
+    "prettier": "^2.1.1",
     "raw-loader": "^4.0.1",
     "react-refresh": "^0.8.3",
-    "typescript": "^3.9.5",
+    "typescript": "^4.0.2",
     "typescript-styled-plugin": "^0.15.0"
   }
 }

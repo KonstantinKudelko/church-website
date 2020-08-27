@@ -5,12 +5,12 @@ import normalize from '!!raw-loader!normalize.css'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
+import { Main } from '~/features/Main/Main'
 import { Layout, TranslationContext } from '~/features'
-import Main from './main'
 
 import '~/global-styles.css'
 
-export default ({ Component, pageProps }: AppProps) => (
+export const Index = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
       <title>KE</title>
@@ -31,3 +31,5 @@ export default ({ Component, pageProps }: AppProps) => (
     </TranslationContext>
   </>
 )
+
+export default Index;
