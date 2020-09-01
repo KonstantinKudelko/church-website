@@ -582,6 +582,18 @@ export const Course: FC = () => {
         background-color: black;
       }
     }
+
+    program-closed {
+      margin-bottom: 70px;
+    }
+
+    program-closed h2 {
+      font-size: 55px;
+      font-family: 'Mont Bold';
+      line-height: 90%;
+
+      margin-bottom: 10px;
+    }
   `(
     <wrapper>
       <hero-section>
@@ -734,7 +746,7 @@ export const Course: FC = () => {
         </ul>
       </course-flow>
 
-      <course-registration id="course-registration">
+      {/* <course-registration id="course-registration">
         <course-cost-info>
           <h2>Стоимость курса</h2>
 
@@ -748,7 +760,16 @@ export const Course: FC = () => {
         </course-cost-info>
 
         <CourseLeadForm />
-      </course-registration>
+      </course-registration> */}
+
+      <program-closed>
+        <h2>Набор закрыт ☹️</h2>
+
+        <span>
+          Запись на следующий поток будет в сентябре, <br /> следите за
+          обновлениями в наших социальных сетях 🚀
+        </span>
+      </program-closed>
     </wrapper>,
   )
 }
