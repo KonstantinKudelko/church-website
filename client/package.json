@@ -11,7 +11,7 @@
   "dependencies": {
     "@types/react": "^16.9.48",
     "@types/react-dom": "^16.9.8",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "formik": "^2.1.5",
     "next": "^9.5.2",
     "normalize.css": "^8.0.1",
