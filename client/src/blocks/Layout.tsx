@@ -1,13 +1,11 @@
 import styled from 'reshadow'
 
-import { Footer } from './Footer'
 import { FC, Node } from '~/utils/types'
-import { HeaderProps, Header } from '~/blocks'
+import { Header } from '~/blocks'
 
 export const Layout: FC<{
-  header: HeaderProps
-  main: Node
-}> = ({ header, main }) => {
+  children: Node
+}> = ({ children }) => {
   return styled()`
     wrapper {
       display: flex;
@@ -25,11 +23,9 @@ export const Layout: FC<{
     }
   `(
     <wrapper>
-      <Header {...header} />
+      <Header />
 
-      <container>{main}</container>
-
-      <Footer />
+      <container>{children}</container>
     </wrapper>,
   )
 }
