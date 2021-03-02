@@ -2,7 +2,7 @@ import {
   getStaticPaths,
   getStaticProps,
   Article,
-} from '~/features/Articles/Article'
+} from '~/features/articles/Article'
 
 export { getStaticPaths, getStaticProps }
 

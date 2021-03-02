@@ -1,4 +1,5 @@
 const api = process.env.API_URL || `http://admin.ke-platform.com`
+
 export const ROUTES = {
   api,
   main: `/`,

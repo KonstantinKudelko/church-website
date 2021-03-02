@@ -1,6 +1,4 @@
-// TODO: replace by preact?
-import { ReactNode, FC as FunctionalComponent } from 'react'
+import { FunctionalComponent, VNode } from 'preact'
 
-export type Node = ReactNode
-
+export type Node = VNode
 export type FC<T = {}> = FunctionalComponent<T & { className?: string }>

@@ -51,11 +51,11 @@ export const Header: FC = () => {
       </Link>
 
       <social>
-        <a href="https://www.instagram.com/ke.resource" target="_blank">
+        <a href="https://www.instagram.com/rozhdestvo_youth/" target="_blank">
           <img alt="instagram_icon" src="/images/instagram-icon.svg" />
         </a>
 
-        <a href="https://t.me/keresource" target="_blank">
+        <a href="https://t.me/christmas_youth" target="_blank">
           <img alt="instagram_icon" src="/images/telegram-icon.svg" />
         </a>
       </social>

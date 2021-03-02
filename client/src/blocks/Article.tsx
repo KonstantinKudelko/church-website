@@ -1,7 +1,7 @@
 import styled from 'reshadow'
 
 import { FC } from '~/utils/types'
-import { ROUTES } from '~/utils/const'
+import { ROUTES } from '~/routes'
 
 type ContentBlock =
   | {

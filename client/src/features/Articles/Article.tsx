@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import axios from 'axios'
 
 import { FC } from '~/utils/types'
-import { ROUTES } from '~/utils/const'
+import { ROUTES } from '~/routes'
 import { Article as TArticle } from '~/features/types'
 import { NotFound, Article as ArticleBlock } from '~/blocks'
 
