@@ -2,7 +2,6 @@ import { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import { GlobalStyle } from '~/global-styles.ts'
-import { Layout } from '~/blocks'
 
 const Index = ({ Component, pageProps }: AppProps) => (
   <>
@@ -18,9 +17,7 @@ const Index = ({ Component, pageProps }: AppProps) => (
 
     <GlobalStyle />
 
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Component {...pageProps} />
   </>
 )
 
