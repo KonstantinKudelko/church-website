@@ -2,7 +2,9 @@ type File = {
   url: string;
 };
 
-/** import articleModel from '../../../server/api/article/models/article.settings.json' */
+/* -- ENTITY TYPES --- */
+
+// import articleModel from '../../../server/api/article/models/article.settings.json'
 export type Article = {
   id: string;
   title: string;
@@ -15,7 +17,7 @@ export type Article = {
   hero_description: string;
 };
 
-/** import authorModel from '../../../server/api/author/models/author.settings.json' */
+// import authorModel from '../../../server/api/author/models/author.settings.json'
 export type Author = {
   id: string;
   first_name: string;
@@ -28,9 +30,56 @@ export type Author = {
   avatar: File;
 };
 
-/** import tagModel from '../../../server/api/tag/models/tag.settings.json' */
+// import tagModel from '../../../server/api/tag/models/tag.settings.json'
 export type Tag = {
   id: string;
   title: string;
   articles: Article[];
 };
+
+/* -- CONTENT TYPES --- */
+
+type ParagraphBlock = {
+  type: 'paragraph';
+  data: {
+    text: string;
+  };
+};
+
+type HeaderBlock = {
+  type: 'header';
+  data: {
+    text: string;
+    level: 1 | 2 | 3 | 4;
+  };
+};
+
+type QuoteBlock = {
+  type: 'quote';
+  data: { alignment: string; caption: string; text: string };
+};
+
+type DelimeterBlock = {
+  type: 'delimiter';
+  data: {};
+};
+
+type ImageBlock = {
+  type: 'image';
+  data: {
+    caption: string;
+    file: { url: string };
+    stretched: boolean;
+    withBackground: boolean;
+    withBorder: boolean;
+  };
+};
+
+export type ContentBlock =
+  | ParagraphBlock
+  | HeaderBlock
+  | QuoteBlock
+  | DelimeterBlock
+  | ImageBlock;
+
+export type Content = ContentBlock[];
