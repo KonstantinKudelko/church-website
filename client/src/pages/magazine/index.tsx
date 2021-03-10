@@ -2,23 +2,11 @@ import Link from 'next/link';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 
-import { FC } from '~/utils/types';
 import { Card } from '~/blocks';
 import { ROUTES } from '~/routes';
-import { Article } from '../types';
+import { Article } from '~/features/magazine';
 
-export const getStaticProps: GetStaticProps = async () => {
-  const { data: articles } = await axios.get<Article[]>(`${ROUTES.api}/articles`);
-
-  return {
-    props: {
-      articles,
-    },
-    revalidate: 1,
-  };
-};
-
-export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
+export default ({ articles }: { articles: Article[] }) => {
   const [lastArticle, ...restArticles] = articles
     .slice(0)
     .sort((a, b) => (a.id > b.id ? -1 : 1));
@@ -69,4 +57,13 @@ export const Articles: FC<{ articles: Article[] }> = ({ articles }) => {
   );
 };
 
-export default Articles;
+export const getStaticProps: GetStaticProps = async () => {
+  const { data: articles } = await axios.get<Article[]>(`${ROUTES.api}/articles`);
+
+  return {
+    props: {
+      articles,
+    },
+    revalidate: 1,
+  };
+};

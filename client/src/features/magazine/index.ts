@@ -1,1 +1,1 @@
-export const articles = 'lol'
+export * from './types';
