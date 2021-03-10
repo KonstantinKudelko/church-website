@@ -21,15 +21,16 @@
     "reshadow": "0.0.1-alpha.78"
   },
   "devDependencies": {
-    "theme-ui": "^0.3.5",
     "@prefresh/next": "^1.4.4",
     "@types/node": "^14.14.31",
     "@types/styled-components": "^5.1.7",
+    "@types/theme-ui": "^0.3.7",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "react-refresh": "^0.9.0",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
+    "theme-ui": "^0.3.5",
     "typescript": "^4.2.2",
     "typescript-styled-plugin": "^0.15.0",
     "webpack": "^4.44.2"
