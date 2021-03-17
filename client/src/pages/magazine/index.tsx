@@ -1,39 +1,25 @@
-import Link from 'next/link';
+
 import axios from 'axios';
+import { Grid } from 'theme-ui';
 import { GetStaticProps } from 'next';
 
-import { Card } from '~/blocks';
 import { ROUTES } from '~/routes';
-import { Article } from '~/features/magazine';
+import { Article, ArticleCard } from '~/features/magazine';
 
 export default ({ articles }: { articles: Article[] }) => {
-  const [lastArticle, ...restArticles] = articles
-    .slice(0)
-    .sort((a, b) => (a.id > b.id ? -1 : 1));
-
   return (
-    <div>
-      {lastArticle && <h2>{lastArticle.title}</h2>}
-
-      <p>
-        Мы гораздо больше похожи на Вавилон, чем хотелось бы думать. Может мы и не плавим
-        золото и серебро, чтобы создать себе статуи богов, но мы стараемся управлять
-        своими деньгами ради стабильности и власти.
-      </p>
-
-      {lastArticle && (
-        <Link href={`/articles/${lastArticle.id}`}>
-          <a>Читать</a>
-        </Link>
-      )}
-
-      {restArticles.map((article) => {
-        const { id, title, cover, tags } = article;
+    <Grid py={5} m="0 auto" sx={{ maxWidth: 1120 }} columns={[ 2 ]}>
+      {articles.map((article) => {
+        const { id, tags, title, cover, excerpt } = article;
 
         return (
-          <Card
+          <ArticleCard
             key={id}
-            title={title}
+            tags={tags.map(({ title, id }) => ({
+              title,
+              href: `${ROUTES.api}/tags/${id}`,
+            }))}
+            href={`magazine/${id}`}
             image={
               cover
                 ? {
@@ -45,24 +31,24 @@ export default ({ articles }: { articles: Article[] }) => {
                     alt: 'not found',
                   }
             }
-            tags={tags.map(({ title, id }) => ({
-              title,
-              href: `${ROUTES.api}/tags/${id}`,
-            }))}
-            href={`articles/${id}`}
+            title={title}
+            excerpt={excerpt}
           />
         );
       })}
-    </div>
+    </Grid>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const { data: articles } = await axios.get<Article[]>(`${ROUTES.api}/articles`);
+  const sortedArticles = articles
+    .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
+    .reverse();
 
   return {
     props: {
-      articles,
+      articles: sortedArticles,
     },
     revalidate: 1,
   };

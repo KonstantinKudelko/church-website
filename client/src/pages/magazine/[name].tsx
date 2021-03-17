@@ -2,12 +2,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 
 import { ROUTES } from '~/routes';
-import { Article } from '~/features/magazine/types';
-import { NotFound, Article as ArticleBlock } from '~/blocks';
+import { Article, ArticleBlock } from '~/features/magazine';
 
-export default ({ article }: { article?: Article }) => {
-  if (!article) return <NotFound />;
-
+export default ({ article }: { article: Article }) => {
   const { title, cover } = article;
   const { blocks } = JSON.parse(article.body);
 
@@ -23,7 +20,7 @@ export default ({ article }: { article?: Article }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data: posts } = await axios.get<Article[]>(`${ROUTES.api}/articles`);
 
-  const paths = posts.map((post) => `/articles/${post.id}`);
+  const paths = posts.map((post) => `/magazine/${post.id}`);
 
   return { paths, fallback: false };
 };
@@ -37,6 +34,5 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       article,
     },
-    revalidate: 1,
   };
 };

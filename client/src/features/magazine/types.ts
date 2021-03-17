@@ -12,6 +12,7 @@ export type Article = {
   cover?: File;
   tags: { id: string; title: string }[];
   author: unknown;
+  excerpt: string;
   created_at: string;
   hero_cover: File;
   hero_description: string;
@@ -59,7 +60,7 @@ type QuoteBlock = {
   data: { alignment: string; caption: string; text: string };
 };
 
-type DelimeterBlock = {
+type DelimiterBlock = {
   type: 'delimiter';
   data: {};
 };
@@ -79,7 +80,7 @@ export type ContentBlock =
   | ParagraphBlock
   | HeaderBlock
   | QuoteBlock
-  | DelimeterBlock
+  | DelimiterBlock
   | ImageBlock;
 
 export type Content = ContentBlock[];

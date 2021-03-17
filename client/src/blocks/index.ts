@@ -1,7 +1,0 @@
-export type { ArticleProps } from './Article'
-export { Article } from './Article'
-export type { CardProps } from './Card'
-export { Card } from './Card'
-export { Header } from './Header'
-export { Link } from './Link'
-export { NotFound } from './NotFound'

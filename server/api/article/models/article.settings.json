@@ -3,11 +3,13 @@
   "connection": "default",
   "collectionName": "article",
   "info": {
-    "name": "Article"
+    "name": "Article",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {
@@ -24,12 +26,15 @@
       "required": false
     },
     "tags": {
-      "via": "articles",
-      "collection": "tag"
+      "collection": "tag",
+      "via": "articles"
     },
     "author": {
-      "via": "articles",
-      "model": "author"
+      "model": "author",
+      "via": "articles"
+    },
+    "excerpt": {
+      "type": "string"
     }
   }
 }

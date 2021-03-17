@@ -14,28 +14,6 @@ const Wysiwyg = ({
   onChange,
   value,
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  let spacer = !isEmpty(inputDescription) ? (
-    <div style={{ height: ".4rem" }} />
-  ) : (
-    <div />
-  );
-
-  if (!noErrorsDescription && !isEmpty(errors)) {
-    spacer = <div />;
-  }
-
-  const handleChange = (data) => {
-    if (data.mime.includes("image")) {
-      const imgTag = `<p><img src="${data.url}" caption="${data.caption}" alt="${data.alternativeText}"></img></p>`;
-      const newValue = value ? `${value}${imgTag}` : imgTag;
-
-      onChange({ target: { name, value: newValue } });
-    }
-  };
-
-  const handleToggle = () => setIsOpen((prev) => !prev);
-
   return (
     <div
       style={{
@@ -46,7 +24,7 @@ const Wysiwyg = ({
     >
       <Label htmlFor={name} message={label} style={{ marginBottom: 10 }} />
 
-      <Editor name={name} onEditorChange={onChange} value={value} />
+      {Boolean(value) && <Editor name={name} onEditorChange={onChange} value={value} />}
 
       <InputDescription
         message={inputDescription}
@@ -57,8 +35,6 @@ const Wysiwyg = ({
         errors={(!noErrorsDescription && errors) || []}
         name={name}
       />
-
-      {spacer}
     </div>
   );
 };
