@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-HeavyItalic.eot');
+    src: local('Lava Pro Heavy Italic'), local('LavaPro-HeavyItalic'),
+        url('LavaPro-HeavyItalic.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-HeavyItalic.woff2') format('woff2'),
+        url('LavaPro-HeavyItalic.woff') format('woff'),
+        url('LavaPro-HeavyItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-BoldItalic.eot');
+    src: local('Lava Pro Bold Italic'), local('LavaPro-BoldItalic'),
+        url('LavaPro-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-BoldItalic.woff2') format('woff2'),
+        url('LavaPro-BoldItalic.woff') format('woff'),
+        url('LavaPro-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-Medium.eot');
+    src: local('Lava Pro Medium'), local('LavaPro-Medium'),
+        url('LavaPro-Medium.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-Medium.woff2') format('woff2'),
+        url('LavaPro-Medium.woff') format('woff'),
+        url('LavaPro-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-Bold.eot');
+    src: local('Lava Pro Bold'), local('LavaPro-Bold'),
+        url('LavaPro-Bold.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-Bold.woff2') format('woff2'),
+        url('LavaPro-Bold.woff') format('woff'),
+        url('LavaPro-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-Regular.eot');
+    src: local('Lava Pro Regular'), local('LavaPro-Regular'),
+        url('LavaPro-Regular.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-Regular.woff2') format('woff2'),
+        url('LavaPro-Regular.woff') format('woff'),
+        url('LavaPro-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-MediumItalic.eot');
+    src: local('Lava Pro Medium Italic'), local('LavaPro-MediumItalic'),
+        url('LavaPro-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-MediumItalic.woff2') format('woff2'),
+        url('LavaPro-MediumItalic.woff') format('woff'),
+        url('LavaPro-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-RegularItalic.eot');
+    src: local('Lava Pro Regular Italic'), local('LavaPro-RegularItalic'),
+        url('LavaPro-RegularItalic.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-RegularItalic.woff2') format('woff2'),
+        url('LavaPro-RegularItalic.woff') format('woff'),
+        url('LavaPro-RegularItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Lava Pro';
+    src: url('LavaPro-Heavy.eot');
+    src: local('Lava Pro Heavy'), local('LavaPro-Heavy'),
+        url('LavaPro-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('LavaPro-Heavy.woff2') format('woff2'),
+        url('LavaPro-Heavy.woff') format('woff'),
+        url('LavaPro-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
