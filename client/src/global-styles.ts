@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
 
-    word-break: break-all;
+    word-break: break-word;
   }
 
   html,

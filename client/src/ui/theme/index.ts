@@ -22,7 +22,7 @@ export const theme = {
   text: {
     h1: {
       color: 'text',
-      fontSize: 5,
+      fontSize: 6,
       fontFamily: 'heading',
       lineHeight: 'h1',
       fontWeight: 'heading',
