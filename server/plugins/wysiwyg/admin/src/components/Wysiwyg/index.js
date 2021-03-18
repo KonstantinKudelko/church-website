@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "lodash";
 import { Label, InputDescription, InputErrors } from "strapi-helper-plugin";
@@ -14,6 +14,8 @@ const Wysiwyg = ({
   onChange,
   value,
 }) => {
+  const bodyIsPresent = Boolean(value);
+
   return (
     <div
       style={{
@@ -24,7 +26,13 @@ const Wysiwyg = ({
     >
       <Label htmlFor={name} message={label} style={{ marginBottom: 10 }} />
 
-      {Boolean(value) && <Editor name={name} onEditorChange={onChange} value={value} />}
+      {bodyIsPresent && (
+        <Editor name={name} onEditorChange={onChange} value={value} />
+      )}
+
+      {!bodyIsPresent && (
+        <Editor name={name} onEditorChange={onChange} value={null} />
+      )}
 
       <InputDescription
         message={inputDescription}

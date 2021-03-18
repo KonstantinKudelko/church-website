@@ -1,4 +1,4 @@
-const api = process.env.API_URL || `http://admin.ke-platform.com`;
+const api = process.env.API_URL || `http://localhost:1337`;
 
 export const ROUTES = {
   api,

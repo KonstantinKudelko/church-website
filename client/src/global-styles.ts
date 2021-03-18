@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
   p {
     margin: 0;
     padding: 0;
+
+    word-break: break-all;
   }
 
   html,
