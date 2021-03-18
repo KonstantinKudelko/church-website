@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import { Grid } from 'theme-ui';
 import { GetStaticProps } from 'next';
@@ -8,7 +7,7 @@ import { Article, ArticleCard } from '~/features/magazine';
 
 export default ({ articles }: { articles: Article[] }) => {
   return (
-    <Grid py={5} m="0 auto" sx={{ maxWidth: 1120 }} columns={[ 2 ]}>
+    <Grid py={5} m="0 auto" sx={{ maxWidth: 1120 }} columns={[2]}>
       {articles.map((article) => {
         const { id, tags, title, cover, excerpt } = article;
 

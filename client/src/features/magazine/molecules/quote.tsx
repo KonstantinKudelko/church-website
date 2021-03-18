@@ -1,19 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import {Text} from "theme-ui";
+import { Text } from 'theme-ui';
 
-type NoteProps = {
+type QuoteProps = {
   data: {
     alignment: string;
     caption: string;
     text: string;
-  }
-}
+  };
+};
 
-export const Note = ({ data: { text } }: NoteProps) => {
+export const Quote = ({ data: { text } }: QuoteProps) => {
   return (
     <Blockquote>
-      <Text as="p" sx={{ variant: 'text.body', fontStyle:'italic' }}>{text}</Text>
+      <Text as="p" sx={{ variant: 'text.body', fontStyle: 'italic' }}>
+        {text}
+      </Text>
     </Blockquote>
   );
 };

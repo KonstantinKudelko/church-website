@@ -6,11 +6,11 @@ import { Link } from '~/ui';
 
 type ArticleCardProps = {
   href: string;
-  tags: { title: string; href: string }[]
-  image: { src: string; alt: string }
+  tags: { title: string; href: string }[];
+  image: { src: string; alt: string };
   title: string;
   excerpt: string;
-}
+};
 
 export const ArticleCard = ({ href, image, title, excerpt }: ArticleCardProps) => (
   <Card href={href}>
@@ -26,7 +26,9 @@ export const ArticleCard = ({ href, image, title, excerpt }: ArticleCardProps) =
       alt={image.alt}
     />
 
-    <Text sx={{ variant: 'text.h2' }} mb={2}>{title}</Text>
+    <Text sx={{ variant: 'text.h2' }} mb={2}>
+      {title}
+    </Text>
 
     <Text sx={{ variant: 'text.body' }}>{excerpt}</Text>
   </Card>
@@ -37,7 +39,7 @@ const Card = styled(Link)`
   grid-column: span 1;
 
   cursor: pointer;
-  transition: all .25s ease;
+  transition: all 0.25s ease;
 
   &:hover {
     transform: translateY(-10px);

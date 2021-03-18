@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Delimiter = styled.div`
   text-align: center;
@@ -9,4 +9,3 @@ export const Delimiter = styled.div`
     word-spacing: 18px;
   }
 `;
-
