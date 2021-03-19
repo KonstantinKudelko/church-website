@@ -12,7 +12,7 @@ export type ArticleProps = {
 
 export const ArticleBlock = ({ title, cover, blocks }: ArticleProps) => {
   return (
-    <Box m="0 auto" py={5} sx={{ maxWidth: '650px' }}>
+    <Box m="0 auto" py={5} mx={[3, 3, 'auto']} sx={{ maxWidth: ['100%', '650px'] }}>
       <Title1 data={{ text: title }} />
 
       {blocks.map((block) => {

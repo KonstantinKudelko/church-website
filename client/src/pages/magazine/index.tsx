@@ -7,7 +7,7 @@ import { Article, ArticleCard } from '~/features/magazine';
 
 export default ({ articles }: { articles: Article[] }) => {
   return (
-    <Grid py={5} m="0 auto" sx={{ maxWidth: 1120 }} columns={[2]}>
+    <Grid m="0 auto" py={5} mx={[3, 'auto']} sx={{ maxWidth: 1120 }} columns={[1, 1, 2]}>
       {articles.map((article) => {
         const { id, tags, title, cover, excerpt } = article;
 

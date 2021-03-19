@@ -1,6 +1,14 @@
+const breakpoints = ['576px', '768px', '1250px'];
+
 export const theme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
+  breakpoints,
+  media: {
+    small: `@media (min-width: ${breakpoints[0]})`,
+    medium: `@media (min-width: ${breakpoints[1]})`,
+    large: `@media (min-width: ${breakpoints[2]})`,
+  },
   colors: {
     text: '#000000',
     gray: '#757575',

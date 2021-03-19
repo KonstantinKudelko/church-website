@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Text, Image } from 'theme-ui';
 
-import { Link } from '~/ui';
+import { Link, theme } from '~/ui';
 
 type ArticleCardProps = {
   href: string;
@@ -35,8 +35,12 @@ export const ArticleCard = ({ href, image, title, excerpt }: ArticleCardProps) =
 );
 
 const Card = styled(Link)`
-  padding: 25px;
+  padding: 15px;
   grid-column: span 1;
+
+  ${theme.media.medium} {
+    padding: 25px;
+  }
 
   cursor: pointer;
   transition: all 0.25s ease;
@@ -47,6 +51,12 @@ const Card = styled(Link)`
   }
 
   &:first-child {
-    grid-column: span 2;
+    grid-column: span 1;
+  }
+
+  ${theme.media.medium} {
+    &:first-child {
+      grid-column: span 2;
+    }
   }
 `;
