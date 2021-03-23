@@ -40,14 +40,14 @@ export type Tag = {
 
 /* -- CONTENT TYPES --- */
 
-type ParagraphBlock = {
+export type ParagraphBlock = {
   type: 'paragraph';
   data: {
     text: string;
   };
 };
 
-type HeaderBlock = {
+export type HeaderBlock = {
   type: 'header';
   data: {
     text: string;
@@ -55,7 +55,7 @@ type HeaderBlock = {
   };
 };
 
-type QuoteBlock = {
+export type QuoteBlock = {
   type: 'quote';
   data: { alignment: string; caption: string; text: string };
 };
