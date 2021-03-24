@@ -51,7 +51,18 @@ export const Paragraph = ({ data: { text } }: TextProps) => {
     <Text
       as="p"
       mb="24px"
-      sx={{ variant: 'text.body' }}
+      sx={{
+        variant: 'text.body',
+        a: {
+          textDecoration: 'none',
+          color: 'text',
+          borderBottom: '1px solid black',
+          transition: 'all  0.2s ease',
+        },
+        'a:hover': {
+          borderBottom: '1px solid transparent',
+        },
+      }}
       ref={(r) => ((r || { innerHTML: '' }).innerHTML = text)}
     />
   );

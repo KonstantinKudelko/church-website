@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Delimiter = styled.div`
   text-align: center;
+  margin-bottom: 24px;
 
   :after {
     content: '• • •';

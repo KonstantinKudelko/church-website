@@ -19,7 +19,7 @@ export const ArticleBlock = ({ title, cover, author, blocks }: ArticleProps) => 
 
       <ArticleHeader author={author} blocks={blocks} />
 
-      <Image mb={4} src={cover} alt="article-cover" />
+      <Image sx={{ minWidth: '100%' }} mb={4} src={cover} alt="article-cover" />
 
       {blocks.map((block) => {
         const Component = getComponent(block);
