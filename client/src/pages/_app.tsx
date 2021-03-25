@@ -25,7 +25,7 @@ const Index = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>РЮЗ</title>
+        <title>Молодежное служение церкви Рождества</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         <link href="/fonts/index.css"></link>
