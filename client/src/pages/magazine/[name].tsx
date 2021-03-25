@@ -2,20 +2,10 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 
 import { ROUTES } from '~/routes';
-import { Article, ArticleBlock, Author } from '~/features/magazine';
+import { Article, ArticleBlock } from '~/features/magazine';
 
 export default ({ article }: { article: Article }) => {
-  const { title, cover, author } = article;
-  const { blocks } = JSON.parse(article.body);
-
-  return (
-    <ArticleBlock
-      author={author as Author}
-      title={title}
-      cover={cover && `${ROUTES.api}${cover.url}`}
-      blocks={blocks}
-    />
-  );
+  return <ArticleBlock article={article} />;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
