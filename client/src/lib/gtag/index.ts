@@ -1,6 +1,6 @@
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
-  window.gtag('config', '192981237', {
+  window.gtag('config', 'G-90MBGTEX58', {
     page_path: url,
   });
 };
