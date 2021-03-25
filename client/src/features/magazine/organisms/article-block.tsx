@@ -20,7 +20,7 @@ export const ArticleBlock = ({ article }: ArticleProps) => {
 
       <ArticleHeader author={author as Author} blocks={blocks} creationDate={created_at} />
 
-      <Image sx={{ minWidth: '100%' }} mb={4} src={cover && `${ROUTES.api}${cover}`} alt="article-cover" />
+      <Image sx={{ minWidth: '100%' }} mb={4} src={cover && `${ROUTES.api}${cover.url}`} alt="article-cover" />
 
       {blocks.map((block) => {
         const Component = getComponent(block);
