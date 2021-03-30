@@ -1,4 +1,3 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [["reshadow/babel", { "postcss": true }]]
+  "presets": ["next/babel"]
 }
