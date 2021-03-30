@@ -9,7 +9,7 @@ export type Article = {
   id: string;
   title: string;
   body: string;
-  cover?: File;
+  cover: File;
   tags: { id: string; title: string }[];
   author: unknown;
   excerpt: string;

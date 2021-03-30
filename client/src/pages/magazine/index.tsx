@@ -19,17 +19,10 @@ export default ({ articles }: { articles: Article[] }) => {
               href: `${ROUTES.api}/tags/${id}`,
             }))}
             href={`magazine/${id}`}
-            image={
-              cover
-                ? {
-                    src: `${ROUTES.api}${cover.url}`,
-                    alt: title,
-                  }
-                : {
-                    src: ROUTES.fallbackImage,
-                    alt: 'not found',
-                  }
-            }
+            image={{
+              src: `${ROUTES.api}${cover.url}`,
+              alt: title,
+            }}
             title={title}
             excerpt={excerpt}
           />

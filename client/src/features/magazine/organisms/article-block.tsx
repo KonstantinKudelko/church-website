@@ -7,7 +7,7 @@ import { ArticleHeader } from './article-header';
 import { Article, Author, Content } from '../types';
 
 export type ArticleProps = {
-  article: Article
+  article: Article;
 };
 
 export const ArticleBlock = ({ article }: ArticleProps) => {
@@ -18,9 +18,18 @@ export const ArticleBlock = ({ article }: ArticleProps) => {
     <Box m="0 auto" py={5} mx={[3, 3, 'auto']} sx={{ maxWidth: ['100%', '650px'] }}>
       <Title1 data={{ text: title }} />
 
-      <ArticleHeader author={author as Author} blocks={blocks} creationDate={created_at} />
+      <ArticleHeader
+        author={author as Author}
+        blocks={blocks}
+        creationDate={created_at}
+      />
 
-      <Image sx={{ minWidth: '100%' }} mb={4} src={cover && `${ROUTES.api}${cover.url}`} alt="article-cover" />
+      <Image
+        sx={{ minWidth: '100%' }}
+        mb={4}
+        src={`${ROUTES.api}${cover.url}`}
+        alt="article-cover"
+      />
 
       {blocks.map((block) => {
         const Component = getComponent(block);
