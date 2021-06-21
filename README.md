@@ -3,4 +3,4 @@
 
 # Rozhdestvo youth website
 
-Right now this wesbsite has only articles 
+Right now this wesbsite has only articles
