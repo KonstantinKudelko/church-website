@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "next": "^10.0.7",
+    "next": "^11.1.0",
     "next-seo": "^4.23.0",
     "preact": "^10.5.12",
     "preact-render-to-string": "^5.1.12",
