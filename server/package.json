@@ -22,7 +22,7 @@
     "@editorjs/quote": "^2.4.0",
     "axios": "^0.21.1",
     "knex": "^0.21.18",
-    "open-graph": "^0.2.4",
+    "open-graph": "^0.2.6",
     "pg": "latest",
     "strapi": "3.5.1",
     "strapi-admin": "3.5.1",
