@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:12
+    container_name: website-db-dev
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=websitedb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    networks:
+      - backend
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    image: website-server:dev
+    container_name: website-server-dev
+    # Define volumes
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=websitedb
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    networks:
+      - backend
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    image: website-client:dev
+    container_name: website-client-dev
+    # Define volumes
+    networks:
+      - frontend
+
+  nginx:
+    # Create nginx folder
+
+volumes:
+  db-data:
+    name: website-db-dev-data
+
+networks:
+  frontend:
+    name: website-network-frontend
+    driver: bridge
+  backend:
+    name: website-network-backend
+    driver: bridge
