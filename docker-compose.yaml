@@ -19,7 +19,6 @@ services:
       dockerfile: Dockerfile.dev
     image: website-server:dev
     container_name: website-server-dev
-    # Define volumes
     environment:
       - DATABASE_CLIENT=postgres
       - DATABASE_HOST=db
@@ -27,6 +26,9 @@ services:
       - DATABASE_NAME=websitedb
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
+    volumes:
+      - /app/node_modules
+      - ./server:/app
     networks:
       - backend
 
@@ -36,12 +38,24 @@ services:
       dockerfile: Dockerfile.dev
     image: website-client:dev
     container_name: website-client-dev
-    # Define volumes
+    volumes:
+      - /app/node_modules
+      - ./client:/app
     networks:
       - frontend
 
   nginx:
-    # Create nginx folder
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.dev
+    image: website-router:dev
+    container_name: website-router-dev
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    networks:
+      - backend
+      - frontend
 
 volumes:
   db-data:
