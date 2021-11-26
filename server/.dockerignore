@@ -1,6 +1,5 @@
 .git
 .cache
-build
 node_modules
 *Dockerfile*
 *docker-compose*

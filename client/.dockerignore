@@ -1,6 +1,5 @@
 .git
 .next
-out
 node_modules
 *Dockerfile*
 *docker-compose*
