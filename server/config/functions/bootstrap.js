@@ -10,6 +10,8 @@
  * See more details here: https://strapi.io/documentation/3.0.0-beta.x/concepts/configurations.html#bootstrap
  */
 
+const faker = require("faker");
+
 /**
  * If strapi doesn't have any admins we create
  * them programmatically.
@@ -59,8 +61,44 @@ const adminCreation = async () => {
   }
 };
 
+const findPublicRole = async () => {
+  const result = await strapi
+    .query("role", "users-permissions")
+    .findOne({ type: "public" });
+  return result;
+};
+
+/**
+ * Enable all operations with models for public users.
+ */
+const setDefaultPermissions = async () => {
+  const role = await findPublicRole();
+  const permissions = await strapi
+    .query("permission", "users-permissions")
+    .find({ type: "application", role: role.id });
+  await Promise.all(
+    permissions.map((p) =>
+      strapi
+        .query("permission", "users-permissions")
+        .update({ id: p.id }, { enabled: true })
+    )
+  );
+};
+
+const createArticles = async () => {
+  for (let i = 0; i < 30; i++) {
+    await strapi.services.article.create({
+      title: faker.lorem.sentence(),
+      body: faker.lorem.paragraphs(),
+      excerpt: faker.lorem.sentence(),
+    });
+  }
+};
+
 module.exports = async () => {
   if (process.env.NODE_ENV === "development") {
     await adminCreation();
+    await setDefaultPermissions();
+    await createArticles();
   }
 };

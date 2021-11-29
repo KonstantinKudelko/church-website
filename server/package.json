@@ -9,7 +9,9 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "faker": "^5.5.3"
+  },
   "dependencies": {
     "@codexteam/ajax": "^4.2.0",
     "@editorjs/delimiter": "^1.2.0",
