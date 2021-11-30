@@ -11,12 +11,18 @@ import DelimiterTool from "@editorjs/delimiter";
 
 import "./index.css";
 
+const EDITORJS_HOLDER = "EDITORJS_HOLDER";
+
 const EditorJS = ({ onEditorChange, name, value }) => {
   const { backendURL } = strapi;
-  const holder = React.useRef();
-  holder.current = holder.current || `editorJS_${Math.random().toString(32)}`;
 
   React.useEffect(() => {
+    if (!value) {
+      return;
+    }
+
+    console.log(value);
+
     new _EditorJS({
       data: JSON.parse(value),
       tools: {
@@ -55,7 +61,7 @@ const EditorJS = ({ onEditorChange, name, value }) => {
           },
         },
       },
-      holder: holder.current,
+      holder: EDITORJS_HOLDER,
       autofocus: true,
       onChange: async (api) => {
         const data = await api.saver.save();
@@ -65,7 +71,7 @@ const EditorJS = ({ onEditorChange, name, value }) => {
     });
   }, []);
 
-  return <div id={holder.current} className="editorjs" />;
+  return <div id={EDITORJS_HOLDER} className="editorjs" />;
 };
 
 EditorJS.propTypes = {

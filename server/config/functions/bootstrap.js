@@ -86,10 +86,22 @@ const setDefaultPermissions = async () => {
 };
 
 const createArticles = async () => {
+  const body = {
+    time: Date.now(),
+    blocks: [
+      {
+        id: Math.random().toString(32),
+        type: "paragraph",
+        data: {
+          text: faker.lorem.paragraph(),
+        },
+      },
+    ],
+  };
   for (let i = 0; i < 30; i++) {
     await strapi.services.article.create({
       title: faker.lorem.sentence(),
-      body: faker.lorem.paragraphs(),
+      body: JSON.stringify(body),
       excerpt: faker.lorem.sentence(),
     });
   }
