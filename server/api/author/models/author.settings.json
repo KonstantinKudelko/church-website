@@ -3,26 +3,25 @@
   "connection": "default",
   "collectionName": "author",
   "info": {
-    "name": "Author"
+    "name": "Author",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
-    "first_name": {
+    "firstName": {
       "type": "string"
     },
-    "last_name": {
+    "lastName": {
       "type": "string"
     },
-    "facebook_url": {
+    "facebookUrl": {
       "type": "string"
     },
-    "instagram_url": {
-      "type": "string"
-    },
-    "linkedin_url": {
+    "instagramUrl": {
       "type": "string"
     },
     "description": {
@@ -32,7 +31,8 @@
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "articles": {
       "via": "author",

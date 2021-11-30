@@ -30,8 +30,8 @@
       "via": "articles"
     },
     "author": {
-      "model": "author",
-      "via": "articles"
+      "via": "articles",
+      "model": "author"
     },
     "excerpt": {
       "type": "string"

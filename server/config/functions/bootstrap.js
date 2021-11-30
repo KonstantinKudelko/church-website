@@ -61,6 +61,17 @@ const adminCreation = async () => {
   }
 };
 
+const isFirstRun = async () => {
+  const pluginStore = strapi.store({
+    environment: strapi.config.environment,
+    type: "type",
+    name: "setup",
+  });
+  const initHasRun = await pluginStore.get({ key: "initHasRun" });
+  await pluginStore.set({ key: "initHasRun", value: true });
+  return !initHasRun;
+};
+
 const findPublicRole = async () => {
   const result = await strapi
     .query("role", "users-permissions")
@@ -86,6 +97,7 @@ const setDefaultPermissions = async () => {
 };
 
 const createArticles = async () => {
+  // Put in a util function
   const body = {
     time: Date.now(),
     blocks: [
@@ -100,17 +112,83 @@ const createArticles = async () => {
   };
   for (let i = 0; i < 30; i++) {
     await strapi.services.article.create({
-      title: faker.lorem.sentence(),
       body: JSON.stringify(body),
+      title: faker.lorem.sentence(),
       excerpt: faker.lorem.sentence(),
     });
   }
 };
 
+const createTags = async () => {
+  for (let i = 0; i < 5; i++) {
+    await strapi.services.tag.create({
+      title: faker.lorem.sentence(),
+    });
+  }
+};
+
+const createAuthors = async () => {
+  // Put in a util function
+  const description = {
+    time: Date.now(),
+    blocks: [
+      {
+        id: Math.random().toString(32),
+        type: "paragraph",
+        data: {
+          text: faker.lorem.paragraph(),
+        },
+      },
+    ],
+  };
+  for (let i = 0; i < 5; i++) {
+    await strapi.services.author.create({
+      lastName: faker.name.lastName(),
+      firstName: faker.name.firstName(),
+      description: JSON.stringify(description),
+      facebookUrl: faker.internet.url(),
+      instagramUrl: faker.internet.url(),
+    });
+  }
+};
+
+const updateArticlesRelations = async () => {
+  const articles = await strapi.services.article.find();
+  const getRandomAuthorId = async () => {
+    const authors = await strapi.services.author.find();
+    // Put in a util function
+    const randomIndex = Math.floor(Math.random() * authors.length);
+    return authors[randomIndex].id;
+  };
+
+  const tags = await strapi.services.tag.find();
+  const getRandomTagsIds = () => {
+    const tagsIds = tags.map((tag) => tag.id);
+    // Put in a util function
+    const randomIndex = Math.floor(Math.random() * tagsIds.length);
+    return tagsIds.slice(0, randomIndex);
+  };
+
+  articles.forEach(async (article) => {
+    const authorId = await getRandomAuthorId();
+    await strapi.services.article.update(
+      { id: article.id },
+      { tags: getRandomTagsIds(), author: authorId }
+    );
+  });
+};
+
 module.exports = async () => {
-  if (process.env.NODE_ENV === "development") {
+  const shouldSetDummyData =
+    process.env.NODE_ENV === "development" && (await isFirstRun());
+
+  if (shouldSetDummyData) {
     await adminCreation();
     await setDefaultPermissions();
+
+    await createTags();
+    await createAuthors();
     await createArticles();
+    await updateArticlesRelations();
   }
 };
