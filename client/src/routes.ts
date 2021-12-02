@@ -1,4 +1,4 @@
-const api = process.env.API_URL || 'https://admin.rozhdestvo-youth.by';
+const api = process.env.API_URL || 'http://website_server_dev:1337';
 
 export const ROUTES = {
   api,

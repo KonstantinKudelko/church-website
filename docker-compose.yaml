@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: postgres:12
-    container_name: website-db-dev
+    container_name: website_db_dev
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
@@ -18,7 +18,7 @@ services:
       context: ./server
       dockerfile: Dockerfile.dev
     image: website-server:dev
-    container_name: website-server-dev
+    container_name: website_server_dev
     environment:
       - DATABASE_CLIENT=postgres
       - DATABASE_HOST=db
@@ -37,11 +37,12 @@ services:
       context: ./client
       dockerfile: Dockerfile.dev
     image: website-client:dev
-    container_name: website-client-dev
+    container_name: website_client_dev
     volumes:
       - /app/node_modules
       - ./client:/app
     networks:
+      - backend
       - frontend
 
   nginx:
@@ -49,7 +50,7 @@ services:
       context: ./nginx
       dockerfile: Dockerfile.dev
     image: website-router:dev
-    container_name: website-router-dev
+    container_name: website_router_dev
     restart: unless-stopped
     ports:
       - 8080:80
