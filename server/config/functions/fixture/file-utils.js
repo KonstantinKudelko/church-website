@@ -22,7 +22,8 @@ const getFileData = (filePath, mimePrefix = "image") => {
   };
 };
 
-const getAuthorFileData = () => getFileData("public/uploads/author-test.jpg");
 const getArticleFileData = () => getFileData("public/uploads/cover-test.jpg");
+const getAuthorFileData = () =>
+  getFileData("public/uploads/author-avatar-test.jpg");
 
 module.exports = { getAuthorFileData, getArticleFileData };
