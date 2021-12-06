@@ -1,6 +1,38 @@
 const faker = require("faker");
+const { getAuthorFileData, getArticleFileData } = require("./file-utils");
 
 const getRandomIndex = (arr) => Math.floor(Math.random() * arr.length);
+
+/**
+ * As we want to add images to our entities in development mode,
+ * we have to use the upload plugin from strapi
+ * where we can assign some images to a particular model.
+ */
+const addFielsToEntry = async (
+  model,
+  entry,
+  { files, fileField } = { files: null, fileField: null }
+) => {
+  if (files && !entry[fileField]) {
+    await strapi.plugins.upload.services.upload.upload({
+      data: {
+        ref: model,
+        refId: entry.id,
+        field: fileField,
+      },
+      files,
+    });
+  }
+};
+
+const createEntry = async (model, entry, fileData) => {
+  try {
+    const createdEntry = await strapi.query(model).create(entry);
+    await addFielsToEntry(model, createdEntry, fileData);
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 /**
  * As we are using Editor.js for rich text fields,
@@ -23,32 +55,46 @@ const createTextData = () => {
 };
 
 const createArticles = async () => {
-  for (let i = 0; i < 30; i++) {
-    await strapi.services.article.create({
-      body: createTextData(),
-      title: faker.lorem.sentence(),
-      excerpt: faker.lorem.sentence(),
-    });
+  for (let i = 0; i < 5; i++) {
+    await createEntry(
+      "article",
+      {
+        body: createTextData(),
+        title: faker.lorem.sentence(),
+        excerpt: faker.lorem.sentence(),
+      },
+      {
+        files: getArticleFileData(),
+        fileField: "cover",
+      }
+    );
   }
 };
 
 const createTags = async () => {
   for (let i = 0; i < 5; i++) {
-    await strapi.services.tag.create({
+    await createEntry("tag", {
       title: faker.lorem.sentence(),
     });
   }
 };
 
 const createAuthors = async () => {
-  for (let i = 0; i < 5; i++) {
-    await strapi.services.author.create({
-      lastName: faker.name.lastName(),
-      firstName: faker.name.firstName(),
-      description: createTextData(),
-      facebookUrl: faker.internet.url(),
-      instagramUrl: faker.internet.url(),
-    });
+  for (let i = 0; i < 3; i++) {
+    await createEntry(
+      "author",
+      {
+        lastName: faker.name.lastName(),
+        firstName: faker.name.firstName(),
+        description: createTextData(),
+        facebookUrl: faker.internet.url(),
+        instagramUrl: faker.internet.url(),
+      },
+      {
+        files: getAuthorFileData(),
+        fileField: "avatar",
+      }
+    );
   }
 };
 

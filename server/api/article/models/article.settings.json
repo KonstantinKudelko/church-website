@@ -23,7 +23,8 @@
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "tags": {
       "collection": "tag",

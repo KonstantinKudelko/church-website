@@ -1,9 +1,8 @@
 import { Box, Image } from 'theme-ui';
 
-import { ROUTES } from '~/routes';
 import { Title1 } from '../atoms/typography';
-import { getComponent } from '../lib/get-component';
 import { ArticleHeader } from './article-header';
+import { getImgUrl, getComponent } from '../lib';
 import { Article, Author, Content } from '../types';
 
 export type ArticleProps = {
@@ -27,7 +26,7 @@ export const ArticleBlock = ({ article }: ArticleProps) => {
       <Image
         sx={{ minWidth: '100%' }}
         mb={4}
-        src={`${ROUTES.api}${cover.url}`}
+        src={getImgUrl(cover.url)}
         alt="article-cover"
       />
 

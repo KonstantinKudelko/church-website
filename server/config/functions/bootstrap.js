@@ -9,7 +9,6 @@
  *
  * See more details here: https://strapi.io/documentation/3.0.0-beta.x/concepts/configurations.html#bootstrap
  */
-
 const adminCreation = require("./fixture/admin-creation");
 const createFixtureData = require("./fixture/data-creation");
 const setDefaultPermissions = require("./fixture/permissions-setting");

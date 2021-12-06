@@ -1,6 +1,6 @@
 import { Text } from '@theme-ui/components';
 
-import { CONTENT_TYPES } from '../lib/content-types';
+import { CONTENT_TYPES } from '../lib';
 import { Content, HeaderBlock, ParagraphBlock, QuoteBlock } from '../types';
 
 type ArticleReadingTime = {
