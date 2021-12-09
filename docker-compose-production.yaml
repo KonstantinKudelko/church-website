@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:12
+    container_name: website_db
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=websitedb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    networks:
+      - backend
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    image: website-server
+    container_name: website_server
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=websitedb
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+    networks:
+      - backend
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    image: website-client
+    container_name: website_client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    networks:
+      - backend
+      - frontend
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+    image: website-router
+    container_name: website_router
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    networks:
+      - backend
+      - frontend
+
+volumes:
+  db-data:
+    name: website-db-data
+
+networks:
+  frontend:
+    name: website-network-frontend
+    driver: bridge
+  backend:
+    name: website-network-backend
+    driver: bridge
