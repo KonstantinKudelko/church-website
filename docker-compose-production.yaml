@@ -27,6 +27,7 @@ services:
       - DATABASE_NAME=websitedb
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
+      - VIRTUAL_HOST=admin.rozhdestvo-youth.by
     volumes:
       - /app/node_modules
       - ./server:/app
@@ -41,6 +42,7 @@ services:
     container_name: website_client
     environment:
       - API_URL=http://website_server:1337
+      - VIRTUAL_HOST=rozhdestvo-youth.by
     volumes:
       - /app/node_modules
       - ./client:/app
@@ -49,14 +51,14 @@ services:
       - frontend
 
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile.prod
-    image: website-router
+    image: jwilder/nginx-proxy
     container_name: website_router
     restart: unless-stopped
     ports:
       - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/production.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
     networks:
       - backend
       - frontend
