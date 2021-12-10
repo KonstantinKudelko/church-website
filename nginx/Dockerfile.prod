@@ -2,10 +2,4 @@ FROM nginx:stable-alpine
 
 EXPOSE 80
 
-COPY ./production/upstream.conf /etc/nginx/conf.d/default.conf
-
-COPY ./production/website-server.conf /etc/nginx/sites-enabled/rozhdestvo-youth.by
-COPY ./production/admin-server.conf /etc/nginx/sites-enabled/admin.rozhdestvo-youth.by
-
-COPY ./production/website-server.conf /etc/nginx/sites-available/rozhdestvo-youth.by
-COPY ./production/admin-server.conf /etc/nginx/sites-available/admin.rozhdestvo-youth.by
+COPY ./production.conf /etc/nginx/conf.d/default.conf
