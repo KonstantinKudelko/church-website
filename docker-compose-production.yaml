@@ -51,14 +51,13 @@ services:
       - frontend
 
   nginx:
-    image: nginxproxy/nginx-proxy
-    container_name: website_router
+    image: nginx:latest
+    container_name: website_router_dev
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./nginx/nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+      - ./nginx/sites-available:/etc/nginx/sites-available
     ports:
-      - 80:80
-      - 443:443
+      - 8080:80
     networks:
       - backend
       - frontend
