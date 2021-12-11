@@ -30,6 +30,8 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+    expose:
+      - 80
     networks:
       - backend
 
@@ -44,6 +46,8 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    expose:
+      - 80
     networks:
       - backend
       - frontend
@@ -53,11 +57,9 @@ services:
     container_name: website_router
     volumes:
       - ./nginx/prod-nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/prod-nginx-upstream.conf:/etc/nginx/conf.d/default.conf
-      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
-      - ./nginx/sites-available:/etc/nginx/sites-available
     ports:
       - 80:80
+      - 443:443
     networks:
       - backend
       - frontend
