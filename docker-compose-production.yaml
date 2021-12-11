@@ -27,7 +27,6 @@ services:
       - DATABASE_NAME=websitedb
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
-      - VIRTUAL_HOST=admin.rozhdestvo-youth.by
     volumes:
       - /app/node_modules
       - ./server:/app
@@ -42,7 +41,6 @@ services:
     container_name: website_client
     environment:
       - API_URL=http://website_server:1337
-      - VIRTUAL_HOST=rozhdestvo-youth.by
     volumes:
       - /app/node_modules
       - ./client:/app
@@ -54,6 +52,7 @@ services:
     image: nginx:latest
     container_name: website_router_dev
     volumes:
+      - ./nginx/prod-nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/sites-enabled:/etc/nginx/sites-enabled
       - ./nginx/sites-available:/etc/nginx/sites-available
     ports:
