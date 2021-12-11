@@ -51,11 +51,10 @@ services:
   nginx:
     image: nginx:latest
     container_name: website_router
-    restart: unless-stopped
+    volumes:
+      - ./nginx/prod-nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
-    volumes:
-      - ./nginx/production.conf:/etc/nginx/nginx.conf
     networks:
       - backend
       - frontend
