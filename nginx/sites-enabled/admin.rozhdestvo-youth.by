@@ -1,7 +1,3 @@
-upstream server {
-  server server:1337;
-}
-
 server {
   listen 80;
 
