@@ -60,7 +60,7 @@ services:
       - ./nginx/sites-enabled:/etc/nginx/sites-enabled
       - ./nginx/sites-available:/etc/nginx/sites-available
     ports:
-      - 8080:80
+      - 80:80
     networks:
       - backend
       - frontend
