@@ -59,7 +59,7 @@ services:
     container_name: website_router
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./nginx/nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
+      - ./nginx/prod-nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
     ports:
       - 80:80
       - 443:443
