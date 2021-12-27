@@ -1,4 +1,14 @@
 ###################
+### Production  ###
+###################
+prod-start:
+	 docker-compose -f docker-compose-production.yaml build db server
+	 docker-compose -f docker-compose-production.yaml up -d db server
+	 docker-compose -f docker-compose-production.yaml build client nginx
+	 docker-compose -f docker-compose-production.yaml up -d client nginx
+
+
+###################
 ### Development ###
 ###################
 dev-start:

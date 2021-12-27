@@ -9,9 +9,6 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {
-    "faker": "^5.5.3"
-  },
   "dependencies": {
     "@codexteam/ajax": "^4.2.0",
     "@editorjs/delimiter": "^1.2.0",
@@ -23,9 +20,10 @@
     "@editorjs/paragraph": "^2.8.0",
     "@editorjs/quote": "^2.4.0",
     "axios": "^0.24.0",
+    "faker": "^5.5.3",
     "knex": "^0.95.14",
     "open-graph": "^0.2.6",
-    "pg": "latest",
+    "pg": "^8.7.1",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
     "strapi-connector-bookshelf": "3.6.8",

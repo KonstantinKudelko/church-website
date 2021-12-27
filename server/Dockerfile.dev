@@ -1,13 +1,13 @@
 # First stage
-FROM node:14.18.1-alpine as BUILD_IMAGE
+FROM node:14.18.1-alpine as builder
 
 # Install dependencies for node-gyp
 RUN apk update && apk add python3 make g++ && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
-COPY ./package.json .
-RUN yarn --frozen-lockfile
+COPY package.json yarn.lock ./
+RUN yarn install
 
 # Second stage
 FROM node:14.18.1-alpine
@@ -15,6 +15,6 @@ FROM node:14.18.1-alpine
 WORKDIR /home/node/app
 
 COPY . .
-COPY --from=BUILD_IMAGE /app/node_modules ./node_modules
+COPY --from=builder /app/node_modules ./node_modules
 
 CMD ["yarn", "run", "develop"]
