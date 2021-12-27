@@ -16,7 +16,7 @@ services:
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     image: website-server
     container_name: website_server
     environment:
@@ -29,8 +29,8 @@ services:
       - DATABASE_PASSWORD=root
       - VIRTUAL_HOST=admin.rozhdestvo-youth.by
     volumes:
-      - /app/node_modules
-      - ./server:/app
+      - /home/node/app/node_modules
+      - ./server:/home/node/app
     expose:
       - 1337
     networks:

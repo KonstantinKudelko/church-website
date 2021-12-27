@@ -30,8 +30,8 @@ services:
     expose:
       - 1337
     volumes:
-      - /app/node_modules
-      - ./server:/app
+      - /home/node/app/node_modules
+      - ./server:/home/node/app
     networks:
       - backend
 
