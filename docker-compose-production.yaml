@@ -7,6 +7,7 @@ services:
   server:
     build:
       context: ./server
+      dockerfile: Dockerfile
     image: website-server
     container_name: website_server
     environment:
@@ -17,6 +18,7 @@ services:
   client:
     build:
       context: ./client
+      dockerfile: Dockerfile
     image: website-client
     container_name: website_client
 
