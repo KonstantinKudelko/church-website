@@ -27,7 +27,7 @@ COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 
 # Run build script with dockerize
-CMD dockerize -wait http://server:1337 yarn build && yarn install --production --ignore-scripts --prefer-offline
+CMD dockerize -wait http://server:1337 yarn build && yarn install --production --ignore-scripts --prefer-offline --frozen-lockfile
 # Remove development dependencies
 RUN npm prune --production
 # Run node-prune utility

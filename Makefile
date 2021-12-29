@@ -1,33 +1,12 @@
 ###################
 ### Production  ###
 ###################
-prod-rebuild:
-	docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build
-	docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up --no-deps -d
-
 prod-start:
 	docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d
 
-prod-up-db:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d db
-
-prod-build-server:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build server
-
-prod-up-server:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d server
-
-prod-build-client:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build client
-
-prod-up-client:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d client
-
-prod-build-router:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build nginx
-
-prod-up-router:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d nginx
+prod-restart:
+	docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build
+	docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up --no-deps -d
 
 ###################
 ### Development ###

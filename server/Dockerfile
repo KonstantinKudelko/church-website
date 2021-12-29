@@ -10,7 +10,7 @@ RUN curl -sfL https://gobinaries.com/tj/node-prune | bash -s -- -b /usr/local/bi
 WORKDIR /app
 
 COPY package.json yarn.lock ./
-RUN yarn --frozen-lockfile
+RUN yarn install --production --ignore-scripts --prefer-offline --frozen-lockfile
 
 RUN yarn build
 
@@ -25,7 +25,6 @@ FROM node:14.18.1-alpine
 
 WORKDIR /app
 
-COPY . .
 COPY --from=builder /app/node_modules ./node_modules
 
 CMD ["yarn", "run", "start"]

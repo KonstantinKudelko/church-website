@@ -14,7 +14,6 @@ FROM node:14.18.1-alpine
 
 WORKDIR /app
 
-COPY . .
 COPY --from=builder /app/node_modules ./node_modules
 
 CMD ["yarn", "run", "develop"]
