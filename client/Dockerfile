@@ -1,9 +1,7 @@
 # Install dependencies only when needed
 FROM node:16-alpine AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk update && apk add libc6-compat curl bash && rm -rf /var/cache/apk/*
-# Install node-prune (https://github.com/tj/node-prune)
-RUN curl -sfL https://install.goreleaser.com/github.com/tj/node-prune.sh | bash -s -- -b /usr/local/bin
+RUN apk update && apk add libc6-compat && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
@@ -14,6 +12,8 @@ RUN yarn install --frozen-lockfile
 # Rebuild the source code only when needed
 FROM node:16-alpine AS builder
 
+# Install curl & bash for node-prune installation
+RUN apk update && apk add curl bash && rm -rf /var/cache/apk/*
 # Install dockerize
 RUN wget https://github.com/jwilder/dockerize/releases/download/v0.0.1/dockerize-linux-amd64-v0.0.1.tar.gz
 RUN tar -C /usr/local/bin -xvzf dockerize-linux-amd64-v0.0.1.tar.gz
