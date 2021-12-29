@@ -10,8 +10,10 @@ services:
       - POSTGRES_DB=websitedb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
+    restart:
+      - always
     networks:
-      - backend
+      - website
 
   server:
     build:
@@ -27,13 +29,15 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=root
       - VIRTUAL_HOST=admin.localhost
+    volumes:
+      - /app/node_modules
+      - ./server:/app
     expose:
       - 1337
-    volumes:
-      - /home/node/app/node_modules
-      - ./server:/home/node/app
+    restart:
+      - always
     networks:
-      - backend
+      - website
 
   client:
     build:
@@ -41,16 +45,15 @@ services:
       dockerfile: Dockerfile.dev
     image: website-client:dev
     container_name: website_client_dev
-    environment:
-      - VIRTUAL_HOST=localhost
     volumes:
       - /app/node_modules
       - ./client:/app
     expose:
       - 3000
+    restart:
+      - always
     networks:
-      - backend
-      - frontend
+      - website
 
   nginx:
     image: nginxproxy/nginx-proxy
@@ -60,18 +63,16 @@ services:
       - ./nginx/dev-nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
     ports:
       - 8080:80
+    restart:
+      - always
     networks:
-      - backend
-      - frontend
+      - website
 
 volumes:
   db-data:
     name: website-db-dev-data
 
 networks:
-  frontend:
-    name: website-network-frontend
-    driver: bridge
-  backend:
-    name: website-network-backend
+  website:
+    name: website-network
     driver: bridge

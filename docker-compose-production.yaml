@@ -2,18 +2,7 @@ version: "3.9"
 
 services:
   db:
-    image: postgres:12
     container_name: website_db
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=websitedb
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=root
-    depends_on:
-      - server
-    networks:
-      - website
 
   server:
     build:
@@ -23,19 +12,7 @@ services:
     environment:
       - NODE_ENV=production
       - DATABASE_CLIENT=postgres
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
-      - DATABASE_NAME=websitedb
-      - DATABASE_USERNAME=root
-      - DATABASE_PASSWORD=root
       - VIRTUAL_HOST=admin.rozhdestvo-youth.by
-    volumes:
-      - /app/node_modules
-      - ./server:/app
-    expose:
-      - 1337
-    networks:
-      - website
 
   client:
     build:
@@ -43,19 +20,8 @@ services:
       network: host
     image: website-client
     container_name: website_client
-    volumes:
-      - /app/node_modules
-      - ./client:/app
-    expose:
-      - 3000
-    depends_on:
-      - server
-    networks:
-      - website
 
   nginx:
-    image: nginxproxy/nginx-proxy
-    container_name: website_router
     volumes:
       - /etc/letsencrypt/:/etc/letsencrypt/
       - /var/run/docker.sock:/tmp/docker.sock:ro
@@ -63,12 +29,6 @@ services:
     ports:
       - 80:80
       - 443:443
-    depends_on:
-      - db
-      - client
-      - server
-    networks:
-      - website
 
 volumes:
   db-data:
