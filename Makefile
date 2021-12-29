@@ -6,13 +6,7 @@ prod-rebuild:
 	docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up --no-deps -d
 
 prod-start:
-	make prod-up-db
-	make prod-build-server
-	make prod-up-server
-	make prod-build-client
-	make prod-up-client
-	make prod-build-router
-	make prod-up-router
+	docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d
 
 prod-up-db:
 	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d db

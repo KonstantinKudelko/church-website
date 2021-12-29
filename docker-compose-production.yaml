@@ -17,7 +17,6 @@ services:
   client:
     build:
       context: ./client
-      network: host
     image: website-client
     container_name: website_client
 
