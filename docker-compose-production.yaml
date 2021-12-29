@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   db:
@@ -10,13 +10,14 @@ services:
       - POSTGRES_DB=websitedb
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
+    depends_on:
+      - server
     networks:
-      - backend
+      - website
 
   server:
     build:
       context: ./server
-      dockerfile: Dockerfile.prod
     image: website-server
     container_name: website_server
     environment:
@@ -29,29 +30,28 @@ services:
       - DATABASE_PASSWORD=root
       - VIRTUAL_HOST=admin.rozhdestvo-youth.by
     volumes:
-      - /home/node/app/node_modules
-      - ./server:/home/node/app
+      - /app/node_modules
+      - ./server:/app
     expose:
       - 1337
     networks:
-      - backend
+      - website
 
   client:
     build:
       context: ./client
-      dockerfile: Dockerfile.prod
+      network: host
     image: website-client
     container_name: website_client
-    environment:
-      - VIRTUAL_HOST=rozhdestvo-youth.by
     volumes:
       - /app/node_modules
       - ./client:/app
     expose:
       - 3000
+    depends_on:
+      - server
     networks:
-      - backend
-      - frontend
+      - website
 
   nginx:
     image: nginxproxy/nginx-proxy
@@ -63,18 +63,18 @@ services:
     ports:
       - 80:80
       - 443:443
+    depends_on:
+      - db
+      - client
+      - server
     networks:
-      - backend
-      - frontend
+      - website
 
 volumes:
   db-data:
     name: website-db-data
 
 networks:
-  frontend:
-    name: website-network-frontend
-    driver: bridge
-  backend:
-    name: website-network-backend
+  website:
+    name: website-network
     driver: bridge

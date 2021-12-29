@@ -11,7 +11,8 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn --frozen-lockfile
 
-ENV API_URL=http://website_server:1337
+ENV API_URL=http://172.24.0.3:1337
+ENV VIRTUAL_HOST=rozhdestvo-youth.by
 
 COPY . .
 RUN yarn build

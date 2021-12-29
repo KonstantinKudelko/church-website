@@ -23,9 +23,9 @@ RUN /usr/local/bin/node-prune
 # Second stage
 FROM node:14.18.1-alpine
 
-WORKDIR /home/node/app
+WORKDIR /app
 
-COPY --from=builder /app/build ./build
+COPY . .
 COPY --from=builder /app/node_modules ./node_modules
 
 CMD ["yarn", "run", "start"]
