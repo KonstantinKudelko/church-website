@@ -1,4 +1,4 @@
-# First stage
+# Install dependencies only when needed
 FROM node:14.18.1-alpine as builder
 
 # Install dependencies for node-gyp
@@ -6,15 +6,15 @@ RUN apk update && apk add python3 make g++ && rm -rf /var/cache/apk/*
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json package-lock.json ./
 
-RUN yarn install
+RUN npm install
 
-# Second stage
+# Copy all the files and run next
 FROM node:14.18.1-alpine
 
 WORKDIR /app
 
 COPY --from=builder /app/node_modules ./node_modules
 
-CMD ["yarn", "develop"]
+CMD ["npm", "run", "develop"]

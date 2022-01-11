@@ -27,4 +27,4 @@ docker-compose up -d
 
 You can use commands from `Makefile` to run project locally as well.
 
-You should be able to open [admin panel](http://admin.localhost:8080/) & [website itself](http://localhost:8080/) and rock!
+You should be able to open [admin panel](http://admin.localhost:8080/) & [website itself](http://localhost:8080/) and rock :rocket:
