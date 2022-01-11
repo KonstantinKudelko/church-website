@@ -7,6 +7,7 @@ RUN apk update && apk add python3 make g++ && rm -rf /var/cache/apk/*
 WORKDIR /app
 
 COPY package.json yarn.lock ./
+
 RUN yarn install
 
 # Second stage
@@ -16,4 +17,4 @@ WORKDIR /app
 
 COPY --from=builder /app/node_modules ./node_modules
 
-CMD ["yarn", "run", "develop"]
+CMD ["yarn", "develop"]

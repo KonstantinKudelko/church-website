@@ -43,6 +43,8 @@ services:
       dockerfile: Dockerfile.dev
     image: website-client:dev
     container_name: website_client_dev
+    environment:
+      - VIRTUAL_HOST=localhost
     volumes:
       - /app/node_modules
       - ./client:/app
@@ -66,7 +68,7 @@ services:
 
 volumes:
   db-data:
-    name: website-db-dev-data
+    name: website-db-data
 
 networks:
   website:

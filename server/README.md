@@ -2,14 +2,17 @@
 
 Here user can create articles and other content
 
+Npm version 6.14.15
+Node version 14.18.1
+
 # API
 
-| action        | request_method | request_url          |
-| ------------- |:--------------:| --------------------:|
-| articles list | GET            | ${host}/articles     |
-| one article   | GET            | ${host}/articles/:id |
-| authors list  | GET            | ${host}/authors      |
-| tags list     | GET            | ${host}/tags         |
+| action        | request_method |          request_url |
+| ------------- | :------------: | -------------------: |
+| articles list |      GET       |     ${host}/articles |
+| one article   |      GET       | ${host}/articles/:id |
+| authors list  |      GET       |      ${host}/authors |
+| tags list     |      GET       |         ${host}/tags |
 
 # CLI Commands
 

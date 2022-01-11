@@ -9,14 +9,14 @@ RUN curl -sfL https://gobinaries.com/tj/node-prune | bash -s -- -b /usr/local/bi
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN yarn install --production --ignore-scripts --prefer-offline --frozen-lockfile
+COPY package.json package-lock.json ./
 
-RUN yarn build
-
+# Install dependencies
+RUN npm ci
+# Build application
+RUN npm run build
 # Remove development dependencies
 RUN npm prune --production
-
 # Run node-prune utility
 RUN /usr/local/bin/node-prune
 
@@ -27,4 +27,4 @@ WORKDIR /app
 
 COPY --from=builder /app/node_modules ./node_modules
 
-CMD ["yarn", "run", "start"]
+CMD ["npm", "start"]
