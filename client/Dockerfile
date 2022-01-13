@@ -23,7 +23,7 @@ COPY . .
 
 COPY --from=deps /app/node_modules ./node_modules
 
-# Run build script with dockerize
+# Build application
 RUN npm run build
 # Remove development dependencies
 RUN npm prune --production

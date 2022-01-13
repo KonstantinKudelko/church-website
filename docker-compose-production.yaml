@@ -16,6 +16,7 @@ services:
 
   client:
     build:
+      network: host
       context: ./client
       dockerfile: Dockerfile
     image: website-client
