@@ -25,6 +25,8 @@ FROM node:14.18.1-alpine
 
 WORKDIR /app
 
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/.cache ./.cache
 COPY --from=builder /app/node_modules ./node_modules
 
 CMD ["npm", "start"]
