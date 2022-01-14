@@ -2,33 +2,23 @@
 ### Production  ###
 ###################
 prod-start:
-	make prod-up-db
-	make prod-build-server
-	make prod-up-server
-	make prod-build-client
-	make prod-up-client
-	make prod-build-router
-	make prod-up-router
+	make prod-start-db
+	make prod-start-server
+	make prod-start-client
+	make prod-start-router
 
-prod-up-db:
+prod-start-db:
 	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d db
 
-prod-build-server:
+prod-start-server:
 	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build server
-
-prod-up-server:
 	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d server
 
-prod-build-client:
+prod-start-client:
 	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build client
-
-prod-up-client:
 	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d client
 
-prod-build-router:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build nginx
-
-prod-up-router:
+prod-start-router:
 	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d nginx
 
 ###################
