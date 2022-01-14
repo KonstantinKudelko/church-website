@@ -14,7 +14,7 @@ COPY package.json package-lock.json ./
 # Install dependencies
 RUN npm ci
 # Build application
-RUN npm run build
+RUN npm run build --clean
 # Remove development dependencies
 RUN npm prune --production
 # Run node-prune utility
