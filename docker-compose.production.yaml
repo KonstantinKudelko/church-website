@@ -26,6 +26,7 @@ services:
       - VIRTUAL_HOST=rozhdestvo-youth.by
 
   nginx:
+    container_name: website_router
     volumes:
       - /etc/letsencrypt/:/etc/letsencrypt/
       - /var/run/docker.sock:/tmp/docker.sock:ro

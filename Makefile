@@ -8,18 +8,18 @@ prod-start:
 	make prod-start-router
 
 prod-start-db:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d db
+	 docker-compose -f docker-compose.yaml -f docker-compose.production.yaml up -d db
 
 prod-start-server:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build server
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d server
+	 docker-compose -f docker-compose.yaml -f docker-compose.production.yaml build server
+	 docker-compose -f docker-compose.yaml -f docker-compose.production.yaml up -d server
 
 prod-start-client:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml build client
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d client
+	 docker-compose -f docker-compose.yaml -f docker-compose.production.yaml build client
+	 docker-compose -f docker-compose.yaml -f docker-compose.production.yaml up -d client
 
 prod-start-router:
-	 docker-compose -f docker-compose.yaml -f docker-compose-production.yaml up -d nginx
+	 docker-compose -f docker-compose.yaml -f docker-compose.production.yaml up -d nginx
 
 ###################
 ### Development ###

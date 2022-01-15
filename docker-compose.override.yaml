@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  server:
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+
+  client:
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+
+  nginx:
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/dev-nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
