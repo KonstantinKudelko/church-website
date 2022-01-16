@@ -38,6 +38,11 @@ WORKDIR /app
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S strapi -u 1001
 
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/plugins ./plugins
+COPY --from=builder /app/config ./config
+COPY --from=builder /app/extensions ./extensions
+COPY --from=builder /app/api ./api
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/.cache ./.cache
 COPY --from=builder /app/package.json ./package.json
