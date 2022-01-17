@@ -9,8 +9,8 @@ COPY package.json package-lock.json ./
 
 RUN npm ci
 
-# Rebuild the source code only when needed
-FROM node:14.18.1-alpine AS builder
+# Rebuild the source code only when needed and run application
+FROM node:14.18.1-alpine
 
 # Install curl & bash for node-prune installation
 RUN apk update && apk add curl bash && rm -rf /var/cache/apk/*
@@ -29,25 +29,5 @@ RUN npm run build
 RUN npm prune --production
 # Run node-prune utility
 RUN /usr/local/bin/node-prune
-
-# Production image, copy all the files and run strapi
-FROM node:14.18.1-alpine AS runner
-
-WORKDIR /app
-
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S strapi -u 1001
-
-COPY --from=builder /app/api ./api
-COPY --from=builder /app/build ./build
-COPY --from=builder /app/.cache ./.cache
-COPY --from=builder /app/config ./config
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/plugins ./plugins
-COPY --from=builder /app/extensions ./extensions
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/node_modules ./node_modules
-
-USER strapi
 
 CMD ["npm", "start"]
