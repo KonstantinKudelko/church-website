@@ -11,7 +11,7 @@ services:
     image: website-server
     container_name: website_server
     volumes:
-      - server-uploads:/app/server/public/uploads
+      - server-uploads:/app/public/uploads
     environment:
       - NODE_ENV=production
       - VIRTUAL_HOST=admin.rozhdestvo-youth.by
