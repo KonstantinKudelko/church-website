@@ -17,14 +17,8 @@ const EditorJS = ({ onEditorChange, name, value }) => {
   const { backendURL } = strapi;
 
   React.useEffect(() => {
-    if (!value) {
-      return;
-    }
-
-    console.log(value);
-
     new _EditorJS({
-      data: JSON.parse(value),
+      data: Boolean(value) ? JSON.parse(value) : {},
       tools: {
         quote: {
           class: QuoteTool,
