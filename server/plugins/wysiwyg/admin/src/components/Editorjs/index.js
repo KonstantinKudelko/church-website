@@ -59,7 +59,6 @@ const EditorJS = ({ onEditorChange, name, value }) => {
       autofocus: true,
       onChange: async (api) => {
         const data = await api.saver.save();
-
         onEditorChange({ target: { name, value: JSON.stringify(data) } });
       },
     });
