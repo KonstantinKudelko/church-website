@@ -14,6 +14,7 @@ const Wysiwyg = ({
   onChange,
   value,
 }) => {
+  const bodyIsPresent = Boolean(value);
   return (
     <div
       style={{
@@ -24,7 +25,13 @@ const Wysiwyg = ({
     >
       <Label htmlFor={name} message={label} style={{ marginBottom: 10 }} />
 
-      <Editor name={name} onEditorChange={onChange} value={value} />
+      {bodyIsPresent && (
+        <Editor name={name} onEditorChange={onChange} value={value} />
+      )}
+
+      {!bodyIsPresent && (
+        <Editor name={name} onEditorChange={onChange} value={null} />
+      )}
 
       <InputDescription
         message={inputDescription}

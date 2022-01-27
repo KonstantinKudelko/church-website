@@ -15,10 +15,12 @@ const EDITORJS_HOLDER = "EDITORJS_HOLDER";
 
 const EditorJS = ({ onEditorChange, name, value }) => {
   const { backendURL } = strapi;
+  const holder = React.useRef();
+  holder.current = holder.current || `editorJS_${Math.random().toString(32)}`;
 
   React.useEffect(() => {
     new _EditorJS({
-      data: Boolean(value) ? JSON.parse(value) : {},
+      data: JSON.parse(value),
       tools: {
         quote: {
           class: QuoteTool,
@@ -55,7 +57,7 @@ const EditorJS = ({ onEditorChange, name, value }) => {
           },
         },
       },
-      holder: EDITORJS_HOLDER,
+      holder: holder.current,
       autofocus: true,
       onChange: async (api) => {
         const data = await api.saver.save();
@@ -64,7 +66,7 @@ const EditorJS = ({ onEditorChange, name, value }) => {
     });
   }, []);
 
-  return <div id={EDITORJS_HOLDER} className="editorjs" />;
+  return <div id={holder.current} className="editorjs" />;
 };
 
 EditorJS.propTypes = {
