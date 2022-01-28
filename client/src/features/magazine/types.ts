@@ -73,11 +73,20 @@ type ImageBlock = {
   };
 };
 
+type ListBlock = {
+  type: 'list';
+  data: {
+    items: string[];
+    style: string;
+  };
+};
+
 export type ContentBlock =
   | ParagraphBlock
   | HeaderBlock
   | QuoteBlock
   | DelimiterBlock
-  | ImageBlock;
+  | ImageBlock
+  | ListBlock;
 
 export type Content = ContentBlock[];

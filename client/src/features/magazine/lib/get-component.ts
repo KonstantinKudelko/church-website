@@ -1,4 +1,5 @@
 import { FC } from '~/utils/types';
+import { List } from '../atoms/list';
 import { Quote } from '../molecules/quote';
 import { Image } from '../molecules/image';
 import { Delimiter } from '../atoms/delimiter';
@@ -7,6 +8,10 @@ import { CONTENT_TYPES } from './content-types';
 import { Paragraph, Title1, Title2, Title3, Title4 } from '../atoms/typography';
 
 export const getComponent = (block: ContentBlock): FC<{ data: any }> => {
+  if (block.type === CONTENT_TYPES.LIST) {
+    return List;
+  }
+
   if (block.type === CONTENT_TYPES.PARAGRAPH) {
     return Paragraph;
   }
