@@ -42,6 +42,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       articles: sortedArticles,
     },
-    revalidate: 1,
   };
 };

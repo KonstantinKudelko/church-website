@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 import { NextSeo } from 'next-seo';
 import { useEffect, useState } from 'preact/hooks';
-import { useRouter } from 'next/router';
 
 import { ROUTES } from '~/routes';
 import { Article, ArticleBlock } from '~/features/magazine';
@@ -42,7 +41,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  console.log(process.env.API_URL, process.env.NEXT_PUBLIC_STATIC_URL);
   const { data: article } = await axios.get<Article>(
     `${ROUTES.api}/articles/${ctx.params!.name}`,
   );
