@@ -3,7 +3,7 @@ import { Grid } from 'theme-ui';
 import { GetStaticProps } from 'next';
 
 import { ROUTES } from '~/routes';
-import { Article, ArticleCard } from '~/features/magazine';
+import { Article, ArticleCard, getImgUrl } from '~/features/magazine';
 
 export default ({ articles }: { articles: Article[] }) => {
   return (
@@ -20,7 +20,7 @@ export default ({ articles }: { articles: Article[] }) => {
             }))}
             href={`magazine/${id}`}
             image={{
-              src: `${ROUTES.api}${cover.url}`,
+              src: getImgUrl(cover.url),
               alt: title,
             }}
             title={title}
@@ -42,6 +42,5 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       articles: sortedArticles,
     },
-    revalidate: 1,
   };
 };

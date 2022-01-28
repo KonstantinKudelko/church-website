@@ -23,15 +23,16 @@
       "model": "file",
       "via": "related",
       "plugin": "upload",
-      "required": false
+      "required": false,
+      "pluginOptions": {}
     },
     "tags": {
       "collection": "tag",
       "via": "articles"
     },
     "author": {
-      "model": "author",
-      "via": "articles"
+      "via": "articles",
+      "model": "author"
     },
     "excerpt": {
       "type": "string"

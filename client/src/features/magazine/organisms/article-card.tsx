@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Text, Image } from 'theme-ui';
+import { Text, Heading } from 'theme-ui';
 
 import { Link, theme } from '~/ui';
 
@@ -14,25 +14,24 @@ type ArticleCardProps = {
 
 export const ArticleCard = ({ href, image, title, excerpt }: ArticleCardProps) => (
   <Card href={href}>
-    <Image
-      sx={{
-        maxHeight: 450,
-        minWidth: '100%',
-        objectFit: 'cover',
-        borderRadius: '5px',
-      }}
-      mb={3}
-      src={image.src}
-      alt={image.alt}
-    />
+    <StyledImage src={image.src} alt={image.alt} style={{ minHeight: '250px' }} />
 
-    <Text sx={{ variant: 'text.h2' }} mb={2}>
+    <Heading as="h2" sx={{ variant: 'text.h2' }} mb={2}>
       {title}
-    </Text>
+    </Heading>
 
     <Text sx={{ variant: 'text.body' }}>{excerpt}</Text>
   </Card>
 );
+
+const StyledImage = styled.img`
+  width: 100%;
+  height: 250px;
+  margin-bottom: ${theme.space[3]}px;
+
+  object-fit: cover;
+  border-radius: 5px;
+`;
 
 const Card = styled(Link)`
   padding: 15px;
@@ -52,6 +51,10 @@ const Card = styled(Link)`
 
   &:first-child {
     grid-column: span 1;
+  }
+
+  &:first-child ${StyledImage} {
+    height: 450px;
   }
 
   ${theme.media.medium} {

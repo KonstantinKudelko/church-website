@@ -11,21 +11,18 @@ export type Article = {
   body: string;
   cover: File;
   tags: { id: string; title: string }[];
-  author: unknown;
+  author: Author;
   excerpt: string;
   created_at: string;
-  hero_cover: File;
-  hero_description: string;
 };
 
 // import authorModel from '../../../server/api/author/models/author.settings.json'
 export type Author = {
   id: string;
-  first_name: string;
-  last_name: string;
-  facebook_url: string;
-  instagram_url: string;
-  linkedin_url: string;
+  firstName: string;
+  lastName: string;
+  facebookUrl: string;
+  instagramUrl: string;
   description: string;
   articles: Article[];
   avatar: File;
@@ -76,11 +73,20 @@ type ImageBlock = {
   };
 };
 
+type ListBlock = {
+  type: 'list';
+  data: {
+    items: string[];
+    style: string;
+  };
+};
+
 export type ContentBlock =
   | ParagraphBlock
   | HeaderBlock
   | QuoteBlock
   | DelimiterBlock
-  | ImageBlock;
+  | ImageBlock
+  | ListBlock;
 
 export type Content = ContentBlock[];

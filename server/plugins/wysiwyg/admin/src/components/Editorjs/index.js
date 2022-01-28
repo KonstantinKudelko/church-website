@@ -11,6 +11,8 @@ import DelimiterTool from "@editorjs/delimiter";
 
 import "./index.css";
 
+const EDITORJS_HOLDER = "EDITORJS_HOLDER";
+
 const EditorJS = ({ onEditorChange, name, value }) => {
   const { backendURL } = strapi;
   const holder = React.useRef();
@@ -59,7 +61,6 @@ const EditorJS = ({ onEditorChange, name, value }) => {
       autofocus: true,
       onChange: async (api) => {
         const data = await api.saver.save();
-
         onEditorChange({ target: { name, value: JSON.stringify(data) } });
       },
     });

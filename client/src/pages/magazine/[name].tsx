@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import axios from 'axios';
 import { NextSeo } from 'next-seo';
 import { useEffect, useState } from 'preact/hooks';
-import { useRouter } from 'next/router';
 
 import { ROUTES } from '~/routes';
 import { Article, ArticleBlock } from '~/features/magazine';

@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:12
+    container_name: website_db_dev
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=websitedb
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    networks:
+      - website
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    image: website-server:dev
+    container_name: website_server_dev
+    environment:
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=websitedb
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+      - VIRTUAL_HOST=admin.localhost
+    expose:
+      - 1337
+    networks:
+      - website
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    image: website-client:dev
+    container_name: website_client_dev
+    environment:
+      - VIRTUAL_HOST=localhost
+    expose:
+      - 3000
+    networks:
+      - website
+
+  nginx:
+    image: nginxproxy/nginx-proxy
+    container_name: website_router_dev
+    ports:
+      - 8080:80
+    networks:
+      - website
+
+volumes:
+  db-data:
+    name: website-db-data
+
+networks:
+  website:
+    name: website-network
+    driver: bridge

@@ -15,7 +15,6 @@ const Wysiwyg = ({
   value,
 }) => {
   const bodyIsPresent = Boolean(value);
-
   return (
     <div
       style={{

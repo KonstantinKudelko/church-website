@@ -1,0 +1,20 @@
+# Install dependencies only when needed
+FROM node:14.18.1-alpine AS builder
+
+# Install dependencies for node-gyp
+RUN apk update && apk add python3 make g++ && rm -rf /var/cache/apk/*
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
+
+RUN npm install
+
+# Rebuild the source code only when needed and run application
+FROM node:14.18.1-alpine
+
+WORKDIR /app
+
+COPY --from=builder /app/node_modules ./node_modules
+
+CMD ["npm", "run", "develop"]
