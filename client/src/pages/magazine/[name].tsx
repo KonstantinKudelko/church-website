@@ -42,6 +42,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
+  console.log(process.env.API_URL, process.env.NEXT_PUBLIC_STATIC_URL);
   const { data: article } = await axios.get<Article>(
     `${ROUTES.api}/articles/${ctx.params!.name}`,
   );
