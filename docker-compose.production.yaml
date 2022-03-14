@@ -30,12 +30,12 @@ services:
   nginx:
     container_name: website_router
     volumes:
-      - /etc/letsencrypt/:/etc/letsencrypt/
+      # - /etc/letsencrypt/:/etc/letsencrypt/
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./nginx/prod-nginx-proxy.conf:/etc/nginx/conf.d/nginx-proxy.conf:ro
     ports:
       - 80:80
-      - 443:443
+      # - 443:443
 
 volumes:
   server-uploads:
