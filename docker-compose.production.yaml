@@ -14,7 +14,7 @@ services:
       - server-uploads:/app/public/uploads
     environment:
       - NODE_ENV=production
-      - VIRTUAL_HOST=admin.rozhdestvo-youth.by
+      - VIRTUAL_HOST=admin.gospel-house.church
 
   client:
     build:
@@ -25,7 +25,7 @@ services:
     container_name: website_client
     environment:
       - NODE_ENV=production
-      - VIRTUAL_HOST=rozhdestvo-youth.by
+      - VIRTUAL_HOST=gospel-house.church
 
   nginx:
     container_name: website_router
