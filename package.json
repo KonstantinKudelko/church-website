@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "church-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:style": "npx stylelint '**/*.css'",
     "format": "npx prettier --write ."
   },
   "dependencies": {
@@ -18,6 +19,8 @@
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.6.2"
+    "prettier": "^2.6.2",
+    "stylelint": "^14.8.2",
+    "stylelint-config-standard": "^25.0.0"
   }
 }
