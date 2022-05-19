@@ -2,8 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@constants": ["src/constants.js"],
+      "@components/*": ["src/components/*"]
     }
   },
   "exclude": ["./node_modules"]
