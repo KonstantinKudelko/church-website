@@ -1,33 +1,13 @@
-import fs from "fs";
-import path from "path";
-import parse from "gray-matter";
+import { Articles } from "@components/articles";
+import { getArticlesMetadata } from "@helpers/mdx.helpers";
 
-import { ARTICLES_DIRECTORY } from "@constants";
-
-export default function Articles({ articles }) {
-  return (
-    <div>
-      {articles.map((article) => (
-        <span key={article.slug}>{article.title}</span>
-      ))}
-    </div>
-  );
-}
-
-export const getStaticProps = () => {
-  const paths = fs
-    .readdirSync(ARTICLES_DIRECTORY)
-    .filter((x) => x.endsWith(".mdx"))
-    .map((fileName) => {
-      const articleFilePath = path.join(ARTICLES_DIRECTORY, fileName);
-      const source = fs.readFileSync(articleFilePath);
-      const { data } = parse(source);
-      return data;
-    });
-
+export const getStaticProps = async () => {
+  const articles = await getArticlesMetadata();
   return {
     props: {
-      articles: paths,
+      articles,
     },
   };
 };
+
+export default Articles;

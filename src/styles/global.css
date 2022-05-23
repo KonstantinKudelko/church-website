@@ -43,3 +43,7 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
+#__next {
+  height: 100%;
+}
