@@ -3,6 +3,7 @@
   "rules": {
     "selector-id-pattern": null,
     "font-family-name-quotes": null,
+    "declaration-empty-line-before": null,
     "custom-property-empty-line-before": null
   }
 }

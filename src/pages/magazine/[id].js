@@ -5,7 +5,7 @@ export const getStaticProps = async ({ params }) => {
   const content = await getArticleContent(params.id);
   return {
     props: {
-      content: content,
+      content,
     },
   };
 };

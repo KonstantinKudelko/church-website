@@ -1,4 +1,9 @@
 :root {
+  --white: white;
+  --black: black;
+
+  --text-color: #1d1b16;
+
   --accent-blue: #6d8ea3;
   --accent-gray: #ccd2d4;
   --accent-pink: #dfb0a4;

@@ -1,3 +1,14 @@
-export const Hero = ({ children }) => {
-  return <h1>{children}</h1>;
+import styles from "./hero.module.css";
+
+export const Hero = ({ src, children }) => {
+  return (
+    <section
+      style={{
+        backgroundImage: `url(${src})`,
+      }}
+      className={styles.hero}
+    >
+      <div className={styles.content}>{children}</div>
+    </section>
+  );
 };

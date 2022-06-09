@@ -1,4 +1,19 @@
 :root {
   --font-lora: "Lora", monospace;
   --font-rostelecom: "Rostelecom", sans-serif;
+
+  --base-font-size: 16px;
+  --base-line-height: 1.5;
+
+  --small-font-size: 0.8rem;
+  --small-line-height: 1.5;
+
+  --hero-header-font-size: 5rem;
+  --hero-header-line-height: 1.2;
+
+  --header-font-size: 2.5rem;
+  --header-line-height: 1.15;
+
+  --subheader-font-size: 1.5rem;
+  --subheader-line-height: 1.33;
 }
