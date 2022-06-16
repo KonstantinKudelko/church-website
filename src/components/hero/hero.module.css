@@ -24,15 +24,45 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 700px;
 
   position: relative;
   z-index: 1;
+
+  text-align: center;
 }
 
 .content h1 {
+  margin-bottom: 40px;
+
   color: var(--white);
   font-size: var(--hero-header-font-size);
   line-height: var(--hero-header-line-height);
-  text-align: center;
+}
+
+.author {
+  display: block;
+
+  color: var(--white);
+  font-family: var(--font-rostelecom);
+  font-size: var(--subheader-font-size);
+  line-height: var(--subheader-line-height);
+}
+
+.date {
+  display: block;
+  padding: 12px 20px;
+  max-width: 175px;
+
+  color: var(--white);
+  text-transform: capitalize;
+  font-size: var(--medium-font-size);
+  line-height: var(--medium-line-height);
+  font-family: var(--font-rostelecom);
+
+  border: 1px solid white;
+  border-radius: 160px;
 }
