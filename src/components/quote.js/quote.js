@@ -1,9 +1,18 @@
 import styles from "./quote.module.css";
 
-export const Quote = ({ children }) => {
+export const Quote = ({ color, quotes, children, authorName }) => {
   return (
     <section className={styles.quote}>
-      <div className={styles.content}>{children}</div>
+      <div
+        style={{
+          backgroundColor: `var(${color})`,
+        }}
+        className={styles.content}
+      >
+        {children}
+        <div className={styles.quotes}>{quotes}</div>
+        <strong className={styles.authorName}>{authorName}</strong>
+      </div>
     </section>
   );
 };

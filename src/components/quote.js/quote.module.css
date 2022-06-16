@@ -1,13 +1,39 @@
 .quote {
-  min-height: 650px;
+  min-height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.content {
-  max-width: 700px;
+.quotes {
+  font-family: "Rostelekom", sans-serif;
+  font-size: 150px;
+  line-height: 225px;
+  color: #d48b2b;
 
+  position: absolute;
+  z-index: 2;
+  top: -56px;
+  left: -22px;
+}
+
+.content {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: center;
+
+  max-width: 630px;
+  padding: 26px 72.5px;
   position: relative;
   z-index: 1;
+}
+
+.content p {
+  margin-bottom: 26px;
+}
+
+.authorName {
+  font-family: "Rostelekom", sans-serif;
+  font-size: 12px;
 }
