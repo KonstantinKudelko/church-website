@@ -37,3 +37,10 @@
   font-family: "Rostelekom", sans-serif;
   font-size: 12px;
 }
+
+@media (max-width: 768px) {
+  .content {
+    margin: 0px 15px;
+    padding: 26px;
+  }
+}
