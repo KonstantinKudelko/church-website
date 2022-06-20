@@ -1,20 +1,7 @@
 .quote {
-  min-height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.quotes {
-  font-family: "Rostelekom", sans-serif;
-  font-size: 150px;
-  line-height: 225px;
-  color: #d48b2b;
-
-  position: absolute;
-  z-index: 2;
-  top: -56px;
-  left: -22px;
 }
 
 .content {
@@ -29,12 +16,25 @@
   z-index: 1;
 }
 
+.content::before {
+  content: '"';
+  font-family: var(--font-rostelecom);
+  font-size: 150px;
+  line-height: 225px;
+  color: #d48b2b;
+
+  position: absolute;
+  z-index: 2;
+  top: -56px;
+  left: -22px;
+}
+
 .content p {
   margin-bottom: 26px;
 }
 
 .authorName {
-  font-family: "Rostelekom", sans-serif;
+  font-family: var(--font-rostelecom);
   font-size: 12px;
 }
 
