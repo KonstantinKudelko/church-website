@@ -1,0 +1,12 @@
+.content > p {
+  width: var(--article-container-width);
+  margin: 0 auto;
+
+  font: var(--font-lora);
+  color: var(--text-color);
+}
+
+.content > p > a {
+  text-decoration: none;
+  color: var(--accent-gray);
+}

@@ -14,8 +14,11 @@
   --header-font-size: 2.5rem;
   --header-line-height: 1.15;
 
-  --quote-font-size: 20px;
-
   --subheader-font-size: 1.5rem;
   --subheader-line-height: 1.33;
+
+  --light-font-weight: 300;
+  --regular-font-weight: 400;
+  --medium-font-weight: 500;
+  --bold-font-weight: 700;
 }

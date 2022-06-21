@@ -1,26 +1,31 @@
-.quote {
+.container {
+  width: var(--article-container-width);
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.content {
-  font-size: var(--quote-font-size);
+.quote {
+  font-size: calc(var(--base-font-size) + 4px);
   font-weight: 500;
   line-height: 30px;
   text-align: center;
 
-  width: var(--width-container);
   padding: 26px 72.5px;
   position: relative;
   z-index: 1;
 }
 
-.content::before {
+.quote em {
+  color: #b4711a;
+}
+
+.quote::before {
   content: '"';
   font-family: var(--font-rostelecom);
-  font-size: 150px;
-  line-height: 225px;
+  font-size: 9.4rem;
+  line-height: 14rem;
   color: #d48b2b;
 
   position: absolute;
