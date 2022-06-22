@@ -66,3 +66,32 @@
   border: 1px solid white;
   border-radius: 160px;
 }
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 550px;
+  }
+
+  .content h1 {
+    margin-bottom: 20px;
+  }
+
+  .date {
+    padding: 8px 17px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero {
+    min-height: 450px;
+  }
+
+  .content {
+    max-width: 100%;
+    margin: 0 10px;
+  }
+
+  .author {
+    margin-bottom: 7px;
+  }
+}
