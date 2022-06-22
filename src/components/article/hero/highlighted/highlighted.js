@@ -1,4 +1,4 @@
-import styles from "./highlighted.module.css";
+import styles from "../highlighted/highlighted.module.css";
 
 export const Highlighted = ({ children, color }) => {
   return (

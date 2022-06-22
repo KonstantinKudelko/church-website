@@ -1,5 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import { components } from "./components";
+
 import styles from "./article.module.css";
 
 export const Article = ({ content }) => {

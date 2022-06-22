@@ -17,8 +17,9 @@
   --subheader-font-size: 1.5rem;
   --subheader-line-height: 1.33;
 
-  --light-font-weight: 300;
+  --extra-light-font-weight: 200;
   --regular-font-weight: 400;
   --medium-font-weight: 500;
+  --demi-bold-font-weight: 600;
   --bold-font-weight: 700;
 }

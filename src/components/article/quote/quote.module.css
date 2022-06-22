@@ -1,32 +1,33 @@
 .container {
   max-width: var(--article-container-width);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quote {
-  font-size: calc(var(--base-font-size) + 4px);
-  font-weight: 500;
-  line-height: 30px;
-  text-align: center;
-
   padding: 26px 72.5px;
+  margin: 0 auto;
+
   position: relative;
   z-index: 1;
+
+  font-size: calc(var(--base-font-size) + 4px);
+  font-weight: 700;
+  line-height: 30px;
+  text-align: center;
 }
 
-.quote em {
-  color: #b4711a;
+.container em {
+  font-weight: 400;
+  color: inherit;
 }
 
-.quote::before {
+.container strong {
+  color: var(--text-color);
+}
+
+.container::before {
   content: '"';
+  font-weight: 400;
   font-family: var(--font-rostelecom);
   font-size: 9.4rem;
   line-height: 14rem;
-  color: #d48b2b;
+  color: inherit;
 
   position: absolute;
   z-index: 2;
