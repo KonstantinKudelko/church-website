@@ -8,18 +8,35 @@
   --small-font-size: 0.8rem;
   --small-line-height: 1.5;
 
-  --hero-header-font-size: 5rem;
-  --hero-header-line-height: 1.2;
-
-  --header-font-size: 2.5rem;
-  --header-line-height: 1.15;
+  --medium-font-size: 1.3rem;
+  --medium-line-height: 1.5;
 
   --subheader-font-size: 1.5rem;
   --subheader-line-height: 1.33;
 
+  --header-font-size: 2.5rem;
+  --header-line-height: 1.15;
+  
+  --hero-header-font-size: 5rem;
+  --hero-header-line-height: 1.2;
+  
   --extra-light-font-weight: 200;
   --regular-font-weight: 400;
   --medium-font-weight: 500;
   --semi-bold-font-weight: 600;
   --bold-font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --base-font-size: 14px;
+    --hero-header-font-size: 3.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --base-font-size: 12px;
+    --hero-header-font-size: 2.9rem;
+  }
 }
