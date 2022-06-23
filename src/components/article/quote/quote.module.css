@@ -1,5 +1,5 @@
 .container {
-  --bg-color: #f1ddb7;
+  --bg-color: #faeddc;
   --accent-text-color: #d48b2b;
 
   max-width: var(--article-container-width);
