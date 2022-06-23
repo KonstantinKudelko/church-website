@@ -5,7 +5,7 @@
   font: var(--font-lora);
   color: var(--text-color);
 }
-/* Тут мы применяем стили лишь для первого уровня ссылок, лишь у первого уровня параграфа */
+/* Стиль применяется к первому уровню ссылок заданного параграфа */
 .content > p > a {
   text-decoration: none;
   color: var(--accent-gray);

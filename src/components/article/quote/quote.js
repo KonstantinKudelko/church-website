@@ -1,16 +1,10 @@
 import styles from "./quote.module.css";
 
-export const Quote = ({ bcgColor, textColor, children, authorName }) => {
+export const Quote = ({ author, children }) => {
   return (
-    <div
-      className={styles.container}
-      style={{
-        backgroundColor: `var(${bcgColor})`,
-        color: `var(${textColor})`,
-      }}
-    >
+    <div className={styles.container}>
       {children}
-      <strong className={styles.authorName}>{authorName}</strong>
+      <strong className={styles.author}>{author}</strong>
     </div>
   );
 };

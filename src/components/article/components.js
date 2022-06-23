@@ -1,11 +1,11 @@
 import { Hero } from "@components/article/hero";
-import { Highlighted } from "@components/article/hero/highlighted";
 import { Quote } from "@components/article/quote";
+import { Highlighted } from "@components/article/hero/highlighted";
 
 const customComponents = {
   Hero,
-  Highlighted,
   Quote,
+  Highlighted,
 };
 
 export const components = {

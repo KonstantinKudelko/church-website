@@ -1,4 +1,7 @@
 .container {
+  --bg-color: #f1ddb7;
+  --accent-text-color: #d48b2b;
+
   max-width: var(--article-container-width);
   padding: 26px 72.5px;
   margin: 0 auto;
@@ -7,41 +10,39 @@
   z-index: 1;
 
   font-size: calc(var(--base-font-size) + 4px);
-  font-weight: 700;
-  line-height: 30px;
+  line-height: calc(var(--base-line-height) + 20px);
   text-align: center;
+  color: var(--accent-text-color);
+  background-color: var(--bg-color);
 }
 
-.container em {
-  font-weight: 400;
-  color: inherit;
+.container p {
+  font-style: italic;
 }
 
 .container strong {
-  color: var(--text-color);
+  color: var(--black);
+  font-style: normal;
 }
 
+/* Кавычки цитаты*/
 .container::before {
-  content: '"';
-  font-weight: 400;
-  font-family: var(--font-rostelecom);
-  font-size: 9.4rem;
-  line-height: 14rem;
+  content: url("/images/magazine/quote.svg");
   color: inherit;
 
   position: absolute;
   z-index: 2;
-  top: -56px;
-  left: -22px;
+  top: 0;
+  left: -21px;
 }
 
 .content p {
   margin-bottom: 26px;
 }
 
-.authorName {
+.author {
   font-family: var(--font-rostelecom);
-  font-size: 12px;
+  font-size: calc(var(--base-font-size) - 4px);
 }
 
 @media (max-width: 768px) {
