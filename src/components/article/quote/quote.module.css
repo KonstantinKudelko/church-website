@@ -25,13 +25,11 @@
   font-style: normal;
 }
 
-/* Кавычки цитаты*/
 .container::before {
   content: url("/images/magazine/quote.svg");
   color: inherit;
 
   position: absolute;
-  z-index: 2;
   top: 0;
   left: -21px;
 }
@@ -46,6 +44,11 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
   .content {
     margin: 0px 15px;
     padding: 26px;
