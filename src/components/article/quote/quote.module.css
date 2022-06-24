@@ -3,21 +3,24 @@
   --accent-text-color: #d48b2b;
 
   max-width: var(--article-container-width);
-  padding: 26px 72.5px;
+  padding: 26px 72px;
   margin: 0 auto;
 
   position: relative;
   z-index: 1;
 
-  font-size: calc(var(--base-font-size) + 4px);
-  line-height: calc(var(--base-line-height) + 20px);
-  text-align: center;
-  color: var(--accent-text-color);
   background-color: var(--bg-color);
+
+  color: var(--accent-text-color);
+  font-size: calc(var(--base-font-size) + 4px);
+  text-align: center;
+  line-height: calc(var(--base-line-height) + 20px);
 }
 
+/* TODO: нужно попросить у Дениса шрифт Lora с жирностью 500 */
 .container p {
   font-style: italic;
+  margin-bottom: 15px;
 }
 
 .container strong {
@@ -26,31 +29,15 @@
 }
 
 .container::before {
-  content: url("/images/magazine/quote.svg");
+  content: url("/images/magazine/yellow-quote-icon.svg");
   color: inherit;
 
   position: absolute;
   top: 0;
-  left: -21px;
-}
-
-.content p {
-  margin-bottom: 26px;
+  left: -20px;
 }
 
 .author {
+  font-size: calc(var(--base-font-size) - 2px);
   font-family: var(--font-rostelecom);
-  font-size: calc(var(--base-font-size) - 4px);
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .content {
-    margin: 0px 15px;
-    padding: 26px;
-  }
 }
