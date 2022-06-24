@@ -1,0 +1,19 @@
+.content > p {
+  max-width: var(--article-container-width);
+  margin: 0 auto;
+
+  font: var(--font-lora);
+  color: var(--text-color);
+}
+/* Стиль применяется к первому уровню ссылок заданного параграфа */
+.content > p > a {
+  text-decoration: none;
+  color: var(--accent-gray);
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin: 0px 15px;
+    padding: 26px;
+  }
+}

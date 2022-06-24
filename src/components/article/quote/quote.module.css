@@ -1,0 +1,56 @@
+.container {
+  --bg-color: #faeddc;
+  --accent-text-color: #d48b2b;
+
+  max-width: var(--article-container-width);
+  padding: 26px 72.5px;
+  margin: 0 auto;
+
+  position: relative;
+  z-index: 1;
+
+  font-size: calc(var(--base-font-size) + 4px);
+  line-height: calc(var(--base-line-height) + 20px);
+  text-align: center;
+  color: var(--accent-text-color);
+  background-color: var(--bg-color);
+}
+
+.container p {
+  font-style: italic;
+}
+
+.container strong {
+  color: var(--black);
+  font-style: normal;
+}
+
+.container::before {
+  content: url("/images/magazine/quote.svg");
+  color: inherit;
+
+  position: absolute;
+  top: 0;
+  left: -21px;
+}
+
+.content p {
+  margin-bottom: 26px;
+}
+
+.author {
+  font-family: var(--font-rostelecom);
+  font-size: calc(var(--base-font-size) - 4px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .content {
+    margin: 0px 15px;
+    padding: 26px;
+  }
+}
