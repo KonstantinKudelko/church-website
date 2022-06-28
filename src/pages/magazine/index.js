@@ -1,4 +1,4 @@
-import { Articles } from "@components/article/articles";
+import { Articles } from "src/articles";
 import { getArticlesMetadata } from "@helpers/mdx.helpers";
 
 export const getStaticProps = async () => {
