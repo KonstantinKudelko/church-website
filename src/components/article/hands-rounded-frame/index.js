@@ -1,1 +1,1 @@
-export * from "../hands-rounded-frame";
+export * from "./hands-rounded-frame";
