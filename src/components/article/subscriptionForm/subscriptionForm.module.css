@@ -11,31 +11,27 @@
 }
 
 .description {
+  display: block;
+  margin: 35px 0;
+
   font-family: var(--font-lora);
   font-weight: var(--medium-font-weight);
   font-size: calc(var(--base-font-size) + 6px);
-
-  margin: 35px 0;
 }
 
 .form {
   width: 100%;
-
-  display: flex;
-
   margin-bottom: 35px;
-}
-
-.inputContainer {
-  margin-right: 20px;
+  display: flex;
 }
 
 .form input {
   width: 210px;
+  margin-right: 20px;
+  padding: 10px;
+
   border: 0;
   background-color: var(--bg-yellow-color);
-
-  padding: 10px;
 
   font-family: var(--font-rostelecom);
   font-size: var(--base-font-size);
@@ -49,13 +45,18 @@
 .submit {
   width: 100%;
   max-width: 170px;
-  background-color: var(--bg-mustard-color);
+  padding: 10px 0 10px 20px;
+  display: flex;
+
   border: 0;
   cursor: pointer;
-
-  padding: 10px 10px 10px 20px;
+  background-color: var(--bg-mustard-color);
 
   font-family: var(--font-rostelecom);
   font-size: var(--base-font-size);
   color: var(--white);
+}
+
+.submit img {
+  margin: auto;
 }

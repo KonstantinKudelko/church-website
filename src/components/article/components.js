@@ -1,5 +1,5 @@
 import { Hero } from "@components/hero";
-import { Form } from "@components/article/form";
+import { Form } from "@components/article/subscriptionForm";
 import { Quote } from "@components/article/quote";
 import { Highlighted } from "@components/highlighted";
 
