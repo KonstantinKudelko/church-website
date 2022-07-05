@@ -1,6 +1,6 @@
-import styles from "./filled.module.css";
+import styles from "./highlightedTextBlock.module.css";
 
-export const Filled = ({ children, color }) => {
+export const HighlightedTextBlock = ({ children, color }) => {
   return (
     <strong className={styles.content} style={{ backgroundColor: `var(${color})` }}>
       {children}
