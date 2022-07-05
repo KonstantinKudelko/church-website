@@ -1,4 +1,8 @@
 .container {
+  --khaki-text-color: #a8906e;
+  --bg-mustard-color: #c07711;
+  --bg-yellow-color: #fbf6ef;
+
   width: var(--article-container-width);
   margin: 0 auto;
 
@@ -17,24 +21,35 @@
 .form {
   width: 100%;
 
+  display: flex;
+
   margin-bottom: 35px;
+}
+
+.inputContainer {
+  margin-right: 20px;
 }
 
 .form input {
   width: 210px;
   border: 0;
-  background-color: var(--background-beige);
+  background-color: var(--bg-yellow-color);
 
   padding: 10px;
-  margin-right: 20px;
 
   font-family: var(--font-rostelecom);
   font-size: var(--base-font-size);
   color: var(--text-color);
 }
 
+.form input::placeholder {
+  color: var(--khaki-text-color);
+}
+
 .submit {
-  background-color: var(--background-beige);
+  width: 100%;
+  max-width: 170px;
+  background-color: var(--bg-mustard-color);
   border: 0;
   cursor: pointer;
 
