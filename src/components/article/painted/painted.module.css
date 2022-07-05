@@ -1,0 +1,17 @@
+.container {
+  width: var(--article-container-width);
+  margin: 0 auto;
+  padding: 25px 40px 35px;
+
+  text-align: center;
+  font-family: var(--lora-font);
+  font-weight: var(--bold-font-weight);
+  font-size: calc(var(--base-font-size) + 0.75rem);
+  line-height: var(--base-line-height);
+  color: var(--white);
+}
+
+.container em {
+  font-weight: var(--medium-font-weight);
+  color: var(--accent-gray);
+}
