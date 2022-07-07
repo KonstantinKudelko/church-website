@@ -1,17 +1,23 @@
-import { Hero } from "@components/hero";
-import { Quote } from "@components/article/quote";
-import { Highlighted } from "@components/highlighted";
-import { Thought } from "@components/article/thought";
-import { HighlightedTextBlock } from "@components/article/highlightedTextBlock";
-import { ColoredTextBlock } from "@components/article/coloredTextBlock";
+import { Hero } from "./hero";
+import { Quote } from "./quote";
+import { Thought } from "./thought";
+import { Highlighted } from "./highlighted";
+import { LowestImage } from "./lowest-image";
+import { HighestImage } from "./highest-image";
+import { SubscriptionForm } from "./subscription-form";
+import { ColoredTextBlock } from "./coloredTextBlock";
+import { HighlightedTextBlock } from "./highlightedTextBlock";
 
 const customComponents = {
   Hero,
   Quote,
-  Highlighted,
   Thought,
-  HighlightedTextBlock,
+  Highlighted,
+  LowestImage,
+  HighestImage,
+  SubscriptionForm,
   ColoredTextBlock,
+  HighlightedTextBlock,
 };
 
 export const components = {
