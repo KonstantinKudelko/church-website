@@ -40,6 +40,7 @@
 
 .form input::placeholder {
   color: var(--khaki-text-color);
+  font-size: calc(var(--base-font-size) + 2px);
 }
 
 .submit {
@@ -53,7 +54,7 @@
   background-color: var(--bg-mustard-color);
 
   font-family: var(--font-rostelecom);
-  font-size: var(--base-font-size);
+  font-size: calc(var(--base-font-size) + 2px);
   color: var(--white);
 }
 
