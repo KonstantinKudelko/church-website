@@ -3,6 +3,7 @@ import { Quote } from "./quote";
 import { Highlighted } from "./highlighted";
 import { LowestImage } from "./lowest-image";
 import { HighestImage } from "./highest-image";
+import { SubscriptionForm } from "./subscription-form";
 
 const customComponents = {
   Hero,
@@ -10,6 +11,7 @@ const customComponents = {
   Highlighted,
   LowestImage,
   HighestImage,
+  SubscriptionForm,
 };
 
 export const components = {
