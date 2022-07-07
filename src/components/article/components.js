@@ -1,13 +1,17 @@
-import { Hero } from "@components/hero";
-import { Form } from "@components/article/subscriptionForm";
-import { Quote } from "@components/article/quote";
-import { Highlighted } from "@components/highlighted";
+import { Hero } from "./hero";
+import { Quote } from "./quote";
+import { Highlighted } from "./highlighted";
+import { LowestImage } from "./lowest-image";
+import { HighestImage } from "./highest-image";
+import { SubscriptionForm } from "./subscriptionForm";
 
 const customComponents = {
   Hero,
-  Form,
   Quote,
   Highlighted,
+  LowestImage,
+  HighestImage,
+  SubscriptionForm,
 };
 
 export const components = {
