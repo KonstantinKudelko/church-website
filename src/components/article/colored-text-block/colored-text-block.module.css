@@ -6,7 +6,7 @@
   text-align: center;
   font-family: var(--lora-font);
   font-weight: var(--bold-font-weight);
-  font-size: calc(var(--base-font-size) + 0.75rem);
+  font-size: calc(var(--base-font-size) + 12px);
   line-height: var(--base-line-height);
   color: var(--white);
 }

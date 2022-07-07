@@ -1,4 +1,4 @@
-import styles from "./coloredTextBlock.module.css";
+import styles from "./colored-text-block.module.css";
 
 export const ColoredTextBlock = ({ children, color }) => {
   return (
