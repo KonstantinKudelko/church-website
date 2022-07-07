@@ -1,4 +1,4 @@
-import styles from "./subscriptionForm.module.css";
+import styles from "./subscription-form.module.css";
 
 export const SubscriptionForm = () => {
   return (
@@ -10,7 +10,7 @@ export const SubscriptionForm = () => {
         <input className={styles.email} name="email" type="email" placeholder="E-mail" />
 
         <button className={styles.submit} type="submit">
-          Подписаться <img src="/images/magazine/icon_right_outline.svg" />
+          Подписаться <img src="/images/magazine/icon-right-outline.svg" />
         </button>
       </form>
     </div>

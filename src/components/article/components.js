@@ -3,7 +3,7 @@ import { Quote } from "./quote";
 import { Highlighted } from "./highlighted";
 import { LowestImage } from "./lowest-image";
 import { HighestImage } from "./highest-image";
-import { SubscriptionForm } from "./subscriptionForm";
+import { SubscriptionForm } from "./subscription-form";
 
 const customComponents = {
   Hero,

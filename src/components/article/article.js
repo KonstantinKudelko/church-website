@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote";
 import { components } from "./components";
-import { SubscriptionForm } from "./subscriptionForm";
+import { SubscriptionForm } from "./subscription-form";
 
 import styles from "./article.module.css";
 
