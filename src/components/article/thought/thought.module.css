@@ -1,0 +1,22 @@
+.container {
+  width: var(--article-container-width);
+  margin: 0 auto;
+}
+
+.container p {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+  font-style: italic;
+  font-family: var(--lora-font);
+  font-weight: var(--medium-font-weight);
+  font-size: calc(var(--base-font-size) + 2.8rem);
+  line-height: var(--base-line-height);
+  color: var(--text-color);
+}
+
+.container strong {
+  font-style: normal;
+  font-weight: var(--bold-font-weight);
+}
