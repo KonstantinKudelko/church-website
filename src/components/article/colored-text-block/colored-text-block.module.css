@@ -2,6 +2,7 @@
   width: var(--article-container-width);
   margin: 0 auto;
   padding: 25px 40px 35px;
+  margin-bottom: 30px;
 
   text-align: center;
   font-family: var(--lora-font);

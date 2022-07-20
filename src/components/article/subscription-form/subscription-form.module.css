@@ -1,13 +1,13 @@
 .container {
+  --bg-yellow-color: #fbf6ef;
   --khaki-text-color: #a8906e;
   --bg-mustard-color: #c07711;
-  --bg-yellow-color: #fbf6ef;
 
   width: var(--article-container-width);
   margin: 0 auto;
 
-  border-top: 1px #c5c5c5 solid;
-  border-bottom: 1px #c5c5c5 solid;
+  border-top: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray);
 }
 
 .description {

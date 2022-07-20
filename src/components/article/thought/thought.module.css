@@ -1,19 +1,23 @@
 .container {
   width: var(--article-container-width);
   margin: 0 auto;
+  margin-bottom: 30px;
+  padding-top: 10px;
+
+  border-top: 1px solid var(--gray);
 }
 
 .container p {
   display: flex;
   flex-direction: column;
 
+  color: var(--text-color);
+  font-size: calc(var(--base-font-size) + 2.8rem);
   text-align: center;
   font-style: italic;
   font-family: var(--lora-font);
   font-weight: var(--medium-font-weight);
-  font-size: calc(var(--base-font-size) + 2.8rem);
   line-height: var(--base-line-height);
-  color: var(--text-color);
 }
 
 .container strong {

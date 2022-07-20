@@ -1,5 +1,5 @@
-import { Hero } from "./hero";
 import { Quote } from "./quote";
+import { Header } from "./header";
 import { Thought } from "./thought";
 import { Highlighted } from "./highlighted";
 import { LowestImage } from "./lowest-image";
@@ -9,8 +9,8 @@ import { ColoredTextBlock } from "./colored-text-block";
 import { HighlightedTextBlock } from "./highlighted-text-block";
 
 const customComponents = {
-  Hero,
   Quote,
+  Header,
   Thought,
   Highlighted,
   LowestImage,

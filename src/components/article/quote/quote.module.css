@@ -5,6 +5,7 @@
   max-width: var(--article-container-width);
   padding: 26px 72px;
   margin: 0 auto;
+  margin-bottom: 30px;
 
   position: relative;
   z-index: 1;

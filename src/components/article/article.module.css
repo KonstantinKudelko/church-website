@@ -1,9 +1,15 @@
+.content {
+  padding-bottom: 30px;
+}
+
 .content > p {
   max-width: var(--article-container-width);
   margin: 0 auto;
+  margin-bottom: 30px;
 
-  font: var(--font-lora);
   color: var(--text-color);
+  font-size: calc(var(--base-font-size) + 2px);
+  font-family: var(--font-lora);
 }
 
 /* Стиль применяется к первому уровню ссылок заданного параграфа */

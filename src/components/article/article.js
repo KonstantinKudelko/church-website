@@ -6,10 +6,10 @@ import styles from "./article.module.css";
 
 export const Article = ({ content }) => {
   return (
-    <main className={styles.content}>
+    <article className={styles.content}>
       <MDXRemote compiledSource={content} components={components} />
 
       <SubscriptionForm />
-    </main>
+    </article>
   );
 };
