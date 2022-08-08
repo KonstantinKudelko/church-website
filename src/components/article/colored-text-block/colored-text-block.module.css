@@ -1,4 +1,6 @@
 .container {
+  --accent-text-color: #c5cdd2;
+
   width: var(--article-container-width);
   margin: 0 auto;
   padding: 25px 40px 35px;
@@ -14,5 +16,5 @@
 
 .container em {
   font-weight: var(--medium-font-weight);
-  color: var(--accent-gray);
+  color: var(--accent-text-color);
 }

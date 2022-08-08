@@ -40,29 +40,31 @@
   margin-bottom: 40px;
 
   color: var(--white);
-  font-size: var(--hero-header-font-size);
-  line-height: var(--hero-header-line-height);
+  font-size: 4.6em;
+  line-height: 1.2em;
 }
 
 .author {
   display: block;
 
   color: var(--white);
+  font-size: 1.2em;
   font-family: var(--font-rostelecom);
-  font-size: var(--subheader-font-size);
-  line-height: var(--subheader-line-height);
+  font-weight: var(--medium-font-weight);
+  line-height: 1em;
 }
 
 .date {
   display: block;
   padding: 12px 20px;
-  max-width: 175px;
+  padding-top: 14px;
 
   color: var(--white);
   text-transform: capitalize;
-  font-size: var(--medium-font-size);
-  line-height: var(--medium-line-height);
+  font-size: 1.1em;
   font-family: var(--font-rostelecom);
+  font-weight: var(--medium-font-weight);
+  line-height: 1em;
 
   border: 1px solid white;
   border-radius: 160px;

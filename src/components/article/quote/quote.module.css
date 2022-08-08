@@ -1,6 +1,6 @@
 .container {
   --bg-color: #faeddc;
-  --accent-text-color: #d48b2b;
+  --accent-text-color: #b4711a;
 
   max-width: var(--article-container-width);
   padding: 26px 72px;
@@ -21,6 +21,7 @@
 /* TODO: нужно попросить у Дениса шрифт Lora с жирностью 500 */
 .container p {
   font-style: italic;
+  font-weight: var(--medium-font-weight);
   margin-bottom: 15px;
 }
 

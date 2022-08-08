@@ -1,0 +1,36 @@
+.passage {
+  --verse-number-color: #d2ad7c;
+
+  width: 440px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+  font-size: calc(var(--base-font-size) - 3px);
+  font-family: var(--font-rostelecom);
+  font-weight: var(--medium-font-weight);
+}
+
+.verse {
+  margin-bottom: 20px;
+}
+
+.verse:last-of-type {
+  margin-bottom: 10px;
+}
+
+.verse span {
+  color: var(--verse-number-color);
+  margin-right: 5px;
+}
+
+.verse p {
+  display: inline;
+}
+
+.link {
+  display: block;
+  text-align: right;
+
+  color: var(--verse-number-color);
+  text-decoration: underline;
+}
