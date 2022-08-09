@@ -1,20 +1,30 @@
 .container {
   --accent-text-color: #c5cdd2;
 
-  width: var(--article-container-width);
+  max-width: var(--article-container-width);
   margin: 0 auto;
-  padding: 25px 40px 35px;
+  padding: 25px 40px;
   margin-bottom: 30px;
 
+  color: var(--white);
   text-align: center;
+  font-size: 1.55em;
   font-family: var(--lora-font);
   font-weight: var(--bold-font-weight);
-  font-size: calc(var(--base-font-size) + 12px);
   line-height: var(--base-line-height);
-  color: var(--white);
 }
 
 .container em {
-  font-weight: var(--medium-font-weight);
   color: var(--accent-text-color);
+  font-weight: var(--medium-font-weight);
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }

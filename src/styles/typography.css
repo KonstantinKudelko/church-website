@@ -27,16 +27,8 @@
   --bold-font-weight: 700;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   :root {
-    --base-font-size: 14px;
-    --hero-header-font-size: 3.7rem;
-  }
-}
-
-@media (max-width: 576px) {
-  :root {
-    --base-font-size: 12px;
-    --hero-header-font-size: 2.9rem;
+    --base-font-size: 16px;
   }
 }

@@ -8,7 +8,7 @@ export const LowestImage = ({ isRounded, src }) => {
         alt="lowest-article-image"
         className={styles.content}
         style={{
-          borderRadius: isRounded ? "35px" : "0px",
+          borderRadius: isRounded ? "15px" : "0px",
         }}
       ></img>
     </div>

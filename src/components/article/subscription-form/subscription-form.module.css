@@ -3,7 +3,7 @@
   --khaki-text-color: #a8906e;
   --bg-mustard-color: #c07711;
 
-  width: var(--article-container-width);
+  max-width: var(--article-container-width);
   margin: 0 auto;
 
   border-top: 1px solid var(--gray);
@@ -21,7 +21,7 @@
 
 .form {
   width: 100%;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   display: flex;
 }
 
@@ -60,4 +60,43 @@
 
 .submit img {
   margin: auto;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .form input {
+    width: 100%;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .description {
+    margin: 20px 0;
+  }
+
+  .form {
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+
+  .form input {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  .submit {
+    max-width: 100%;
+    justify-content: space-between;
+  }
+
+  .submit img {
+    margin: 0;
+    margin-right: 15px;
+  }
 }

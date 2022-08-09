@@ -1,11 +1,11 @@
 .passage {
   --verse-number-color: #d2ad7c;
 
-  width: 440px;
+  max-width: 440px;
   margin: 0 auto;
   margin-bottom: 30px;
 
-  font-size: calc(var(--base-font-size) - 3px);
+  font-size: 0.85em;
   font-family: var(--font-rostelecom);
   font-weight: var(--medium-font-weight);
 }
@@ -33,4 +33,12 @@
 
   color: var(--verse-number-color);
   text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  .passage {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }

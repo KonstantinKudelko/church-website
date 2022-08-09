@@ -1,4 +1,6 @@
 .content {
+  --article-container-width: 630px;
+
   padding-bottom: 30px;
 }
 
@@ -16,4 +18,12 @@
 .content > p > a {
   text-decoration: none;
   color: var(--accent-gray);
+}
+
+@media (max-width: 768px) {
+  .content > p {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
