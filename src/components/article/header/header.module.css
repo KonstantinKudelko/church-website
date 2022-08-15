@@ -8,7 +8,7 @@
   position: relative;
 
   background-size: cover;
-  background-position: top center;
+  background-position: center;
 }
 
 .header::after {
@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 700px;
+  max-width: 800px;
 
   position: relative;
   z-index: 1;
@@ -46,6 +46,7 @@
 
 .author {
   display: block;
+  margin-bottom: 20px;
 
   color: var(--white);
   font-size: 1.2em;

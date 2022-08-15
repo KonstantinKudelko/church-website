@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import parse from "gray-matter";
+import unwrapImages from "remark-unwrap-images";
 import { serialize } from "next-mdx-remote/serialize";
 
 const ROOT_DIRECTORY = process.cwd();
@@ -22,7 +23,11 @@ export const getArticlesNames = async () => {
 export const getArticleContent = async (fileName) => {
   const source = getArticleSource(fileName);
   const { content } = parse(source);
-  const { compiledSource } = await serialize(content);
+  const { compiledSource } = await serialize(content, {
+    mdxOptions: {
+      remarkPlugins: [unwrapImages],
+    },
+  });
   return compiledSource;
 };
 

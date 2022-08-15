@@ -1,0 +1,9 @@
+.divider::after {
+  content: "* * *";
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 1.8em;
+  text-align: center;
+  font-family: var(--font-rostelecom);
+}

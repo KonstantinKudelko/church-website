@@ -12,7 +12,6 @@ export const SubscriptionForm = () => {
 
         <button className={styles.submit} type="submit">
           Подписаться
-          <img src="/images/magazine/icon-right-outline.svg" />
         </button>
       </form>
     </div>
