@@ -1,8 +1,8 @@
 import { localizeDateString } from "@utils/localize-date-string";
 
-import styles from "./header.module.css";
+import styles from "./article-header.module.css";
 
-export const Header = ({ src, date, author, children }) => {
+export const ArticleHeader = ({ src, date, author, children }) => {
   return (
     <header
       style={{
