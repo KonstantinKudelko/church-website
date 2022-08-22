@@ -9,7 +9,16 @@ export const SubscriptionForm = () => {
 
   return (
     <div className={styles.container}>
-      <span className={styles.description}>Подпишись на новые статьи</span>
+      <span className={styles.header}>Подпишись на наш ресурс</span>
+
+      <span className={styles.description}>
+        Мы создаём основанный на Евангелии контент, который трансформирует жизнь христианина и
+        побуждает его благовествовать окружающим.
+      </span>
+
+      <span className={styles.description}>
+        Никакого спама. В любой момент ты можешь отписаться от нашей рассылки.
+      </span>
 
       <form className={styles.form} onSubmit={onSubmitForm}>
         <input className={styles.name} name="name" type="name" placeholder="Имя" />

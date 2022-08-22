@@ -5,23 +5,30 @@
 
   max-width: var(--article-container-width);
   margin: 0 auto;
+  padding-top: 28px;
+  padding-bottom: 40px;
 
   border-top: 1px solid var(--gray);
   border-bottom: 1px solid var(--gray);
 }
 
-.description {
+.header {
   display: block;
-  margin: 35px 0;
+  margin-bottom: 24px;
 
   font-size: 1.3em;
   font-family: var(--font-lora);
   font-weight: var(--medium-font-weight);
 }
 
+.description {
+  display: block;
+  margin-bottom: 16px;
+}
+
 .form {
   width: 100%;
-  margin-bottom: 40px;
+  margin-top: 32px;
   display: flex;
 }
 
