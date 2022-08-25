@@ -65,6 +65,7 @@
 }
 
 .submit {
+  min-height: 47px;
   padding: 10px 20px;
   display: flex;
   align-items: center;
