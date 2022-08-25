@@ -1,0 +1,24 @@
+.figure {
+  max-width: var(--article-container-width);
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.img {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.caption {
+  font-size: 0.8em;
+  text-align: center;
+  font-weight: var(--medium-font-weight);
+}
+
+@media (max-width: 768px) {
+  .figure {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

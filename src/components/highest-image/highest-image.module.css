@@ -1,0 +1,18 @@
+.container {
+  max-width: var(--article-container-width);
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.content {
+  width: 100%;
+  max-height: 300px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

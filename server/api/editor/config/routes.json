@@ -1,9 +1,0 @@
-{
-  "routes": [
-    {
-      "method": "GET",
-      "path": "/editor/get-link",
-      "handler": "editor.getLink"
-    }
-  ]
-}

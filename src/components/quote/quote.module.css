@@ -1,0 +1,54 @@
+.container {
+  --bg-color: #faeddc;
+  --accent-text-color: #b4711a;
+
+  max-width: var(--article-container-width);
+  padding: 26px 72px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+  position: relative;
+  z-index: 1;
+
+  background-color: var(--bg-color);
+
+  color: var(--accent-text-color);
+  font-size: 1.3em;
+  text-align: center;
+  line-height: 1.45em;
+}
+
+.container p {
+  font-style: italic;
+  font-weight: var(--medium-font-weight);
+  margin-bottom: 15px;
+}
+
+.container strong {
+  color: var(--black);
+  font-style: normal;
+}
+
+.container::before {
+  content: url("/images/magazine/yellow-quote-icon.svg");
+  color: inherit;
+
+  position: absolute;
+  top: 0;
+  left: -20px;
+}
+
+.author {
+  font-size: 0.7em;
+  font-family: var(--font-rostelecom);
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}

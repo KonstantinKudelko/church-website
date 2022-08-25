@@ -1,0 +1,29 @@
+{
+  "name": "church-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:style": "npx stylelint '**/*.css'",
+    "format": "npx prettier --write ."
+  },
+  "dependencies": {
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "eslint": "8.15.0",
+    "eslint-config-next": "12.1.6",
+    "eslint-config-prettier": "^8.5.0",
+    "gray-matter": "^4.0.3",
+    "next-mdx-remote": "^4.0.3",
+    "prettier": "^2.6.2",
+    "remark-unwrap-images": "^3.0.1",
+    "stylelint": "^14.8.2",
+    "stylelint-config-standard": "^25.0.0"
+  }
+}

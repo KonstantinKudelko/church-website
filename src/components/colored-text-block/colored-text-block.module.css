@@ -1,0 +1,30 @@
+.container {
+  --accent-text-color: #c5cdd2;
+
+  max-width: var(--article-container-width);
+  margin: 0 auto;
+  padding: 25px 40px;
+  margin-bottom: 30px;
+
+  color: var(--white);
+  text-align: center;
+  font-size: 1.55em;
+  font-family: var(--lora-font);
+  font-weight: var(--bold-font-weight);
+  line-height: var(--base-line-height);
+}
+
+.container em {
+  color: var(--accent-text-color);
+  font-weight: var(--medium-font-weight);
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
