@@ -57,7 +57,7 @@ export const SubscriptionForm = () => {
         <span className={styles.header}>Поздравляем с подпиской!</span>
 
         <span className={styles.description}>
-          Мы молимся и верим, что наш ресурс поможет тебе возрастать в христианской вере.
+          Мы молимся и верим, что наш ресурс поможет вам возрастать в христианской вере!
         </span>
       </div>
     );
@@ -73,7 +73,7 @@ export const SubscriptionForm = () => {
       </span>
 
       <span className={styles.description}>
-        Никакого спама. В любой момент ты можешь отписаться от нашей рассылки.
+        Никакого спама. В любой момент вы можете отписаться от нашей рассылки.
       </span>
 
       <form className={styles.form} onSubmit={onSubmitForm}>
