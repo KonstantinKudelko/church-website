@@ -39,3 +39,9 @@ export const getArticlesMetadata = async () => {
     return data;
   });
 };
+
+export const getArticleMetadata = async (fileName) => {
+  const source = getArticleSource(fileName);
+  const { data } = parse(source);
+  return data;
+};

@@ -3,13 +3,27 @@ import { components } from "./components";
 import { SubscriptionForm } from "@components/subscription-form";
 
 import styles from "./article.module.css";
+import Head from "next/head";
 
-export const Article = ({ content }) => {
+export const Article = ({ content, metadata }) => {
+  const { slug, title, description } = metadata;
   return (
-    <article className={styles.content}>
-      <MDXRemote compiledSource={content} components={components} />
+    <>
+      <Head>
+        <title>{title}</title>
+        <description>{description}</description>
 
-      <SubscriptionForm />
-    </article>
+        <meta property="og:url" content={`${process.env.VERCEL_URL}${slug}`} />
+        <meta property="og:image" content={slug} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+      </Head>
+
+      <article className={styles.content}>
+        <MDXRemote compiledSource={content} components={components} />
+
+        <SubscriptionForm />
+      </article>
+    </>
   );
 };

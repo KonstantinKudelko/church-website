@@ -1,11 +1,13 @@
 import { Article } from "@views/article";
-import { getArticleContent, getArticlesNames } from "@helpers/mdx.helpers";
+import { getArticleContent, getArticleMetadata, getArticlesNames } from "@helpers/mdx.helpers";
 
 export const getStaticProps = async ({ params }) => {
   const content = await getArticleContent(params.id);
+  const metadata = await getArticleMetadata(params.id);
   return {
     props: {
       content,
+      metadata,
     },
   };
 };
