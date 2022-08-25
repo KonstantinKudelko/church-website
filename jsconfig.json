@@ -6,6 +6,7 @@
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"],
       "@helpers/*": ["./src/helpers/*"],
+      "@constants": ["src/constants/index.js"],
       "@components/*": ["src/components/*"]
     }
   },
