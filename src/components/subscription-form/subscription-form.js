@@ -1,3 +1,4 @@
+import { ADDRESS_BOOK_ID } from "@constants";
 import { useState } from "react";
 import { Spinner } from "./spinner";
 
@@ -11,44 +12,34 @@ export const SubscriptionForm = () => {
     event.preventDefault();
     setLoading(true);
 
-    const token = `Bearer ${localStorage.getItem("token")}`;
-    fetch(`https://api.sendpulse.com/addressbooks/`, {
-      method: "GET",
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then(async (response) => {
-        const json = await response.json();
-        return json[0].id;
-      })
-      .then(async (bookId) => {
-        const body = new FormData();
-        body.append("id", bookId);
-        body.append(
-          "emails",
-          JSON.stringify([
-            {
-              email: event.target.email.value,
-              variables: {
-                name: event.target.name.value,
-              },
-            },
-          ]),
-        );
-        const response = await fetch(`https://api.sendpulse.com/addressbooks/${bookId}/emails`, {
-          method: "POST",
-          body,
-          headers: {
-            Authorization: token,
+    const body = new FormData();
+    body.append("id", ADDRESS_BOOK_ID);
+    body.append(
+      "emails",
+      JSON.stringify([
+        {
+          email: event.target.email.value,
+          variables: {
+            name: event.target.name.value,
           },
-        });
+        },
+      ]),
+    );
+    const response = await fetch(
+      `https://api.sendpulse.com/addressbooks/${ADDRESS_BOOK_ID}/emails`,
+      {
+        method: "POST",
+        body,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      },
+    );
 
-        if (response.ok) {
-          setLoading(false);
-          setSuccess(true);
-        }
-      });
+    if (response.ok) {
+      setLoading(false);
+      setSuccess(true);
+    }
   };
 
   if (isSuccess) {
