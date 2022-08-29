@@ -16,7 +16,6 @@ export const Article = ({ content, metadata }) => {
 
         <meta property="og:type" content="website" />
         <meta property="og:image" content={getAbsoluteUrl(hero)} />
-        <meta property="og:image:secure_url" content={getAbsoluteUrl(hero)} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
       </Head>
