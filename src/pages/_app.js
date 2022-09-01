@@ -4,10 +4,10 @@ import "@styles/palette.css";
 import "@styles/global.css";
 
 import Script from "next/script";
-import { GTM_KEY } from "@constants";
+import * as gtag from "@helpers/gtm.helper";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { gtmVirtualPageView } from "@helpers/gtm.helper";
+import { GTM_KEY, WEBSITE_BASE_URL } from "@constants";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -30,24 +30,32 @@ export default function App({ Component, pageProps }) {
 
     sendPulseAuth();
 
-    const mainDataLayer = {
-      url: router.pathname,
-      pageTypeName: pageProps.page || null,
+    const pageUrl = `${WEBSITE_BASE_URL}${router.asPath}`;
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
     };
 
-    gtmVirtualPageView(mainDataLayer);
-  }, [router.pathname, pageProps.page]);
+    handleRouteChange(pageUrl);
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events, router.asPath]);
 
   return (
     <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GTM_KEY}`}
+        strategy="afterInteractive"
+      />
       <Script id="google-tag-manager" strategy="afterInteractive">
         {`
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','${GTM_KEY}');
-      `}
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GTM_KEY}');
+        `}
       </Script>
 
       <Component {...pageProps} />

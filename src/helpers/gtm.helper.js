@@ -1,6 +1,17 @@
-export const gtmVirtualPageView = (rest) => {
-  window.dataLayer.push({
-    event: "VirtualPageView",
-    ...rest,
+import { GTM_KEY } from "@constants";
+
+// https://developers.google.com/analytics/devguides/collection/gtagjs/pages
+export const pageview = (url) => {
+  window.gtag("config", GTM_KEY, {
+    page_path: url,
+  });
+};
+
+// https://developers.google.com/analytics/devguides/collection/gtagjs/events
+export const event = ({ action, category, label, value }) => {
+  window.gtag("event", action, {
+    event_category: category,
+    event_label: label,
+    value: value,
   });
 };
