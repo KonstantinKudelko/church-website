@@ -10,8 +10,20 @@
   margin-bottom: 30px;
 
   color: var(--text-color);
-  font-size: calc(var(--base-font-size) + 2px);
+  font-size: var(--base-font-size);
   font-family: var(--font-lora);
+  line-height: var(--base-line-height);
+}
+
+.content > h2 {
+  max-width: var(--article-container-width);
+  margin: 0 auto;
+  margin-bottom: 30px;
+
+  color: var(--text-color);
+  font-size: var(--subheader-font-size);
+  font-family: var(--font-lora);
+  line-height: var(--subheader-line-height);
 }
 
 /* Стиль применяется к первому уровню ссылок заданного параграфа */
@@ -25,7 +37,7 @@
 }
 
 @media (max-width: 768px) {
-  .content > p {
+  .content > p, .content > h2  {
     max-width: 100%;
     margin-left: 10px;
     margin-right: 10px;

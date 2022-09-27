@@ -1,6 +1,4 @@
 .container {
-  --accent-text-color: #c5cdd2;
-
   max-width: var(--article-container-width);
   margin: 0 auto;
   padding: 25px 40px;
@@ -15,7 +13,7 @@
 }
 
 .container em {
-  color: var(--accent-text-color);
+  color: var(--white);
   font-weight: var(--medium-font-weight);
 }
 
