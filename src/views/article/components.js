@@ -5,6 +5,7 @@ import { Thought } from "@components/thought";
 import { Highlighted } from "@components/highlighted";
 import { LowestImage } from "@components/lowest-image";
 import { HighestImage } from "@components/highest-image";
+import { UnorderedList } from "@components/unordered-list";
 import { SubscriptionForm } from "@components/subscription-form";
 import { ColoredTextBlock } from "@components/colored-text-block";
 import { HighlightedTextBlock } from "@components/highlighted-text-block";
@@ -13,6 +14,7 @@ import { BibleVerse, BiblePassage } from "@components/bible-passage";
 
 const standardComponents = {
   hr: Divider,
+  ul: UnorderedList,
   img: Figure,
 };
 

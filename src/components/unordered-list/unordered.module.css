@@ -1,0 +1,19 @@
+.list {
+  max-width: var(--article-container-width);
+  margin: 0 auto;
+  padding-left: 25px;
+  margin-bottom: 30px;
+
+  color: var(--text-color);
+  font-size: var(--base-font-size);
+  font-family: var(--font-lora);
+  line-height: var(--base-line-height);
+}
+
+.list > li {
+  margin-bottom: 8px;
+}
+
+.list > li:last-child {
+  margin-bottom: 0;
+}

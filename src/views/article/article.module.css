@@ -37,7 +37,9 @@
 }
 
 @media (max-width: 768px) {
-  .content > p, .content > h2  {
+  .content > p,
+  .content > h2,
+  .content > ul {
     max-width: 100%;
     margin-left: 10px;
     margin-right: 10px;
