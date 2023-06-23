@@ -1,14 +1,16 @@
-import styles from "./article.module.css";
+import styles from "./articles.module.css";
 
 import { getAbsoluteUrl } from "@helpers/absolute-url.helper";
 import { useEffect, useState, useRef } from "react";
+import { useRouter } from 'next/router'
 
 export const Articles = ({ articles }) => {
-  const [items, setItems] = useState(articles)
+  const [items, setItems] = useState(articles);
   const [tags, setTags] = useState([]);
   const [tagListOpen, setTagListOpen] = useState(false);
   const [addedTags, setAddedTags] = useState([]);
   const tagListRef = useRef(null);
+  const router = useRouter();
   useOutsideClick(tagListRef);
 
   useEffect(() => {
@@ -37,14 +39,17 @@ export const Articles = ({ articles }) => {
 
     articles.forEach((article) => {
       article.tags.forEach((tag) => {
-        tags.includes(tag) ? null : uniqueTags.push(tag)
+        uniqueTags.includes(tag) ? null : uniqueTags.push(tag)
       })
-    })
+    });
     setTags(uniqueTags);
   };
 
   const addTag = (tag) => {
-    setAddedTags(addTag => [...addTag, tag[0].toUpperCase() + tag.substring(1)]);
+    window.moveTo(0, 0);
+    addedTags.includes(tag) ? null : (
+      setAddedTags(addTag => [...addTag, tag])
+    )
     setTagListOpen(false);
     setTags(
       tags.filter(item => item !== tag)
@@ -55,19 +60,19 @@ export const Articles = ({ articles }) => {
   };
 
   const deleteTag = (deletedTag) => {
-    setAddedTags(
-      addedTags.filter(item => item !== deletedTag)
+    const updatedAddedTags = addedTags.filter((item) => item !== deletedTag);
+    addedTags.length === 1 ? setItems(articles) : setItems(
+      articles.filter((item) => item.tags.some((tag) => updatedAddedTags.includes(tag)))
     );
+    setAddedTags(updatedAddedTags);
     setTags(tag => [...tag, deletedTag]);
-
-    if (addedTags.length === 1) {
-      setItems(articles);
-    } else {
-      setItems(
-        articles.filter((item) => item.tags.some((tag) => addedTags.includes(tag)))
-      );
-    }
   };
+
+  const clearFilter = () => {
+    setItems(articles);
+    setAddedTags([]);
+    getAllDifferentTags();
+  }
 
   const tagList = () => {
     return (
@@ -85,6 +90,17 @@ export const Articles = ({ articles }) => {
     )
   };
 
+  const goToArticle = (slug) => {
+    router.push(slug);
+  };
+
+  const setBackground = (background, color) => {
+    return {
+      backgroundColor: background, 
+      color
+    }
+  }
+
   return (
     <main>
 
@@ -97,11 +113,11 @@ export const Articles = ({ articles }) => {
       <section className={styles.container}>
         <hr />
         <div className={styles.filter}>
-          <span>Все статьи</span>
+          <span onClick={() => { clearFilter() }}>Все статьи</span>
           {
             addedTags.map((tag) => (
               <span onClick={() => { deleteTag(tag) }}>
-                {tag}
+                {tag[0].toUpperCase() + tag.substring(1)}
                 <img src="/images/magazine/vector.svg" alt="vector" />
               </span>
             ))
@@ -116,7 +132,11 @@ export const Articles = ({ articles }) => {
           {items.map((item) => (
             <article key={item.slug}>
 
-              <div className={styles.childData}>
+              <div
+                className={styles.childData}
+                onClick={() => { goToArticle(item.slug) }}
+                style={setBackground(item.background, item.color)}
+              >
                 <h2 className={styles.childTitle}>{item.title}</h2>
                 <span className={styles.childPoint}>&#x2022;</span>
                 <span className={styles.childAuthor}>{item.author}</span>
@@ -124,7 +144,7 @@ export const Articles = ({ articles }) => {
 
               <div className={styles.childTags}>
                 {item.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
+                  <span key={tag} onClick={() => { addTag(tag) }}>{tag}</span>
                 ))}
               </div>
             </article>

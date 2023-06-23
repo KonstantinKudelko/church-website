@@ -1,7 +1,8 @@
 .logo {
     position: relative;
     margin: 100px auto 43px auto;
-    width: 466px;
+    width: 100%;
+    max-width: 466px;
 }
 
 .logo > img, .logo > span {
@@ -23,17 +24,19 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 30px auto;
+    margin: 43px auto;
 }
 
 .container > hr {
-    margin: 54px auto 15px auto;
-    width: 972px;
+    margin: 0 auto 10px auto;
+    width: 100%;
+    max-width: 972px;
     border: 1px solid #EBEAE9;
 }
 
 .filter {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     width: 972px;
     margin: 0 auto;
@@ -44,7 +47,7 @@
     position: relative;
     background: #FAF6F0;
     padding: 7px 15px;
-    margin-right: 10px;
+    margin: 5px 10px 0 0;
 
     cursor: pointer;
     user-select: none;
@@ -107,7 +110,7 @@
     flex-direction: column;
     justify-content: center;
 
-    background-color: #FCF1E2;
+    cursor: pointer;
     height: 198px;
 }
 
@@ -136,14 +139,17 @@
 
 .childTags {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    margin-top: 5px;
+    max-width: 100%;
 }
 
-.childTags>span {
+.childTags > span {
     padding: 12.5px 10px;
-    margin-right: 5px;
+    margin: 5px 5px 0 0;
 
+    cursor: pointer;
+    user-select: none;
     background-color: #FFF8EF;
     color: #888178;
     font-family: var(--font-rostelecom);
@@ -164,7 +170,7 @@
     }
 
     .filter,
-    .container>hr {
+    .container > hr {
         width: 694px;
     }
 }
@@ -175,24 +181,43 @@
     }
 
     .filter,
-    .container>hr {
+    .container > hr {
         width: 337px;
     }
 }
 
 @media (max-width: 576px) {
+    .logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: calc(100% - 30px);
+    }
+
+    .logo > span {
+        margin-top: 10px;
+        position: relative;
+        left: 0;
+        top: 0;
+        text-align: center;
+    }
+
     .list {
         grid-template-columns: 100%;
         margin: 30px 15px 0 15px;
     }
 
-    .filter {
-        width: 100%;
-        margin: 0 15px;
+    .childTitle {
+        padding: 0 20px;
     }
 
-    .container>hr {
+    .filter {
         width: 100%;
-        margin: 54px 15px 15px 15px;
+        padding: 0 15px;
+    }
+
+    .container > hr {
+        width: calc(100% - 30px);
+        margin: 0 auto 10px auto;
     }
 }
