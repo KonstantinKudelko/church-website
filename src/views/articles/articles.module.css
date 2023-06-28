@@ -27,11 +27,12 @@
     margin: 43px auto;
 }
 
-.container > hr {
+.delimiter {
+    height: 1px;
+    background-color: #EBEAE9;
     margin: 0 auto 10px auto;
     width: 100%;
     max-width: 972px;
-    border: 1px solid #EBEAE9;
 }
 
 .filter {
@@ -46,7 +47,6 @@
 .filter > div {
     position: relative;
     background: #FAF6F0;
-    padding: 7px 15px;
     margin: 5px 10px 0 0;
 
     cursor: pointer;
@@ -54,19 +54,26 @@
     font-family: var(--font-rostelecom);
     font-size: var(--base-font-size);
     font-weight: var(--regular-font-weight);
-    line-height: var(--medium-line-height);
+    line-height: 1.27;
 }
 
 .filter > span {
     display: flex;
     flex-direction: row;
+    padding: 7px 15px;
 }
 
 .filter > span > img {
     margin-left: 9px;
 }
 
-.tagList {
+.filter > div > img {
+    width: 16px;
+    height: 16px;
+    margin: 10px;
+}
+
+.list {
     position: absolute;
     width: 200px;
     top: 35px;
@@ -76,7 +83,7 @@
     box-shadow: 0px 12px 34px rgba(14, 6, 47, 0.25);
 }
 
-.tagList > li {
+.list > li {
     padding: 10px 15px 10px 0;
     border-top: 1px solid #EBEAE9;
 
@@ -85,18 +92,18 @@
     font-family: var(--font-rostelecom);
     font-size: 16px;
     font-weight: var(--regular-font-weight);
-    line-height: var(--medium-line-height);
+    line-height: 1.27;
 }
 
-.tagList > li:first-child {
+.list > li:first-child {
     border: none;
 }
 
-.tagList > li:hover {
+.list > li:hover {
     background: #FAF6F0;
 }
 
-.list {
+.articles {
     display: grid;
     grid-template-columns: 314px 314px 314px;
     gap: 30px 15px;
@@ -105,7 +112,7 @@
     margin: 30px auto 0 auto;
 }
 
-.childData {
+.data {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,38 +121,38 @@
     height: 198px;
 }
 
-.childData > h2,
-.childData > span {
+.data > h2,
+.data > span {
     text-align: center;
 }
 
-.childTitle {
+.title {
     padding: 0 30px;
     font-family: var(--font-lora);
-    font-size: var(--medium-font-size);
+    font-size: 1.22rem;
     font-weight: var(--semi-bold-font-weight);
-    line-height: var(--medium-line-height);
+    line-height: 1.27;
 }
 
-.childPoint {
+.point {
     font-size: var(--small-font-size);
 }
 
-.childAuthor {
+.author {
     font-family: var(--font-rostelecom);
     font-size: var(--small-font-size);
     font-weight: var(--regular-font-weight);
 }
 
-.childTags {
+.tags {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     max-width: 100%;
 }
 
-.childTags > span {
-    padding: 12.5px 10px;
+.tags > span {
+    padding: 10px 10px;
     margin: 5px 5px 0 0;
 
     cursor: pointer;
@@ -154,34 +161,34 @@
     color: #888178;
     font-family: var(--font-rostelecom);
     font-size: 12px;
-    font-weight: var(--medium-font-weight);
-    line-height: var(--medium-line-height);
+    font-weight: 1.22rem;
+    line-height: 1.27;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
-    .childTitle {
+    .title {
         padding: 0px 20px;
     }
 }
 
 @media (max-width: 992px) {
-    .list {
+    .articles {
         grid-template-columns: 337px 337px;
     }
 
     .filter,
-    .container > hr {
+    .delimiter {
         width: 694px;
     }
 }
 
 @media (max-width: 768px) {
-    .list {
+    .articles {
         grid-template-columns: 337px;
     }
 
     .filter,
-    .container > hr {
+    .delimiter {
         width: 337px;
     }
 }
@@ -202,12 +209,12 @@
         text-align: center;
     }
 
-    .list {
+    .articles {
         grid-template-columns: 100%;
         margin: 30px 15px 0 15px;
     }
 
-    .childTitle {
+    .title {
         padding: 0 20px;
     }
 
@@ -216,7 +223,7 @@
         padding: 0 15px;
     }
 
-    .container > hr {
+    .delimiter {
         width: calc(100% - 30px);
         margin: 0 auto 10px auto;
     }

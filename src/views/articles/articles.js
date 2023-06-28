@@ -1,49 +1,17 @@
 import styles from "./articles.module.css";
 
-import { getAbsoluteUrl } from "@helpers/absolute-url.helper";
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from 'next/router'
+import { useOutsideClick } from "@helpers/outside-click.helper";
+import { useState, useRef } from "react";
+import { useRouter } from 'next/router';
 
-export const Articles = ({ articles }) => {
-  const [items, setItems] = useState(articles);
-  const [tags, setTags] = useState([]);
+export const Articles = ({ articlesFromStorage }) => {
+  const [articles, setArticles] = useState(articlesFromStorage);
+  const [tags, setTags] = useState([...new Set(articlesFromStorage.flatMap(article => article.tags))]);
   const [tagListOpen, setTagListOpen] = useState(false);
   const [addedTags, setAddedTags] = useState([]);
   const tagListRef = useRef(null);
   const router = useRouter();
-  useOutsideClick(tagListRef);
-
-  useEffect(() => {
-    getAllDifferentTags();
-  }, []);
-
-  function useOutsideClick(ref) {
-    useEffect(() => {
-
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setTagListOpen(false)
-        }
-      }
-
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
-
-  const getAllDifferentTags = () => {
-    const uniqueTags = [];
-
-    articles.forEach((article) => {
-      article.tags.forEach((tag) => {
-        uniqueTags.includes(tag) ? null : uniqueTags.push(tag)
-      })
-    });
-    setTags(uniqueTags);
-  };
+  useOutsideClick(tagListRef, setTagListOpen);
 
   const addTag = (tag) => {
     window.moveTo(0, 0);
@@ -54,31 +22,31 @@ export const Articles = ({ articles }) => {
     setTags(
       tags.filter(item => item !== tag)
     );
-    setItems(
-      items.filter(item => item.tags.includes(tag))
+    setArticles(
+      articles.filter(article => article.tags.includes(tag))
     );
   };
 
   const deleteTag = (deletedTag) => {
     const updatedAddedTags = addedTags.filter((item) => item !== deletedTag);
-    addedTags.length === 1 ? setItems(articles) : setItems(
-      articles.filter((item) => item.tags.some((tag) => updatedAddedTags.includes(tag)))
+    addedTags.length === 1 ? setArticles(articlesFromStorage) : setArticles(
+      articlesFromStorage.filter((item) => item.tags.some((tag) => updatedAddedTags.includes(tag)))
     );
     setAddedTags(updatedAddedTags);
     setTags(tag => [...tag, deletedTag]);
   };
 
   const clearFilter = () => {
-    setItems(articles);
+    setArticles(articlesFromStorage);
     setAddedTags([]);
-    getAllDifferentTags();
+    setTags([...new Set(articlesFromStorage.flatMap(article => article.tags))]);
   }
 
   const tagList = () => {
     return (
       <ul
         ref={tagListRef}
-        className={styles.tagList}
+        className={styles.list}
         onClick={(e) => { e.stopPropagation(); }}
       >
         {tags ? tags.map((tag) => (
@@ -96,8 +64,8 @@ export const Articles = ({ articles }) => {
 
   const setBackground = (background, color) => {
     return {
-      backgroundColor: background, 
-      color
+      backgroundColor: `var(${background})`,
+      color: `var(${color})`
     }
   }
 
@@ -111,40 +79,40 @@ export const Articles = ({ articles }) => {
       </div>
 
       <section className={styles.container}>
-        <hr />
+        <div className={styles.delimiter} />
         <div className={styles.filter}>
-          <span onClick={() => { clearFilter() }}>Все статьи</span>
+          {addedTags.length > 0 ? null : <span onClick={() => { clearFilter() }}>Все статьи</span>}
           {
             addedTags.map((tag) => (
               <span onClick={() => { deleteTag(tag) }}>
                 {tag[0].toUpperCase() + tag.substring(1)}
-                <img src="/images/magazine/vector.svg" alt="vector" />
+                <img src="/images/magazine/cross.svg" alt="cross" />
               </span>
             ))
           }
           <div onClick={() => { setTagListOpen(!tagListOpen) }}>
-            &#43;
+            <img src="/images/magazine/plus.svg" alt="plus" />
             {tagListOpen ? tagList() : null}
           </div>
         </div>
 
-        <div className={styles.list}>
-          {items.map((item) => (
-            <article key={item.slug}>
+        <div className={styles.articles}>
+          {articles.map((article) => (
+            <article key={article.slug}>
 
               <div
-                className={styles.childData}
-                onClick={() => { goToArticle(item.slug) }}
-                style={setBackground(item.background, item.color)}
+                className={styles.data}
+                onClick={() => { goToArticle(article.slug) }}
+                style={setBackground(article.cardBackgroundColor, article.cardTextColor)}
               >
-                <h2 className={styles.childTitle}>{item.title}</h2>
-                <span className={styles.childPoint}>&#x2022;</span>
-                <span className={styles.childAuthor}>{item.author}</span>
+                <h2 className={styles.title}>{article.title}</h2>
+                <span className={styles.point}>&#x2022;</span>
+                <span className={styles.author}>{article.author}</span>
               </div>
 
-              <div className={styles.childTags}>
-                {item.tags.map((tag) => (
-                  <span key={tag} onClick={() => { addTag(tag) }}>{tag}</span>
+              <div className={styles.tags}>
+                {article.tags.map((tag) => (
+                  <span key={tag} onClick={() => { addTag(tag) }}>{tag[0].toUpperCase() + tag.substring(1)}</span>
                 ))}
               </div>
             </article>

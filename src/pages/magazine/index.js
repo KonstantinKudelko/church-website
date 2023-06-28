@@ -2,10 +2,10 @@ import { Articles } from "@views/articles";
 import { getArticlesMetadata } from "@helpers/mdx.helpers";
 
 export const getStaticProps = async () => {
-  const articles = await getArticlesMetadata();
+  const articlesFromStorage = await getArticlesMetadata();
   return {
     props: {
-      articles,
+      articlesFromStorage,
     },
   };
 };
