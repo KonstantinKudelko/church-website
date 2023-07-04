@@ -4,14 +4,16 @@
   --gray: #e6e6e6;
 
   --text-color: #1d1b16;
+  --delimiter-color: #EBEAE9;
+  --tag-color: #757575;
 
   --accent-blue: #6d8ea3;
   --accent-gray: #999999;
   --accent-pink: #dfb0a4;
   --accent-green: #416950;
   --accent-yellow: #d4b270;
+  --accent-white: #fefdfa;
+  --accent-beige: #faeddc;
 
   --background-gray: #ccd3d4;
-  --background-white: #fefdfa;
-  --background-beige: #faeddc;
 }

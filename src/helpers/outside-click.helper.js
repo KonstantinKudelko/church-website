@@ -1,18 +1,21 @@
-import { useEffect } from "react";
+import { useRef, useEffect } from 'react';
 
-export function useOutsideClick(ref, setTagListOpen) {
+export const useOutsideClick = (callback) => {
+  const ref = useRef(null);
+  
   useEffect(() => {
-
-    function handleClickOutside(event) {
+    const handleClick = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
-        setTagListOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-
-        document.removeEventListener("mousedown", handleClickOutside);
+        callback();
       };
+    };
+
+    document.addEventListener('click', handleClick);
+    
+    return () => {
+      document.removeEventListener('click', handleClick);
+    };
   }, [ref]);
-}
+
+  return ref;
+};

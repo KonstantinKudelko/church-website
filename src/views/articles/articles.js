@@ -1,17 +1,20 @@
 import styles from "./articles.module.css";
 
 import { useOutsideClick } from "@helpers/outside-click.helper";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useRouter } from 'next/router';
 
 export const Articles = ({ articlesFromStorage }) => {
   const [articles, setArticles] = useState(articlesFromStorage);
-  const [tags, setTags] = useState([...new Set(articlesFromStorage.flatMap(article => article.tags))]);
   const [tagListOpen, setTagListOpen] = useState(false);
   const [addedTags, setAddedTags] = useState([]);
-  const tagListRef = useRef(null);
   const router = useRouter();
-  useOutsideClick(tagListRef, setTagListOpen);
+
+  const setDefaultTags = () => {
+    return [...new Set(articlesFromStorage.flatMap(article => article.tags))];
+  };
+
+  const [tags, setTags] = useState(setDefaultTags());
 
   const addTag = (tag) => {
     window.moveTo(0, 0);
@@ -39,13 +42,19 @@ export const Articles = ({ articlesFromStorage }) => {
   const clearFilter = () => {
     setArticles(articlesFromStorage);
     setAddedTags([]);
-    setTags([...new Set(articlesFromStorage.flatMap(article => article.tags))]);
+    setTags(setDefaultTags());
   }
+
+  const openAndCloseTagList = () => {
+    setTagListOpen(!tagListOpen);
+  };
+
+  const ref = useOutsideClick(openAndCloseTagList);
 
   const tagList = () => {
     return (
       <ul
-        ref={tagListRef}
+        ref={ref}
         className={styles.list}
         onClick={(e) => { e.stopPropagation(); }}
       >
@@ -62,18 +71,10 @@ export const Articles = ({ articlesFromStorage }) => {
     router.push(slug);
   };
 
-  const setBackground = (background, color) => {
-    return {
-      backgroundColor: `var(${background})`,
-      color: `var(${color})`
-    }
-  }
-
   return (
     <main>
 
       <div className={styles.logo}>
-        {/* <img src={getAbsoluteUrl("/images/magazine/logo.svg")} alt="logo" /> */}
         <img src="/images/magazine/logo.svg" alt="logo" />
         <span>Евангельская истина <br />для наших сердец и умов</span>
       </div>
@@ -90,7 +91,7 @@ export const Articles = ({ articlesFromStorage }) => {
               </span>
             ))
           }
-          <div onClick={() => { setTagListOpen(!tagListOpen) }}>
+          <div onClick={() => { openAndCloseTagList() }}>
             <img src="/images/magazine/plus.svg" alt="plus" />
             {tagListOpen ? tagList() : null}
           </div>
@@ -103,7 +104,10 @@ export const Articles = ({ articlesFromStorage }) => {
               <div
                 className={styles.data}
                 onClick={() => { goToArticle(article.slug) }}
-                style={setBackground(article.cardBackgroundColor, article.cardTextColor)}
+                style={{ 
+                  backgroundColor: `var(${article.cardBackgroundColor})`, 
+                  color: `var(${article.cardTextColor})` 
+                }}
               >
                 <h2 className={styles.title}>{article.title}</h2>
                 <span className={styles.point}>&#x2022;</span>
