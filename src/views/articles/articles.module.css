@@ -1,231 +1,235 @@
 .logo {
-    position: relative;
-    margin: 100px auto 43px auto;
-    width: 100%;
-    max-width: 466px;
+  position: relative;
+  margin: 100px auto 43px auto;
+  width: 100%;
+  max-width: 466px;
 }
 
-.logo > img, .logo > span {
-    margin: 0 auto;
+.logo > img,
+.logo > span {
+  margin: 0 auto;
 }
 
 .logo > span {
-    position: absolute;
-    left: 238px;
-    top: 140px;
+  position: absolute;
+  left: 238px;
+  top: 140px;
 
-    font-family: var(--font-rostelecom);
-    font-size: var(--base-font-size);
-    font-weight: var(--regular-font-weight);
-    line-height: var(--subheader-line-height);
+  font-family: var(--font-rostelecom);
+  font-size: var(--base-font-size);
+  font-weight: var(--regular-font-weight);
+  line-height: var(--subheader-line-height);
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 43px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 43px auto;
 }
 
 .delimiter {
-    height: 1px;
-    background-color: var(--delimiter-color);
-    margin: 0 auto 10px auto;
-    width: 100%;
-    max-width: 972px;
+  height: 1px;
+  background-color: var(--delimiter-color);
+  margin: 0 auto 10px auto;
+  width: 100%;
+  max-width: 972px;
 }
 
 .filter {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    width: 972px;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 972px;
+  margin: 0 auto;
 }
 
-.filter > span, 
+.filter > span,
 .filter > div {
-    position: relative;
-    background: #FAF6F0;
-    margin: 5px 10px 0 0;
+  position: relative;
+  background: #faf6f0;
+  margin: 5px 10px 0 0;
 
-    cursor: pointer;
-    user-select: none;
-    font-family: var(--font-rostelecom);
-    font-size: var(--base-font-size);
-    font-weight: var(--regular-font-weight);
-    line-height: 1.27;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-rostelecom);
+  font-size: var(--base-font-size);
+  font-weight: var(--regular-font-weight);
+  line-height: 1.27;
 }
 
 .filter > span {
-    display: flex;
-    flex-direction: row;
-    padding: 7px 15px;
+  display: flex;
+  flex-direction: row;
+  padding: 7px 15px;
 }
 
 .filter > span > img {
-    margin-left: 9px;
+  margin-left: 9px;
+}
+
+.filter > div {
+  padding: 10px;
 }
 
 .filter > div > img {
-    width: 16px;
-    height: 16px;
-    margin: 10px;
+  width: 16px;
+  height: 16px;
 }
 
 .list {
-    position: absolute;
-    width: 200px;
-    top: 35px;
-    left: -80px;
-    padding: 15px 20px;
-    background: #FFFDFA;
-    box-shadow: 0px 12px 34px rgba(14, 6, 47, 0.25);
+  position: absolute;
+  width: 200px;
+  top: 35px;
+  left: -80px;
+  padding: 15px 20px;
+  background: #fffdfa;
+  box-shadow: 0px 12px 34px rgba(14, 6, 47, 0.25);
 }
 
 .list > li {
-    padding: 10px 15px 10px 0;
-    border-top: 1px solid var(--delimiter-color);
+  padding: 10px 15px 10px 0;
+  border-top: 1px solid var(--delimiter-color);
 
-    cursor: pointer;
-    list-style: none;
-    font-family: var(--font-rostelecom);
-    font-size: 16px;
-    font-weight: var(--regular-font-weight);
-    line-height: 1.27;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-rostelecom);
+  font-size: 16px;
+  font-weight: var(--regular-font-weight);
+  line-height: 1.27;
 }
 
 .list > li:first-child {
-    border: none;
+  border: none;
 }
 
 .list > li:hover {
-    background: #FAF6F0;
+  background: #faf6f0;
 }
 
 .articles {
-    display: grid;
-    grid-template-columns: 314px 314px 314px;
-    gap: 30px 15px;
+  display: grid;
+  grid-template-columns: 314px 314px 314px;
+  gap: 30px 15px;
 
-    max-width: 1052px;
-    margin: 30px auto 0 auto;
+  max-width: 1052px;
+  margin: 30px auto 0 auto;
 }
 
 .data {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-    cursor: pointer;
-    height: 198px;
+  cursor: pointer;
+  height: 198px;
 }
 
 .data > h2,
 .data > span {
-    text-align: center;
+  text-align: center;
 }
 
 .title {
-    padding: 0 30px;
-    font-family: var(--font-lora);
-    font-size: 1.22rem;
-    font-weight: var(--semi-bold-font-weight);
-    line-height: 1.27;
+  padding: 0 30px;
+  font-family: var(--font-lora);
+  font-size: 1.22rem;
+  font-weight: var(--semi-bold-font-weight);
+  line-height: 1.27;
 }
 
 .point {
-    font-size: var(--small-font-size);
+  font-size: var(--small-font-size);
 }
 
 .author {
-    font-family: var(--font-rostelecom);
-    font-size: var(--small-font-size);
-    font-weight: var(--regular-font-weight);
+  font-family: var(--font-rostelecom);
+  font-size: var(--small-font-size);
+  font-weight: var(--regular-font-weight);
 }
 
 .tags {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 100%;
 }
 
 .tags > span {
-    padding: 10px 10px;
-    margin: 5px 5px 0 0;
-    max-height: 30px;
+  padding: 10px 10px;
+  margin: 5px 5px 0 0;
+  max-height: 30px;
 
-    cursor: pointer;
-    user-select: none;
-    background-color: #FAF6F0;
-    color: var(--tag-color);
-    font-family: var(--font-rostelecom);
-    font-size: 12px;
-    font-weight: 1.22rem;
-    line-height: 1.27;
+  cursor: pointer;
+  user-select: none;
+  background-color: #faf6f0;
+  color: var(--tag-color);
+  font-family: var(--font-rostelecom);
+  font-size: 12px;
+  font-weight: 1.22rem;
+  line-height: 1.27;
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
-    .title {
-        padding: 0px 20px;
-    }
+  .title {
+    padding: 0px 20px;
+  }
 }
 
 @media (max-width: 992px) {
-    .articles {
-        grid-template-columns: 337px 337px;
-    }
+  .articles {
+    grid-template-columns: 337px 337px;
+  }
 
-    .filter,
-    .delimiter {
-        width: 694px;
-    }
+  .filter,
+  .delimiter {
+    width: 694px;
+  }
 }
 
 @media (max-width: 768px) {
-    .articles {
-        grid-template-columns: 337px;
-    }
+  .articles {
+    grid-template-columns: 337px;
+  }
 
-    .filter,
-    .delimiter {
-        width: 337px;
-    }
+  .filter,
+  .delimiter {
+    width: 337px;
+  }
 }
 
 @media (max-width: 576px) {
-    .logo {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: calc(100% - 30px);
-    }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 30px);
+  }
 
-    .logo > span {
-        margin-top: 10px;
-        position: relative;
-        left: 0;
-        top: 0;
-        text-align: center;
-    }
+  .logo > span {
+    margin-top: 10px;
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
+  }
 
-    .articles {
-        grid-template-columns: 100%;
-        margin: 30px 15px 0 15px;
-    }
+  .articles {
+    grid-template-columns: 100%;
+    margin: 30px 15px 0 15px;
+  }
 
-    .title {
-        padding: 0 20px;
-    }
+  .title {
+    padding: 0 20px;
+  }
 
-    .filter {
-        width: 100%;
-        padding: 0 15px;
-    }
+  .filter {
+    width: 100%;
+    padding: 0 15px;
+  }
 
-    .delimiter {
-        width: calc(100% - 30px);
-        margin: 0 auto 10px auto;
-    }
+  .delimiter {
+    width: calc(100% - 30px);
+    margin: 0 auto 10px auto;
+  }
 }
