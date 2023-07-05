@@ -5,7 +5,7 @@ export const getStaticProps = async () => {
   const articlesMetadata = await getArticlesMetadata();
   return {
     props: {
-      articlesFromStorage: articlesMetadata,
+      articlesMetadata,
     },
   };
 };

@@ -4,14 +4,14 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import { useOutsideClick } from "@helpers/outside-click.helper";
 
-export const Articles = ({ articlesFromStorage }) => {
-  const [articles, setArticles] = useState(articlesFromStorage);
+export const Articles = ({ articlesMetadata }) => {
+  const [articles, setArticles] = useState(articlesMetadata);
   const [tagListOpen, setTagListOpen] = useState(false);
   const [addedTags, setAddedTags] = useState([]);
   const router = useRouter();
 
   const setDefaultTags = () => {
-    return [...new Set(articlesFromStorage.flatMap((article) => article.tags))];
+    return [...new Set(articlesMetadata.flatMap((article) => article.tags))];
   };
 
   const [tags, setTags] = useState(setDefaultTags());
@@ -27,9 +27,9 @@ export const Articles = ({ articlesFromStorage }) => {
   const deleteTag = (deletedTag) => {
     const updatedAddedTags = addedTags.filter((item) => item !== deletedTag);
     addedTags.length === 1
-      ? setArticles(articlesFromStorage)
+      ? setArticles(articlesMetadata)
       : setArticles(
-          articlesFromStorage.filter((item) =>
+          articlesMetadata.filter((item) =>
             item.tags.some((tag) => updatedAddedTags.includes(tag)),
           ),
         );
@@ -38,7 +38,7 @@ export const Articles = ({ articlesFromStorage }) => {
   };
 
   const clearFilter = () => {
-    setArticles(articlesFromStorage);
+    setArticles(articlesMetadata);
     setAddedTags([]);
     setTags(setDefaultTags());
   };
