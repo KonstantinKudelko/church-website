@@ -9,12 +9,11 @@ export const Articles = ({ articlesMetadata }) => {
   const [tagListOpen, setTagListOpen] = useState(false);
   const [addedTags, setAddedTags] = useState([]);
   const router = useRouter();
-
-  const setDefaultTags = () => {
-    return [...new Set(articlesMetadata.flatMap((article) => article.tags))];
-  };
-
-  const [tags, setTags] = useState(setDefaultTags());
+  const [tags, setTags] = useState(() => {
+    const allTags = articlesMetadata.flatMap((article) => article.tags);
+    // Use only unique tags
+    return [...new Set(allTags)];
+  });
 
   const addTag = (tag) => {
     window.moveTo(0, 0);
