@@ -1,64 +1,50 @@
 import styles from "./articles.module.css";
 
+import { useCallback, useState } from "react";
+import { useRouter } from "next/router";
 import { useOutsideClick } from "@helpers/outside-click.helper";
-import { useState } from "react";
-import { useRouter } from 'next/router';
 
-export const Articles = ({ articlesFromStorage }) => {
-  const [articles, setArticles] = useState(articlesFromStorage);
+export const Articles = ({ articlesMetadata }) => {
+  const [articles, setArticles] = useState(articlesMetadata);
   const [tagListOpen, setTagListOpen] = useState(false);
   const [addedTags, setAddedTags] = useState([]);
   const router = useRouter();
 
   const setDefaultTags = () => {
-    return [...new Set(articlesFromStorage.flatMap(article => article.tags))];
+    return [...new Set(articlesMetadata.flatMap((article) => article.tags))];
   };
 
   const [tags, setTags] = useState(setDefaultTags());
 
   const addTag = (tag) => {
     window.moveTo(0, 0);
-    addedTags.includes(tag) ? null : (
-      setAddedTags(addTag => [...addTag, tag])
-    )
+    addedTags.includes(tag) ? null : setAddedTags((addTag) => [...addTag, tag]);
     setTagListOpen(false);
-    setTags(
-      tags.filter(item => item !== tag)
-    );
-    setArticles(
-      articles.filter(article => article.tags.includes(tag))
-    );
+    setTags(tags.filter((item) => item !== tag));
+    setArticles(articles.filter((article) => article.tags.includes(tag)));
   };
 
   const deleteTag = (deletedTag) => {
     const updatedAddedTags = addedTags.filter((item) => item !== deletedTag);
-    addedTags.length === 1 ? setArticles(articlesFromStorage) : setArticles(
-      articlesFromStorage.filter((item) => item.tags.some((tag) => updatedAddedTags.includes(tag)))
-    );
+    addedTags.length === 1
+      ? setArticles(articlesMetadata)
+      : setArticles(
+          articlesMetadata.filter((item) =>
+            item.tags.some((tag) => updatedAddedTags.includes(tag)),
+          ),
+        );
     setAddedTags(updatedAddedTags);
-    setTags(tag => [...tag, deletedTag]);
+    setTags((tag) => [...tag, deletedTag]);
   };
 
-  const openAndCloseTagList = () => {
-    setTagListOpen(!tagListOpen);
+  const clearFilter = () => {
+    setArticles(articlesMetadata);
+    setAddedTags([]);
+    setTags(setDefaultTags());
   };
 
-  const ref = useOutsideClick(openAndCloseTagList);
-
-  const tagList = () => (
-    <ul
-      ref={ref}
-      className={styles.list}
-      onClick={(e) => { e.stopPropagation(); }}
-    >
-      {tags ? tags.map((tag) => (
-        <li key={tag} onClick={() => { addTag(tag) }}>
-          &#43; {tag[0].toUpperCase() + tag.substring(1)}
-        </li>
-      )) : null}
-    </ul>
-  );
-
+  const closeTagList = useCallback(() => setTagListOpen(false), []);
+  const ref = useOutsideClick(closeTagList);
 
   const goToArticle = (slug) => {
     router.push(slug);
@@ -66,40 +52,80 @@ export const Articles = ({ articlesFromStorage }) => {
 
   return (
     <main>
-
       <div className={styles.logo}>
-        <img src="/images/magazine/logo.svg" alt="logo" />
-        <span>Евангельская истина <br />для наших сердец и умов</span>
+        <img
+          src="/images/magazine/logo.svg"
+          alt="logo"
+        />
+        <span>
+          Евангельская истина <br />
+          для наших сердец и умов
+        </span>
       </div>
 
       <section className={styles.container}>
         <div className={styles.delimiter} />
         <div className={styles.filter}>
-          {addedTags.length > 0 ? null : <span>Все статьи</span>}
-          {
-            addedTags.map((tag) => (
-              <span onClick={() => { deleteTag(tag) }}>
-                {tag[0].toUpperCase() + tag.substring(1)}
-                <img src="/images/magazine/cross.svg" alt="cross" />
-              </span>
-            ))
-          }
-          <div onClick={() => { openAndCloseTagList() }}>
-            <img src="/images/magazine/plus.svg" alt="plus" />
-            {tagListOpen ? tagList() : null}
+          {addedTags.length > 0 ? null : (
+            <span
+              onClick={() => {
+                clearFilter();
+              }}
+            >
+              Все статьи
+            </span>
+          )}
+
+          {addedTags.map((tag) => (
+            <span
+              onClick={() => {
+                deleteTag(tag);
+              }}
+            >
+              {tag[0].toUpperCase() + tag.substring(1)}
+              <img
+                src="/images/magazine/cross.svg"
+                alt="cross"
+              />
+            </span>
+          ))}
+
+          <div onClick={() => setTagListOpen(true)}>
+            <img
+              src="/images/magazine/plus.svg"
+              alt="plus"
+            />
+
+            {tagListOpen && (
+              <ul
+                ref={ref}
+                className={styles.list}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {tags?.map((tag) => (
+                  <li
+                    key={tag}
+                    onClick={() => addTag(tag)}
+                  >
+                    &#43; {tag[0].toUpperCase() + tag.substring(1)}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
 
         <div className={styles.articles}>
           {articles.map((article) => (
             <article key={article.slug}>
-
               <div
                 className={styles.data}
-                onClick={() => { goToArticle(article.slug) }}
+                onClick={() => {
+                  goToArticle(article.slug);
+                }}
                 style={{
                   backgroundColor: `var(${article.cardBackgroundColor})`,
-                  color: `var(${article.cardTextColor})`
+                  color: `var(${article.cardTextColor})`,
                 }}
               >
                 <h2 className={styles.title}>{article.title}</h2>
@@ -109,7 +135,14 @@ export const Articles = ({ articlesFromStorage }) => {
 
               <div className={styles.tags}>
                 {article.tags.map((tag) => (
-                  <span key={tag} onClick={() => { addTag(tag) }}>{tag[0].toUpperCase() + tag.substring(1)}</span>
+                  <span
+                    key={tag}
+                    onClick={() => {
+                      addTag(tag);
+                    }}
+                  >
+                    {tag[0].toUpperCase() + tag.substring(1)}
+                  </span>
                 ))}
               </div>
             </article>
