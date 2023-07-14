@@ -39,33 +39,26 @@ export const Articles = ({ articlesFromStorage }) => {
     setTags(tag => [...tag, deletedTag]);
   };
 
-  const clearFilter = () => {
-    setArticles(articlesFromStorage);
-    setAddedTags([]);
-    setTags(setDefaultTags());
-  }
-
   const openAndCloseTagList = () => {
     setTagListOpen(!tagListOpen);
   };
 
   const ref = useOutsideClick(openAndCloseTagList);
 
-  const tagList = () => {
-    return (
-      <ul
-        ref={ref}
-        className={styles.list}
-        onClick={(e) => { e.stopPropagation(); }}
-      >
-        {tags ? tags.map((tag) => (
-          <li key={tag} onClick={() => { addTag(tag) }}>
-            &#43; {tag[0].toUpperCase() + tag.substring(1)}
-          </li>
-        )) : null}
-      </ul>
-    )
-  };
+  const tagList = () => (
+    <ul
+      ref={ref}
+      className={styles.list}
+      onClick={(e) => { e.stopPropagation(); }}
+    >
+      {tags ? tags.map((tag) => (
+        <li key={tag} onClick={() => { addTag(tag) }}>
+          &#43; {tag[0].toUpperCase() + tag.substring(1)}
+        </li>
+      )) : null}
+    </ul>
+  );
+
 
   const goToArticle = (slug) => {
     router.push(slug);
@@ -82,7 +75,7 @@ export const Articles = ({ articlesFromStorage }) => {
       <section className={styles.container}>
         <div className={styles.delimiter} />
         <div className={styles.filter}>
-          {addedTags.length > 0 ? null : <span onClick={() => { clearFilter() }}>Все статьи</span>}
+          {addedTags.length > 0 ? null : <span>Все статьи</span>}
           {
             addedTags.map((tag) => (
               <span onClick={() => { deleteTag(tag) }}>
@@ -104,9 +97,9 @@ export const Articles = ({ articlesFromStorage }) => {
               <div
                 className={styles.data}
                 onClick={() => { goToArticle(article.slug) }}
-                style={{ 
-                  backgroundColor: `var(${article.cardBackgroundColor})`, 
-                  color: `var(${article.cardTextColor})` 
+                style={{
+                  backgroundColor: `var(${article.cardBackgroundColor})`,
+                  color: `var(${article.cardTextColor})`
                 }}
               >
                 <h2 className={styles.title}>{article.title}</h2>
