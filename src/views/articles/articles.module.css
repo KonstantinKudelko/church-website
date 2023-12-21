@@ -1,19 +1,23 @@
-.logo {
-  position: relative;
-  margin: 100px auto 43px auto;
+.logoWrapper {
+  margin: 100px auto 44px auto;
   width: 100%;
-  max-width: 466px;
 }
 
-.logo > img,
-.logo > span {
+.logo {
+  position: relative;
+  max-width: 466px;
   margin: 0 auto;
 }
 
-.logo > span {
+.logoImage {
+  display: block;
+  max-width: 466px;
+}
+
+.logoQuote {
   position: absolute;
-  left: 238px;
-  top: 140px;
+  right: 15px;
+  bottom: 25px;
 
   font-family: var(--font-rostelecom);
   font-size: var(--base-font-size);
@@ -22,113 +26,29 @@
 }
 
 .container {
+  max-width: 1031px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 43px auto;
 }
 
 .delimiter {
   height: 1px;
   background-color: var(--delimiter-color);
-  margin: 0 auto 10px auto;
+  margin: 0 auto 15px auto;
   width: 100%;
-  max-width: 972px;
-}
-
-.filter {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  width: 972px;
-  margin: 0 auto;
-}
-
-.filter > span,
-.filter > div {
-  position: relative;
-  background: #faf6f0;
-  margin: 5px 10px 0 0;
-  height: 35px;
-
-  cursor: pointer;
-  user-select: none;
-  font-family: var(--font-rostelecom);
-  font-size: var(--base-font-size);
-  font-weight: var(--regular-font-weight);
-  line-height: 1;
-}
-
-.filter > span {
-  display: flex;
-  flex-direction: row;
-  padding: 10px 15px;
-}
-
-.filter > span > img {
-  margin-left: 9px;
-}
-
-.filter > div {
-  padding: 10px;
-}
-
-.filter > div > img {
-  width: 16px;
-  height: 16px;
-}
-
-.list {
-  position: absolute;
-  width: 200px;
-  top: 35px;
-  left: -80px;
-  padding: 15px 20px;
-  background: #fffdfa;
-  box-shadow: 0px 12px 34px rgba(14, 6, 47, 0.25);
-}
-
-.list > li {
-  padding: 10px 15px 10px 0;
-  border-top: 1px solid var(--delimiter-color);
-
-  cursor: pointer;
-  list-style: none;
-  font-family: var(--font-rostelecom);
-  font-size: 16px;
-  font-weight: var(--regular-font-weight);
-  line-height: 1.27;
-}
-
-.list > li:first-child {
-  border: none;
-}
-
-.list > li:hover {
-  background: #faf6f0;
 }
 
 .articles {
   display: grid;
-  grid-template-columns: 314px 314px 314px;
-  gap: 30px 15px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px 20px;
 
   max-width: 1052px;
-  margin: 30px auto 0 auto;
-}
-
-.data {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  cursor: pointer;
-  height: 198px;
-}
-
-.data > h2,
-.data > span {
-  text-align: center;
+  margin: 0 auto;
 }
 
 .title {
@@ -141,39 +61,6 @@
 
 .point {
   font-size: var(--small-font-size);
-}
-
-.author {
-  font-family: var(--font-rostelecom);
-  font-size: var(--small-font-size);
-  font-weight: var(--regular-font-weight);
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  max-width: 100%;
-}
-
-.tags > span {
-  padding: 10px 10px;
-  margin: 5px 5px 0 0;
-
-  cursor: pointer;
-  user-select: none;
-  background-color: #faf6f0;
-  color: var(--tag-color);
-  font-family: var(--font-rostelecom);
-  font-size: 12px;
-  font-weight: var(--regular-font-weight);
-  line-height: 0.84;
-}
-
-@media (min-width: 992px) and (max-width: 1200px) {
-  .title {
-    padding: 0px 20px;
-  }
 }
 
 @media (max-width: 992px) {
@@ -217,10 +104,6 @@
   .articles {
     grid-template-columns: 100%;
     margin: 30px 15px 0 15px;
-  }
-
-  .title {
-    padding: 0 20px;
   }
 
   .filter {

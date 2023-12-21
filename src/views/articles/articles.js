@@ -1,19 +1,20 @@
+import Image from "next/image";
 import styles from "./articles.module.css";
-
-import { useCallback, useState } from "react";
-import { useRouter } from "next/router";
-import { useOutsideClick } from "@helpers/outside-click.helper";
+import { useState } from "react";
+import { MagazineCard } from "@components/magazine-card";
+import { MagazineFilter } from "@components/magazine-filter";
 
 export const Articles = ({ articlesMetadata }) => {
-  const [articles, setArticles] = useState(articlesMetadata);
-  const [tagListOpen, setTagListOpen] = useState(false);
-  const [addedTags, setAddedTags] = useState([]);
-  const router = useRouter();
-  const [tags, setTags] = useState(() => {
+  const defaultTags = () => {
     const allTags = articlesMetadata.flatMap((article) => article.tags);
     // Use only unique tags
     return [...new Set(allTags)];
-  });
+  };
+
+  const [articles, setArticles] = useState(articlesMetadata);
+  const [tagListOpen, setTagListOpen] = useState(false);
+  const [addedTags, setAddedTags] = useState([]);
+  const [tags, setTags] = useState(defaultTags());
 
   const addTag = (tag) => {
     window.moveTo(0, 0);
@@ -23,128 +24,48 @@ export const Articles = ({ articlesMetadata }) => {
     setArticles(articles.filter((article) => article.tags.includes(tag)));
   };
 
-  const deleteTag = (deletedTag) => {
-    const updatedAddedTags = addedTags.filter((item) => item !== deletedTag);
-    addedTags.length === 1
-      ? setArticles(articlesMetadata)
-      : setArticles(
-          articlesMetadata.filter((item) =>
-            item.tags.some((tag) => updatedAddedTags.includes(tag)),
-          ),
-        );
-    setAddedTags(updatedAddedTags);
-    setTags((tag) => [...tag, deletedTag]);
-  };
-
-  const clearFilter = () => {
-    setArticles(articlesMetadata);
-    setAddedTags([]);
-    setTags(setDefaultTags());
-  };
-
-  const closeTagList = useCallback(() => setTagListOpen(false), []);
-  const ref = useOutsideClick(closeTagList);
-
-  const goToArticle = (slug) => {
-    router.push(slug);
-  };
-
   return (
     <main>
-      <div className={styles.logo}>
-        <img
-          src="/images/magazine/logo.svg"
-          alt="logo"
-        />
-        <span>
-          Евангельская истина <br />
-          для наших сердец и умов
-        </span>
+      <div className={styles.logoWrapper}>
+        <div className={styles.logo}>
+          <Image
+            src="/images/magazine/logo.svg"
+            alt="logo"
+            width={466}
+            height={211}
+            className={styles.logoImage}
+          />
+
+          <span className={styles.logoQuote}>
+            Евангельская истина <br />
+            для наших сердец и умов
+          </span>
+        </div>
       </div>
 
       <section className={styles.container}>
         <div className={styles.delimiter} />
-        <div className={styles.filter}>
-          {addedTags.length > 0 ? null : (
-            <span
-              onClick={() => {
-                clearFilter();
-              }}
-            >
-              Все статьи
-            </span>
-          )}
 
-          {addedTags.map((tag) => (
-            <span
-              onClick={() => {
-                deleteTag(tag);
-              }}
-            >
-              {tag[0].toUpperCase() + tag.substring(1)}
-              <img
-                src="/images/magazine/cross.svg"
-                alt="cross"
-              />
-            </span>
-          ))}
-
-          <div onClick={() => setTagListOpen(true)}>
-            <img
-              src="/images/magazine/plus.svg"
-              alt="plus"
-            />
-
-            {tagListOpen && (
-              <ul
-                ref={ref}
-                className={styles.list}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {tags?.map((tag) => (
-                  <li
-                    key={tag}
-                    onClick={() => addTag(tag)}
-                  >
-                    &#43; {tag[0].toUpperCase() + tag.substring(1)}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
+        <MagazineFilter
+          tags={tags}
+          addTag={addTag}
+          setTags={setTags}
+          addedTags={addedTags}
+          defaultTags={defaultTags}
+          setArticles={setArticles}
+          tagListOpen={tagListOpen}
+          setAddedTags={setAddedTags}
+          setTagListOpen={setTagListOpen}
+          articlesMetadata={articlesMetadata}
+        />
 
         <div className={styles.articles}>
           {articles.map((article) => (
-            <article key={article.slug}>
-              <div
-                className={styles.data}
-                onClick={() => {
-                  goToArticle(article.slug);
-                }}
-                style={{
-                  backgroundColor: `var(${article.cardBackgroundColor})`,
-                  color: `var(${article.cardTextColor})`,
-                }}
-              >
-                <h2 className={styles.title}>{article.title}</h2>
-                <span className={styles.point}>&#x2022;</span>
-                <span className={styles.author}>{article.author}</span>
-              </div>
-
-              <div className={styles.tags}>
-                {article.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    onClick={() => {
-                      addTag(tag);
-                    }}
-                  >
-                    {tag[0].toUpperCase() + tag.substring(1)}
-                  </span>
-                ))}
-              </div>
-            </article>
+            <MagazineCard
+              addTag={addTag}
+              article={article}
+              key={article.slug}
+            />
           ))}
         </div>
       </section>
