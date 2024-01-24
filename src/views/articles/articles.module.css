@@ -1,33 +1,13 @@
-.logoWrapper {
-  margin: 100px auto 44px auto;
-  width: 100%;
-}
-
-.logo {
-  position: relative;
-  max-width: 466px;
-  margin: 0 auto;
-}
-
-.logoImage {
-  display: block;
-  max-width: 466px;
-}
-
-.logoQuote {
-  position: absolute;
-  right: 15px;
-  bottom: 25px;
-
-  font-family: var(--font-rostelecom);
-  font-size: var(--base-font-size);
-  font-weight: var(--regular-font-weight);
-  line-height: var(--subheader-line-height);
+.articles {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
 }
 
 .container {
-  max-width: 1031px;
   margin: 0 auto;
+  width: 992px;
+  max-width: 992px;
   padding-bottom: 60px;
 
   display: flex;
@@ -37,82 +17,17 @@
 
 .delimiter {
   height: 1px;
-  background-color: var(--delimiter-color);
-  margin: 0 auto 15px auto;
   width: 100%;
-}
+  margin-top: 45px;
+  margin-bottom: 15px;
 
-.articles {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 30px 20px;
-
-  max-width: 1052px;
-  margin: 0 auto;
-}
-
-.title {
-  padding: 0 30px;
-  font-family: var(--font-lora);
-  font-size: 1.22rem;
-  font-weight: var(--semi-bold-font-weight);
-  line-height: 1.27;
-}
-
-.point {
-  font-size: var(--small-font-size);
+  background-color: var(--delimiter-color);
 }
 
 @media (max-width: 992px) {
-  .articles {
-    grid-template-columns: 337px 337px;
-  }
-
-  .filter,
-  .delimiter {
-    width: 694px;
-  }
-}
-
-@media (max-width: 768px) {
-  .articles {
-    grid-template-columns: 337px;
-  }
-
-  .filter,
-  .delimiter {
-    width: 337px;
-  }
-}
-
-@media (max-width: 576px) {
-  .logo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .container {
     width: calc(100% - 30px);
-  }
-
-  .logo > span {
-    margin-top: 10px;
-    position: relative;
-    left: 0;
-    top: 0;
-    text-align: center;
-  }
-
-  .articles {
-    grid-template-columns: 100%;
-    margin: 30px 15px 0 15px;
-  }
-
-  .filter {
-    width: 100%;
-    padding: 0 15px;
-  }
-
-  .delimiter {
-    width: calc(100% - 30px);
-    margin: 0 auto 10px auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

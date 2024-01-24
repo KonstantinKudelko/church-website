@@ -7,22 +7,49 @@ import { SubscriptionForm } from "@components/subscription-form";
 import styles from "./article.module.css";
 
 export const Article = ({ content, metadata }) => {
-  const { hero, slug, title, description } = metadata;
+  const { hero, title, description } = metadata;
+
   return (
     <>
       <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
+        <title>{formatTitle(title)}</title>
 
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={getAbsoluteUrl(hero)} />
-        <meta property="og:image:secure_url" content={getAbsoluteUrl(hero)} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta
+          name="description"
+          content={description}
+        />
+
+        <meta
+          property="og:type"
+          content="website"
+        />
+
+        <meta
+          property="og:image"
+          content={getAbsoluteUrl(hero)}
+        />
+
+        <meta
+          property="og:image:secure_url"
+          content={getAbsoluteUrl(hero)}
+        />
+
+        <meta
+          property="og:title"
+          content={formatTitle(title)}
+        />
+
+        <meta
+          property="og:description"
+          content={description}
+        />
       </Head>
 
       <article className={styles.content}>
-        <MDXRemote compiledSource={content} components={components} />
+        <MDXRemote
+          compiledSource={content}
+          components={components}
+        />
 
         <SubscriptionForm />
       </article>

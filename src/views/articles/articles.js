@@ -1,74 +1,71 @@
+import Head from "next/head";
 import Image from "next/image";
 import styles from "./articles.module.css";
 import { useState } from "react";
-import { MagazineCard } from "@components/magazine-card";
-import { MagazineFilter } from "@components/magazine-filter";
+import { formatTitle } from "@helpers/title.helper";
+import { getAbsoluteUrl } from "@helpers/absolute-url.helper";
+
+const hero = getAbsoluteUrl("/images/magazine/hero.svg");
+const title = formatTitle("Журнал");
+const description = "Евангельская истина для наших сердец и умов";
 
 export const Articles = ({ articlesMetadata }) => {
-  const defaultTags = () => {
-    const allTags = articlesMetadata.flatMap((article) => article.tags);
-    // Use only unique tags
-    return [...new Set(allTags)];
-  };
-
+  const uniqueTags = [...new Set(articlesMetadata.flatMap((article) => article.tags))];
   const [articles, setArticles] = useState(articlesMetadata);
-  const [tagListOpen, setTagListOpen] = useState(false);
-  const [addedTags, setAddedTags] = useState([]);
-  const [tags, setTags] = useState(defaultTags());
-
-  const addTag = (tag) => {
-    window.moveTo(0, 0);
-    addedTags.includes(tag) ? null : setAddedTags((addTag) => [...addTag, tag]);
-    setTagListOpen(false);
-    setTags(tags.filter((item) => item !== tag));
-    setArticles(articles.filter((article) => article.tags.includes(tag)));
-  };
 
   return (
-    <main>
-      <div className={styles.logoWrapper}>
-        <div className={styles.logo}>
-          <Image
-            src="/images/magazine/logo.svg"
-            alt="logo"
-            width={466}
-            height={211}
-            className={styles.logoImage}
-          />
+    <>
+      <Head>
+        <title>{title}</title>
 
-          <span className={styles.logoQuote}>
-            Евангельская истина <br />
-            для наших сердец и умов
-          </span>
-        </div>
-      </div>
-
-      <section className={styles.container}>
-        <div className={styles.delimiter} />
-
-        <MagazineFilter
-          tags={tags}
-          addTag={addTag}
-          setTags={setTags}
-          addedTags={addedTags}
-          defaultTags={defaultTags}
-          setArticles={setArticles}
-          tagListOpen={tagListOpen}
-          setAddedTags={setAddedTags}
-          setTagListOpen={setTagListOpen}
-          articlesMetadata={articlesMetadata}
+        <meta
+          name="description"
+          content={description}
         />
 
-        <div className={styles.articles}>
-          {articles.map((article) => (
-            <MagazineCard
-              addTag={addTag}
-              article={article}
-              key={article.slug}
-            />
-          ))}
-        </div>
-      </section>
-    </main>
+        <meta
+          property="og:type"
+          content="website"
+        />
+
+        <meta
+          property="og:image"
+          content={hero}
+        />
+
+        <meta
+          property="og:image:secure_url"
+          content={hero}
+        />
+
+        <meta
+          property="og:title"
+          content={title}
+        />
+
+        <meta
+          property="og:description"
+          content={description}
+        />
+      </Head>
+
+      <main className={styles.articles}>
+        <Image
+          src="/images/magazine/hero.svg"
+          alt="hero-image"
+          width={466}
+          height={211}
+          priority={true}
+        />
+
+        <section className={styles.container}>
+          <div className={styles.delimiter} />
+
+          {/* FILTER */}
+
+          {/* CARDS */}
+        </section>
+      </main>
+    </>
   );
 };
