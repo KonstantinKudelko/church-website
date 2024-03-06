@@ -12,13 +12,12 @@ export const Article = ({ content, metadata }) => {
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={description} />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content={getAbsoluteUrl(hero)} />
-        <meta property="og:image:secure_url" content={getAbsoluteUrl(hero)} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
+        <meta name="description" content={description}/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:image" content={getAbsoluteUrl(hero)}/>
+        <meta property="og:image:secure_url" content={getAbsoluteUrl(hero)}/>
+        <meta property="og:title" content={title}/>
+        <meta property="og:description" content={description}/>
       </Head>
 
       <article className={styles.content}>
