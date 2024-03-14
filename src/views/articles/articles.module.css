@@ -9,7 +9,7 @@
 
 .article {
   display: grid;
-  background-color: var(--background-beige);
+  /*background-color: var(--bgColorArticle);*/
   grid-auto-columns: minmax(200px, auto);
   grid-template-rows: 4fr 1fr 2fr;
   text-align: center;
