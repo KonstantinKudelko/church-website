@@ -1,15 +1,8 @@
-import s from "./articles.module.css";
-
-export const Articles = ({articles}) => {
-
+export const Articles = ({ articles }) => {
   return (
-    <div className={s.container}>
+    <div>
       {articles.map((article) => (
-        <div className={s.article} key={article.slug}>
-          <h2>{article.title}</h2>
-          <span>•</span>
-          <span className={s.author}>{article.author}</span>
-        </div>
+        <span key={article.slug}>{article.title}</span>
       ))}
     </div>
   );
