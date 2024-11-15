@@ -1,12 +1,13 @@
 :root {
-  --white: white;
-  --black: black;
+  --white: #fff;
+  --black: #000;
   --gray: #e6e6e6;
 
-  --text-color: #1d1b16;
+  --text-color-black: #1d1b16;
+  --text-color-white: #fff;
 
   --accent-blue: #6d8ea3;
-  --accent-gray: #999999;
+  --accent-gray: #999;
   --accent-pink: #dfb0a4;
   --accent-green: #416950;
   --accent-yellow: #d4b270;
@@ -14,4 +15,13 @@
   --background-gray: #ccd3d4;
   --background-white: #fefdfa;
   --background-beige: #faeddc;
+
+  --accent-blue-contrast-text-color: #000;
+  --accent-gray-contrast-text-color: #000;
+  --accent-pink-contrast-text-color: #000;
+  --accent-green-contrast-text-color: #fff;
+  --accent-yellow-contrast-text-color: #000;
+  --background-gray-contrast-text-color: #000;
+  --background-white-contrast-text-color: #000;
+  --background-beige-contrast-text-color: #000;
 }
