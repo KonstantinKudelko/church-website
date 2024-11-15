@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:style": "npx stylelint '**/*.css'",
-    "format": "npx prettier --write ."
+    "format": "npx prettier --write .",
+    "tsc": "tsc"
   },
   "dependencies": {
     "next": "12.1.6",
@@ -16,6 +17,7 @@
     "react-dom": "18.1.0"
   },
   "devDependencies": {
+    "@types/node": "^22.9.0",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
     "eslint-config-prettier": "^8.5.0",
