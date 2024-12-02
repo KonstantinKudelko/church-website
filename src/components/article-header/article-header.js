@@ -1,4 +1,4 @@
-import { localizeDateString } from "@utils/localize-date-string";
+import { localizeDateString } from "@helpers/localize-date-string";
 
 import styles from "./article-header.module.css";
 
@@ -13,7 +13,12 @@ export const ArticleHeader = ({ src, date, author, children }) => {
       <div className={styles.content}>
         <span className={styles.author}>{author}</span>
         {children}
-        <span className={styles.date}>{localizeDateString(date)}</span>
+        <time
+          dateTime={date}
+          className={styles.date}
+        >
+          {localizeDateString(date)}
+        </time>
       </div>
     </header>
   );

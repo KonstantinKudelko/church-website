@@ -1,0 +1,68 @@
+.container {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.metadata {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-rostelecom);
+  font-size: 0.67rem;
+  color: #8d6a61;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  width: 338px;
+  height: 198px;
+
+  padding-left: 30px;
+  padding-right: 30px;
+
+  background-color: var(--background-gray);
+
+  cursor: pointer;
+}
+
+.card span,
+.card h2,
+.card h3 {
+  text-align: center;
+}
+
+.card .title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card .author {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.card .divider {
+  height: 3px;
+  width: 3px;
+  border-radius: 50%;
+  background-color: var(--black);
+}
+
+.tags {
+  display: flex;
+  gap: 5px;
+}
+
+.tag {
+  padding: 5px;
+  background-color: #faf6f0;
+  font-family: var(--font-rostelecom);
+  font-size: 0.67rem;
+  color: #888178;
+}
