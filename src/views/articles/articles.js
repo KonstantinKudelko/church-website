@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { ArticleCard } from "@components/article-card";
+import { Logo } from "@components/logo";
 
 import styles from "./articles.module.css";
 
@@ -31,6 +32,9 @@ export const Articles = ({ articles }) => {
       </Head>
 
       <header className={styles.header}>
+        <div className={styles.logo}>
+          <Logo color="#1D1B17" />
+        </div>
         <h1>{title}</h1>
         <h2>{description}</h2>
       </header>

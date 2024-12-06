@@ -1,9 +1,7 @@
 .header {
-  min-height: 650px;
   margin-bottom: 30px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 
   position: relative;
 
@@ -22,6 +20,24 @@
   content: "";
   opacity: 0.8;
   background-image: url("/images/magazine/hero-noise.png");
+}
+
+.wrapper {
+  min-height: 650px;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  position: relative;
+  z-index: 1;
+
+  padding: 16px;
+  margin: 0 auto;
+
+  cursor: pointer;
 }
 
 .content {
