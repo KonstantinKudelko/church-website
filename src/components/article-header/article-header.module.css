@@ -86,6 +86,13 @@
   border-radius: 160px;
 }
 
+.breadcrumbs {
+  max-width: var(--article-container-width);
+  font-family: var(--font-rostelecom);
+  font-size: 0.875rem;
+  color: #8d6a61;
+}
+
 @media (max-width: 768px) {
   .content {
     max-width: 550px;
