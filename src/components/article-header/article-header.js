@@ -10,8 +10,8 @@ const ArticleBreadcrumbs = ({ articleName }) => {
 
   return (
     <p className={styles.breadcrumbs}>
-      <Link href={PATH_MAGAZINE}>Главная</Link>
-      {divider}
+      {/*<Link href={PATH_MAGAZINE}>Главная</Link>*/}
+      {/*{divider}*/}
       <Link href={PATH_MAGAZINE}>Статьи</Link>
       {articleName && (
         <>
@@ -32,11 +32,11 @@ export const ArticleHeader = ({ src, title, date, author, children }) => {
         }}
         className={styles.header}
       >
-        <Link href={PATH_MAGAZINE}>
-          <a className={styles.logo}>
-            <Logo />
-          </a>
-        </Link>
+        {/*<Link href={PATH_MAGAZINE}>*/}
+        {/*  <a className={styles.logo}>*/}
+        {/*    <Logo />*/}
+        {/*  </a>*/}
+        {/*</Link>*/}
         <div className={styles.wrapper}>
           <div className={styles.content}>
             <span className={styles.author}>{author}</span>
