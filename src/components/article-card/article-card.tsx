@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { getContrastTextColor, parseColor } from "@helpers/color.helpers";
 import { localizeDateString } from "@helpers/localize-date-string";
 import { getTimeToReadLabel } from "@helpers/get-time-to-read-label";
@@ -25,8 +25,6 @@ export const ArticleCard = ({
   tags,
   link,
 }: ArticleCardProps) => {
-  const router = useRouter();
-
   const bgColor = parseColor(color);
   const contrastTextColor = getContrastTextColor(color);
 
@@ -36,20 +34,19 @@ export const ArticleCard = ({
         <time dateTime={date}>{localizeDateString(date)}</time>
         {minsToRead && <span>{getTimeToReadLabel(minsToRead)}</span>}
       </div>
-      <div
-        style={{ backgroundColor: bgColor, color: contrastTextColor }}
-        className={styles.card}
-        onClick={() => {
-          router.push(link);
-        }}
-      >
-        <h3 className={styles.title}>{title}</h3>
-        <div
-          style={{ backgroundColor: contrastTextColor }}
-          className={styles.divider}
-        />
-        <span className={styles.author}>{author}</span>
-      </div>
+      <Link href={link}>
+        <a
+          style={{ backgroundColor: bgColor, color: contrastTextColor }}
+          className={styles.card}
+        >
+          <h3 className={styles.title}>{title}</h3>
+          <div
+            style={{ backgroundColor: contrastTextColor }}
+            className={styles.divider}
+          />
+          <span className={styles.author}>{author}</span>
+        </a>
+      </Link>
       <div className={styles.tags}>
         {tags.map((tag) => (
           <span

@@ -29,6 +29,7 @@
   background-color: var(--background-gray);
 
   cursor: pointer;
+  text-decoration: none;
 }
 
 .card span,
