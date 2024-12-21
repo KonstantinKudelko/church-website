@@ -10,6 +10,7 @@ import { SubscriptionForm } from "@components/subscription-form";
 import { ColoredTextBlock } from "@components/colored-text-block";
 import { HighlightedTextBlock } from "@components/highlighted-text-block";
 import { ArticleHeader as Header } from "@components/article-header";
+import { ArticleLink as Link } from "@components/article-link";
 import { BibleVerse, BiblePassage } from "@components/bible-passage";
 
 const standardComponents = {
@@ -30,6 +31,7 @@ const customComponents = {
   SubscriptionForm,
   ColoredTextBlock,
   HighlightedTextBlock,
+  Link,
 };
 
 export const components = {
